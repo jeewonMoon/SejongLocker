@@ -81,3 +81,4 @@
 
 ### pull request 규칙
 - 커밋 제목 그대로 pull request 해 주세요.
+- 여러 사항을 pull request 하고 싶다면 fork한 branch에서 다음 번호의 branch를 만든 다음, 그 branch에서 코드 작업 후 원래 repository의 branch로 pull request 하시면 됩니다.
