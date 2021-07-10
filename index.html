@@ -15,9 +15,9 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light position-fixed header text-white-50">
+  <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
     <div class="container-fluid">
-      <a class="navbar-brand text-primary" href="#">세종 LOCKER</a>
+      <a class="navbar-brand text-light" href="#">세종 LOCKER</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -34,23 +34,25 @@
             <a class="nav-link text-light" href="#">Pricing</a>
           </li>
         </ul>
-        <span class="navbar-text text-light">
+        <span class="navbar-text text-light login">
           로그인
         </span>
-        <span class="navbar-text text-light">
+        <span class="navbar-text text-light register">
           회원가입
         </span>
       </div>
     </div>
   </nav>
 
-  <div class="container">
+  <div class="Container">
     <div class="intro">
       <div class="title">
-        사물함 예약 서비스
+        사물함 예약을 쉽게 해 보세요!
       </div>
-      <button type="button" class="btn btn-primary">시작하기</button>
-      <button type="button" class="btn btn-success">더 알아보기</button>
+      <div class="title-buttons">
+        <button type="button" class="btn btn-primary">시작하기</button>
+        <button type="button" class="btn btn-success">더 알아보기</button>
+      </div>
     </div>
     <div class="card-outer">
       <div class="card" style="width: 18rem;">
@@ -109,7 +111,8 @@
   <div class="footer">
     <div class="footer-contents">
       <div class="footer-title">About us</div>
-      저희는 OpenYearRound 동아리 소속입니다.
+      <div>저희는 OpenYearRound 동아리 소속의</div>
+      <div>김재호, 문지원, 박현우입니다.</div>
     </div>
     <div class="footer-contents">
       <div class="footer-title">Get in Touch</div>
@@ -128,8 +131,20 @@
       </ul>
     </div>
     <div class="footer-contents">
-      <div class="footer-title">Subscribe</div>
-      이 곳에 문의를 주시면 됩니다
+      <div class="footer-title">문의하기</div>
+      <form>
+        <div class="form-group">
+          <label for="exampleInputEmail1">이메일</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="답변받을 이메일 주소를 입력하세요.">
+          <small id="emailHelp" class="form-text text-muted">문의 내용은 철저한 보안이 유지됩니다.</small>
+        </div>
+        <div class="form-group ">
+          <label for="exampleInputPassword1">문의내용</label>
+          <input type="password" class="form-control question-contents" id="exampleInputPassword1" placeholder="문의 내용을 입력해 주세요.">
+        </div>
+        <button type="submit" class="btn btn-primary">제출하기</button>
+      </form>
+
     </div>
   </div>
 </body>

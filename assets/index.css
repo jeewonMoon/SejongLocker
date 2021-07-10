@@ -13,8 +13,13 @@ body{
     z-index: 1;
 }
 
-.container{
+.login, .register{
+    margin : 6px;
+}
+
+.Container{
     padding-top : 85px;
+    width : 100%;
     display : flex;
     align-items: center;
     justify-content: center;
@@ -32,7 +37,14 @@ body{
 }
 
 .intro{
-    margin-bottom : 30px;
+    display: flex;
+    margin-bottom : 35px;
+    width : 100%;
+    height : 400px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: antiquewhite;
 }
 
 .title{
@@ -45,7 +57,7 @@ body{
 }
 
 .footer{
-    height : 600px;
+    height : 500.5px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -53,13 +65,22 @@ body{
     color : white;
 }
 
+.footer-contetns{
+    margin : 3px;
+    font-size : 17.5px;
+    color : #ffffff;
+}
+
+.form-group{
+    width : 450px;
+    margin-bottom : 8px;
+}
+
 .footer-title{
     font-size : 25px;
     margin-bottom : 15px;
 }
 
-.footer-contetns{
-    margin : 3px;
-    font-size : 17.5px;
-    color : #ffffff;
+.question-contents{
+    height : 150px;
 }
