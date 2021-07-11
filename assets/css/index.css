@@ -13,10 +13,6 @@ body{
     z-index: 1;
 }
 
-.login, .register{
-    margin : 6px;
-}
-
 .Container{
     padding-top : 85px;
     width : 100%;
