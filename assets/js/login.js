@@ -20,6 +20,6 @@ function CheckAdminEmail(){
         alert("이메일을 확인해주세요.");
         //document.getElementsByClassName("user-email").innerHTML("올바른 이메일을 입력해주세요.");
     }else{
-        alert("correct");
+        alert("correct");   //for test
     }
 }
