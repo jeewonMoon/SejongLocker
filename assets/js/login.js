@@ -29,7 +29,7 @@ document.getElementById("userEmail").addEventListener('blur', function(){
   });
   
   
-  // 회원가입 password check
+  // 회원가입 password check (user, admin)
   function checkPassword(who){
       let pwLen;
       if(who == 'user'){
@@ -50,7 +50,7 @@ document.getElementById("userEmail").addEventListener('blur', function(){
     }
   }
   
-  // 회원가입 password check
+  // 회원가입 password check (user, admin)
   function checkPasswordAgain(who){
     let pw1, pw2;
     if(who == 'user'){
