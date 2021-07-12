@@ -1,0 +1,87 @@
+body{
+    width : 100%;
+    height : 100%;
+}
+
+.header{
+    position: fixed;
+    background-color: #051922;
+    height : 85.28px;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1;
+}
+
+.Container{
+    padding-top : 85px;
+    width : 100%;
+    display : flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#dropdownMenuButton1{
+    background-color: #051922;
+    border: none;
+}
+
+.card{
+    margin : 15px;
+    width : 350px;
+    height : 543px;
+}
+.card-outer{
+    display: flex;
+    flex-direction: row;
+}
+
+.intro{
+    display: flex;
+    margin-bottom : 35px;
+    width : 100%;
+    height : 400px;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: antiquewhite;
+}
+
+.title{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size : 35px;
+}
+
+.footer{
+    height : 500.5px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #051922;
+    color : white;
+}
+
+.footer-contetns{
+    margin : 3px;
+    font-size : 17.5px;
+    color : #ffffff;
+}
+
+.form-group{
+    width : 450px;
+    margin-bottom : 8px;
+}
+
+.footer-title{
+    font-size : 25px;
+    margin-bottom : 15px;
+}
+
+.question-contents{
+    height : 150px;
+}
