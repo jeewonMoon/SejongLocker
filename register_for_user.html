@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <!-- Required meta tags -->
@@ -11,7 +11,7 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
   <link rel="stylesheet" href="./assets/css/register_for_admin.css">
-  <title>회원가입</title>
+  <title>사용자 회원가입</title>
 </head>
 
 <body>
@@ -56,16 +56,19 @@
         </div>
         <div class="mb-3">
             <label for="exampleInputEmail1" class="form-label">이메일</label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> @sejong.ac.kr
+            <input type="text" class="form-control" id="userEmail" aria-describedby="emailHelp"> @sejong.ac.kr
             <div id="emailHelp" class="form-text">이 부분에 인증하기 넣읍시다.</div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">비밀번호</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label id="passwordHelp1" class="form-text">8자 이상 입력</label>
+            <input type="password" class="form-control" id="userPassword1" onkeyup= "checkPassword('user'); checkPasswordAgain('user')">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">비밀번호 확인</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            <label id="passwordHelp2" class="form-text" style="color: green; display:none;">동일합니다</label>
+            <label id="passwordHelp3" class="form-text" style="color: red; display:none;">동일하지 않습니다</label>
+            <input type="password" class="form-control" id="userPassword2" onkeyup= "checkPasswordAgain('user')">
         </div>
         <button type="submit" class="btn btn-primary">가입하기</button>
     </form>
@@ -78,6 +81,7 @@
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
 
+  <script src="./assets/js/login.js"></script>
 </body>
 
 </html>
