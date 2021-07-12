@@ -35,8 +35,8 @@ document.getElementById("userEmail").addEventListener('blur', function(){
       if(who == 'user'){
         pwLen = document.getElementById('userPassword1').value.length;
       }
-      else if(who == 'manager'){
-        pwLen = document.getElementById('managerPassword1').value.length;
+      else if(who == 'admin'){
+        pwLen = document.getElementById('adminPassword1').value.length;
       }
     
     if(1 <= pwLen && pwLen < 8){
@@ -57,9 +57,9 @@ document.getElementById("userEmail").addEventListener('blur', function(){
         pw1 = document.getElementById('userPassword1').value;
         pw2 = document.getElementById('userPassword2').value;
     }
-    else if(who == 'manager'){
-        pw1 = document.getElementById('managerPassword1').value;
-        pw2 = document.getElementById('managerPassword2').value;
+    else if(who == 'admin'){
+        pw1 = document.getElementById('adminPassword1').value;
+        pw2 = document.getElementById('adminPassword2').value;
     }
 
     if(pw2.length == 0){
