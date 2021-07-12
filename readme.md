@@ -3,6 +3,7 @@
 프로젝트 개요 : 사물함 배정과 예약을 제공하는 서비스 구현  
 팀원 : 김재호, 문지원, 박현우   
 프로젝트 기간 : 2021.07 ~ 2021.08 (8주)  
+진행 정도 : <a href="https://github.com/gusdn3477/OpenYearRound_Project/projects">바로가기</a>
 <br/>
 **프로젝트 일정**  
 <table>
@@ -53,5 +54,6 @@
 - 예시) #feat3 - [사용자] 로그인 폼 구현
 
 ### pull request 규칙
-- 커밋 제목 그대로 pull request 해 주세요.
-- 여러 사항을 pull request 하고 싶다면 fork한 branch에서 다음 번호의 branch를 만든 다음, 그 branch에서 코드 작업 후 원래 repository의 branch로 pull request 하시면 됩니다.
+- #해당 브랜치명+숫자 [해당 프로젝트 이름]으로 pull request 해 주세요.
+- **절대로** 현재 repository의 main으로 pull request 하시면 안 됩니다. (추후 설명 해드리겠습니다.)
+- 여러 사항을 pull request 하고 싶다면 fork한 branch에서 다른 branch를 만든 다음, 그 branch에서 코드 작업 후 원래 repository의 branch로 pull request 하시면 됩니다.
