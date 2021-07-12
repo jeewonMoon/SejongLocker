@@ -1,19 +1,29 @@
-function CheckUserEmail(){
+//user email check
+document.getElementById("userEmail").addEventListener('blur', function(){
     let email = document.getElementById("userEmail").value;
     let regExp = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@([s][e][j][o][n][g]).([a][c]).([k][r])$/;
 
     if (!regExp.test(email)){
-        //alert("이메일을 확인해주세요.");
-        document.getElementById("emailHelp1").innerHTML("<div 'style=color:red'>올바른 이메일을 입력해주세요.</div>");
+        document.getElementById("emailHelp1").textContent="올바른 이메일을 입력해주세요.";
+        document.getElementById("emailHelp1").style.color="red";
     }
-}
+    else{
+        document.getElementById("emailHelp1").textContent="We'll never share your email with anyone else.";
+        document.getElementById("emailHelp1").style.color="#6c757d";
+    }
+  });
 
-function CheckAdminEmail(){
+  //admin email check
+  document.getElementById("adminEmail").addEventListener('blur', function(){
     let email = document.getElementById("adminEmail").value;
     let regExp = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@([s][e][j][o][n][g]).([a][c]).([k][r])$/;
 
     if (!regExp.test(email)){
-        //alert("이메일을 확인해주세요.");
-        document.getElementById("adminEmail2").innerHTML("올바른 이메일을 입력해주세요.");
+        document.getElementById("emailHelp2").textContent="올바른 이메일을 입력해주세요.";
+        document.getElementById("emailHelp2").style.color="red";
     }
-}
+    else{
+        document.getElementById("emailHelp2").textContent="We'll never share your email with anyone else.";
+        document.getElementById("emailHelp2").style.color="#6c757d";
+    }
+  });
