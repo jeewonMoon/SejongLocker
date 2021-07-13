@@ -9,7 +9,7 @@ a{
 }
 
 a:hover{
-    color: #F28123;
+    color: #F28123 !important;
 }
 
 .header{
