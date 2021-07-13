@@ -9,7 +9,7 @@
 <table>
   <tr>
     <td>7월 1주차<td/>
-    <td>아이디어 회의, 사용할 라이브러리 & 프레임워크, 협업 툴 협의 (Bootstrap, trello 등) <td/>
+    <td>아이디어 회의, 사용할 라이브러리 & 프레임워크, 협업 툴 협의 (Bootstrap, Git 등) <td/>
   </tr>
   <tr>
     <td>7월 2주차<td/>
@@ -21,7 +21,11 @@
   </tr>
   <tr>
     <td>7월 4주차<td/>
-    <td>사물함 만드는 기능 완성(프론트엔드 부분), 오류 수정 및 clean code화.  <td/>
+    <td>사물함 만드는 기능 완성(프론트엔드 부분), 오류 수정 및 clean code화  <td/>
+  </tr>
+  <tr>
+    <td>7월 5주차<td/>
+    <td>사물함 DB 연결(백엔드 부분)  <td/>
   </tr>
 </table>
 
