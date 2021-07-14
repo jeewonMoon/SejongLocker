@@ -37,10 +37,15 @@ a:hover{
     align-items: center;
 }
 
-h1{
-    padding-bottom: 3em;
-    font-weight: bold;
-    text-decoration: underline;
+.profile > svg{
+    margin: 2em 0;
+}
+
+.profile{
+    display: flex;
+    padding-bottom: 4em;
+    flex-direction: column;
+    align-items: center;
 }
 
 form{
@@ -62,6 +67,6 @@ hr{
     margin: 1.5rem 0;
 }
 
-.change-pwd{
+.change-pwd, .user_info{
     padding-bottom: 5em;
 }
