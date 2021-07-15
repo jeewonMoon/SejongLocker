@@ -88,10 +88,21 @@
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder='예시 : 사물함은 B1층 B105강의실 옆에 있습니다.'></textarea>
       </div>
 
-      <h1>여기서 부터는 사물함 표</h1>
+      <div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">사물함의 높이를 정해주세요.</label>
+          <input type="text" class="form-control" id="height" aria-describedby="emailHelp" placeholder="예시 : 5">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">한 줄에 존재할 사물함의 갯수를 정해주세요.</label>
+          <input type="text" class="form-control" id="width" placeholder="예시 : 4">
+        </div>
+        <button class="btn btn-primary" onclick="makeLocker();">만들기</button>
+      </div>
+
+      <table class="table" id="table"></table>
+      <div>회색은 제외되게 하려고 합니다. (한번 더 클릭시 색깔 돌아옴)</div>
     </div>
-
-
   </div>
 
   <!-- Optional JavaScript; choose one of the two! -->
@@ -99,7 +110,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
     crossorigin="anonymous"></script>
-    
+  <script src="/javascripts/make_locker.js"></script>
   <!-- <script src="./assets/js/locker_for_admin.js"></script> -->
 </body>
 
