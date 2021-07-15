@@ -27,7 +27,7 @@ router.get('/locker_for_admin', function(req, res, next) {
 });
 
 router.get('/locker_for_user', function(req, res, next) {
-  res.render('/locker_for_user.html');
+  res.render('locker_for_user.html');
 });
 
 router.get('/login', function(req, res, next) {
