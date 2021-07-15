@@ -42,6 +42,14 @@ a:hover{
     border-color: #051922;
 }
 
+table{
+    text-align: center;
+}
+
+td{
+    cursor : pointer;
+}
+
 h3{
     padding-bottom: 10px;
     font-weight: bold;

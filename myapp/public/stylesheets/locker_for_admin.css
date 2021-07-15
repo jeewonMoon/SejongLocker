@@ -22,7 +22,6 @@ a:hover{
     z-index: 1;
 }
 
-
 .Container{
     padding-top : 85px;
     width : 100%;
@@ -40,6 +39,14 @@ a:hover{
     margin: 5em;
     width : 600px;
     border-color: #051922;
+}
+
+table{
+    text-align: center;
+}
+
+td{
+    cursor : pointer;
 }
 
 h3{
