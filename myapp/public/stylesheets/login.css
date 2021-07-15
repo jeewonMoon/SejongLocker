@@ -9,7 +9,7 @@ a{
 }
 
 a:hover{
-    color: #F28123;
+    color: #F28123 !important;
 }
 
 .header{
@@ -23,7 +23,7 @@ a:hover{
 }
 
 
-.container{
+.Container{
     padding-top : 85px;
     width : 100%;
     display: flex;
@@ -31,15 +31,9 @@ a:hover{
     flex-direction: row;
 }
 
-#dropdownMenuButton1{
-    background-color: #051922;
-    border: none;
-}
-
-.locker-form{
+.login-form{
     margin: 5em;
-    width : 600px;
-    border-color: #051922;
+    width: 297px;
 }
 
 h3{
@@ -55,4 +49,16 @@ h3{
     background-color: #F28123;
     color: white;
     border-color: #F28123;
+}
+
+@media screen and (max-width: 1000px){
+    .header{
+        background-color: white;
+        
+    }
+
+    .text-light{
+        color: #051922 !important;
+    }
+    
 }

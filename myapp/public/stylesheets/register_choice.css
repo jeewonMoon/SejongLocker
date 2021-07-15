@@ -31,14 +31,8 @@ a:hover{
     flex-direction: row;
 }
 
-#dropdownMenuButton1{
-    background-color: #051922;
-    border: none;
-}
-
-.locker-form{
+.login-form{
     margin: 5em;
-    width : 600px;
     border-color: #051922;
 }
 
