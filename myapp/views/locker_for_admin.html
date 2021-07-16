@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="/stylesheets/locker_for_admin.css">
+  <title>관리자 사물함</title>
+  <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=58a38050aee1b3318bc8da2f739057bd&libraries=services"></script>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="/">세종 LOCKER</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Pricing</a>
+          </li>
+        </ul>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
+            data-bs-toggle="dropdown" aria-expanded="false">
+            마이페이지
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" href="#"><b>박현우님</b></a></li>
+            <li><a class="dropdown-item" href="#">사물함 신청</a></li>
+            <li><a class="dropdown-item" href="#">내 사물함 관리</a></li>
+            <li><a class="dropdown-item" href="#">대기열 확인</a></li>
+            <li><a class="dropdown-item" href="#">회원정보 수정</a></li>
+          </ul>
+        </div>
+        <span class="navbar-text text-light register">
+          <a class="nav-link active text-light" aria-current="page" href="#">로그아웃</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="Container">
+    <div class='locker-form'>
+
+      <h1>관리자 사물함 생성 화면</h1>
+
+      <div class='mb-3'>
+        <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace()">
+          <option selected value=-1>사물함 건물 선택</option>
+          <option value=0>광개토관</option>
+          <option value=1>군자관</option>
+          <option value=2>다산관</option>
+          <option value=3>대양홀</option>
+          <option value=4>대양AI센터</option>
+          <option value=5>영실관</option>
+          <option value=6>용덕관</option>
+          <option value=7>율곡관</option>
+          <option value=8>이당관</option>
+          <option value=9>집현관</option>
+          <option value=10>충무관</option>
+          <option value=11>세종관</option>
+          <option value=12>학생회관</option>
+        </select>
+      </div>
+      <!--
+      <div class='mb-3'>
+        <img src="/images/kakaoMap.png" class="img-fluid" alt="카카오 지도">
+      </div>
+      -->
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">사용자에게 전할 공지사항</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+          placeholder='예시 : 사물함은 B1층 B105강의실 옆에 있습니다.'></textarea>
+      </div>
+
+      <div id="map" style="width:100%;height:350px;"></div>
+      <script src="/javascripts/select_place.js"></script>
+
+      <div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">사물함의 높이를 정해주세요.</label>
+          <input type="text" class="form-control" id="height" aria-describedby="emailHelp" placeholder="예시 : 5">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">한 줄에 존재할 사물함의 갯수를 정해주세요.</label>
+          <input type="text" class="form-control" id="width" placeholder="예시 : 4">
+        </div>
+        <button class="btn btn-primary" onclick="makeLocker();">만들기</button>
+      </div>
+
+      <table class="table" id="table"></table>
+      <div>회색은 제외되게 하려고 합니다. (한번 더 클릭시 색깔 돌아옴)</div>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="/javascripts/make_locker.js"></script>
+  <!-- <script src="./assets/js/locker_for_admin.js"></script> -->
+</body>
+
+</html>
