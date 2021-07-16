@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="/stylesheets/locker_for_user.css">
+  <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=58a38050aee1b3318bc8da2f739057bd&libraries=services"></script>
+  <title>사용자 사물함</title>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="/">세종 LOCKER</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Features</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="#">Pricing</a>
+          </li>
+        </ul>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              마이페이지
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" href="#"><b>박현우님</b></a></li>
+              <li><a class="dropdown-item" href="#">사물함 신청</a></li>
+              <li><a class="dropdown-item" href="#">내 사물함 관리</a></li>
+              <li><a class="dropdown-item" href="#">대기열 확인</a></li>
+              <li><a class="dropdown-item" href="#">회원정보 수정</a></li>
+            </ul>
+          </div>
+        <span class="navbar-text text-light register">
+            <a class="nav-link active text-light" aria-current="page" href="#">로그아웃</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="Container">
+    <div class='locker-form'>
+
+      <h1>사용자 사물함 신청 화면</h1>
+
+      <div class='mb-3'>
+        <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace()">
+          <option selected>사물함 건물 선택</option>
+          <option value=0>광개토관</option>
+          <option value=1>군자관</option>
+          <option value=2>다산관</option>
+          <option value=3>대양홀</option>
+          <option value=4>대양AI센터</option>
+          <option value=5>영실관</option>
+          <option value=6>용덕관</option>
+          <option value=7>율곡관</option>
+          <option value=8>이당관</option>
+          <option value=9>집현관</option>
+          <option value=10>충무관</option>
+          <option value=11>세종관</option>
+          <option value=12>학생회관</option>
+        </select>
+      </div>
+
+      <!--
+      <div class='mb-3'>
+        <img src="/images/kakaoMap.png" class="img-fluid" alt="카카오 지도">
+      </div>
+      -->
+      <div id="map" style="width:100%;height:350px;"></div>
+      <script src="/javascripts/select_place.js"></script>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title">사물함 공지사항</h5>
+          <h6 class="card-subtitle mb-2 text-muted">관리자가 전하는 말</h6>
+          <p class="card-text">이 사물함은 몇 층에 있습니다<br>문의 및 안내 사항은 (장소)로 와주시면 됩니다.<br>이것은 예시이므로 삭제 가능합니다.</p>
+        </div>
+      </div>
+
+      <h1>여기서 부터는 사물함 표</h1>
+    </div>
+  </div>
+
+  <!-- Optional JavaScript; choose one of the two! -->
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+    
+  <!-- <script src="./assets/js/locker_for_user.js"></script> -->
+</body>
+
+</html>
