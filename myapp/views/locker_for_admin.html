@@ -14,10 +14,6 @@
   <title>관리자 사물함</title>
   <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=58a38050aee1b3318bc8da2f739057bd&libraries=services"></script>
-  <!--
-  <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=58a38050aee1b3318bc8da2f739057bd&libraries=services"></script>
-  <script src="/javascripts/select_place.js"></script>-->
 </head>
 
 <body>
@@ -67,28 +63,28 @@
       <h1>관리자 사물함 생성 화면</h1>
 
       <div class='mb-3'>
-        <select class="form-select" aria-label="Default select example" id="select-place" onchange="selectPlace()">
-          <option selected value="0">사물함 건물 선택</option>
-          <option value="1">광개토관</option>
-          <option value="2">군자관</option>
-          <option value="3">다산관</option>
-          <option value="4">대양홀</option>
-          <option value="5">대양AI센터</option>
-          <option value="6">영실관</option>
-          <option value="7">용덕관</option>
-          <option value="8">율곡관</option>
-          <option value="9">이당관</option>
-          <option value="10">집현관</option>
-          <option value="11">충무관</option>
-          <option value="12">세종관</option>
-          <option value="13">학생회관</option>
+        <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace()">
+          <option selected value=-1>사물함 건물 선택</option>
+          <option value=0>광개토관</option>
+          <option value=1>군자관</option>
+          <option value=2>다산관</option>
+          <option value=3>대양홀</option>
+          <option value=4>대양AI센터</option>
+          <option value=5>영실관</option>
+          <option value=6>용덕관</option>
+          <option value=7>율곡관</option>
+          <option value=8>이당관</option>
+          <option value=9>집현관</option>
+          <option value=10>충무관</option>
+          <option value=11>세종관</option>
+          <option value=12>학생회관</option>
         </select>
       </div>
-
+      <!--
       <div class='mb-3'>
         <img src="/images/kakaoMap.png" class="img-fluid" alt="카카오 지도">
       </div>
-
+      -->
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">사용자에게 전할 공지사항</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
@@ -96,7 +92,7 @@
       </div>
 
       <div id="map" style="width:100%;height:350px;"></div>
-      <script src="/javascripts/select_place2.js"></script>
+      <script src="/javascripts/select_place.js"></script>
 
       <div>
         <div class="form-group">
