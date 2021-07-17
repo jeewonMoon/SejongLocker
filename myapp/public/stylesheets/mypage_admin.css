@@ -19,13 +19,13 @@ body{
     z-index: 1;
 }
 
+.logout> a:hover{
+    color: #F28123 !important;
+}
+
 #dropdownMenuButton1{
     background-color: #051922;
     border: none;
-}
-
-.logout> a:hover{
-    color: #F28123 !important;
 }
 
 .Container{
@@ -69,8 +69,4 @@ hr{
 
 .change-pwd, .user_info{
     padding-bottom: 5em;
-}
-
-#reserveBtn{
-    display: none;
 }
