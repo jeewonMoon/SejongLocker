@@ -51,26 +51,35 @@
         <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace()">
         </select>
       </div>
+
       <!--
       <div class='mb-3'>
         <img src="/images/kakaoMap.png" class="img-fluid" alt="카카오 지도">
       </div>
       -->
+
+      <div id="map" class='mb-3' style="width:100%;height:350px;"></div>
+      <!-- <script src="/javascripts/select_place.js"></script> -->
+
+      <div class="mb-3 form-group">
+        <label for="exampleInputEmail1">사물함 이름을 정해주세요.</label>
+        <input type="text" class="form-control" id="locker-name" placeholder="예시 : 컴퓨터공학과 사물함1">
+      </div>
+
+      
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">사용자에게 전할 공지사항</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
           placeholder='예시 : 사물함은 B1층 B105강의실 옆에 있습니다.'></textarea>
       </div>
 
-      <div id="map" style="width:100%;height:350px;"></div>
-      <script src="/javascripts/select_place.js"></script>
 
-      <div>
-        <div class="form-group">
+      <div class='mb-3'>
+        <div class="mb-3 form-group">
           <label for="exampleInputEmail1">사물함의 높이를 정해주세요.</label>
           <input type="text" class="form-control" id="height" aria-describedby="emailHelp" placeholder="예시 : 5">
         </div>
-        <div class="form-group">
+        <div class="mb-3 form-group">
           <label for="exampleInputPassword1">한 줄에 존재할 사물함의 갯수를 정해주세요.</label>
           <input type="text" class="form-control" id="width" placeholder="예시 : 4">
         </div>
@@ -79,6 +88,7 @@
 
       <table class="table" id="table"></table>
       <div>회색은 제외되게 하려고 합니다. (한번 더 클릭시 색깔 돌아옴)</div>
+
     </div>
   </div>
 
@@ -91,6 +101,7 @@
   <!-- <script src="./assets/js/locker_for_admin.js"></script> -->
   <script src="/javascripts/dropdown.js"></script>
   <script src="/javascripts/nav_items.js"></script>
+  <script src="/javascripts/select_place.js"></script>
 </body>
 
 </html>
