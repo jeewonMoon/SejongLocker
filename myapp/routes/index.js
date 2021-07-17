@@ -5,92 +5,51 @@ const nodemailer = require('nodemailer');
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index', {title:"사물함 프로젝트"});
 });
 
 router.get('/index_admin', function(req, res, next) {
-  res.render('index_admin');
+  res.render('index_admin', {title:"사물함 프로젝트"});
 });
 
 router.get('/index_user', function(req, res, next) {
-  res.render('index_user');
+  res.render('index_user', {title:"사물함 프로젝트"});
 });
 
 router.get('/locker_for_admin', function(req, res, next) {
-  res.render('locker_for_admin');
+  res.render('locker_for_admin', {title:"관리자 사물함"});
 });
 
 router.get('/locker_for_user', function(req, res, next) {
-  res.render('locker_for_user');
+  res.render('locker_for_user', {title:"사용자 사물함"});
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login');
+  res.render('login', {title:"로그인"});
 });
 
 router.get('/register_choice', function(req, res, next) {
-  res.render('register_choice');
+  res.render('register_choice', {title:"회원가입"});
 });
 
 router.get('/register_for_admin', function(req, res, next) {
-  res.render('register_for_admin');
+  res.render('register_for_admin', {title:"관리자 회원가입"});
 });
 
 router.get('/register_for_user', function(req, res, next) {
-  res.render('register_for_user');
+  res.render('register_for_user', {title:"사용자 회원가입"});
 });
 
 router.get('/mypage_user', function(req, res, next) {
-  res.render('mypage_user');
+  res.render('mypage_user', {title : "My Page", who : "회원"});
 });
 
 router.get('/mypage_admin', function(req, res, next) {
-  res.render('mypage_admin');
+  res.render('mypage_admin', {title : "My Page", who : "관리자"});
 });
 
 /*
 router.get('/', function(req, res, next) {
   res.render('index.html');
-});
-
-router.get('/index_admin', function(req, res, next) {
-  res.render('index_admin.html');
-});
-
-router.get('/index_user', function(req, res, next) {
-  res.render('index_user.html');
-});
-
-router.get('/locker_for_admin', function(req, res, next) {
-  res.render('locker_for_admin.html');
-});
-
-router.get('/locker_for_user', function(req, res, next) {
-  res.render('locker_for_user.html');
-});
-
-router.get('/login', function(req, res, next) {
-  res.render('login.html');
-});
-
-router.get('/register_choice', function(req, res, next) {
-  res.render('register_choice.html');
-});
-
-router.get('/register_for_admin', function(req, res, next) {
-  res.render('register_for_admin.html');
-});
-
-router.get('/register_for_user', function(req, res, next) {
-  res.render('register_for_user.html');
-});
-
-router.get('/mypage_user', function(req, res, next) {
-  res.render('mypage_user.html');
-});
-
-router.get('/mypage_admin', function(req, res, next) {
-  res.render('mypage_admin.html');
-});
-*/
+});*/
 module.exports = router;
