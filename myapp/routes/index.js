@@ -25,7 +25,7 @@ router.get('/locker_for_user', function(req, res, next) {
 });
 
 router.get('/login', function(req, res, next) {
-  res.render('login', {title:"로그인"});
+  res.render('login', {title:"로그인", user : "사용자", admin : "관리자"});
 });
 
 router.get('/register_choice', function(req, res, next) {
@@ -33,11 +33,11 @@ router.get('/register_choice', function(req, res, next) {
 });
 
 router.get('/register_for_admin', function(req, res, next) {
-  res.render('register_for_admin', {title:"관리자 회원가입"});
+  res.render('register_for_admin', {title:"관리자 회원가입", who : "관리자"});
 });
 
 router.get('/register_for_user', function(req, res, next) {
-  res.render('register_for_user', {title:"사용자 회원가입"});
+  res.render('register_for_user', {title:"사용자 회원가입", who : "사용자"});
 });
 
 router.get('/mypage_user', function(req, res, next) {
