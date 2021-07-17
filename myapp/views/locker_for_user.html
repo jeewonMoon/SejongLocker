@@ -47,22 +47,30 @@
       <h1>사용자 사물함 신청 화면</h1>
 
       <div class='mb-3'>
-        <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace()">
+        <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace(); selectLocker();">
         </select>
       </div>
+      
+      <div id="map" class='mb-3' style="width:100%;height:350px;"></div>
+      <!-- <script src="/javascripts/select_place.js"></script> -->
 
       <!--
       <div class='mb-3'>
         <img src="/images/kakaoMap.png" class="img-fluid" alt="카카오 지도">
       </div>
       -->
-      <div id="map" style="width:100%;height:350px;"></div>
-      <script src="/javascripts/select_place.js"></script>
+
+      <div class='mb-3'>
+        <select class="form-select" aria-label="Default select example" id="locker-name">
+          <option selected>먼저 사물함 건물을 선택해주세요.</option>
+        </select>
+      </div>
+
       <div class="card mb-3">
         <div class="card-body">
           <h5 class="card-title">사물함 공지사항</h5>
           <h6 class="card-subtitle mb-2 text-muted">관리자가 전하는 말</h6>
-          <p class="card-text">이 사물함은 몇 층에 있습니다<br>문의 및 안내 사항은 (장소)로 와주시면 됩니다.<br>이것은 예시이므로 삭제 가능합니다.</p>
+          <p class="card-text">사물함은 B1층 B105강의실 옆에 있습니다.<br>문의 및 안내 사항은 (장소)로 와주시면 됩니다.<br>이것은 예시이므로 삭제 가능합니다.</p>
         </div>
       </div>
 
@@ -79,6 +87,8 @@
   <!-- <script src="./assets/js/locker_for_user.js"></script> -->
   <script src="/javascripts/dropdown.js"></script>
   <script src="/javascripts/nav_items.js"></script>
+  <script src="/javascripts/select_place.js"></script>
+  <script src="/javascripts/select_locker.js"></script>
 </body>
 
 </html>
