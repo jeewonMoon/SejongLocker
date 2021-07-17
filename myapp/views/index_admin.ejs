@@ -15,27 +15,8 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
-    <div class="container-fluid">
-      <a class="navbar-brand text-light" href="#">세종 LOCKER</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-items">
-        </ul>
-
-        <span class="navbar-text text-light login">
-          <a class="nav-link active text-light" aria-current="page" href="/login">로그인</a>
-        </span>
-        <span class="navbar-text text-light register">
-          <a class="nav-link active text-light" aria-current="page" href="/register_choice">회원가입</a>
-        </span>
-      </div>
-    </div>
-  </nav>
-
+  <%-include('./layout/header_mypage')%>
+  
   <div class="Container">
     <div class="intro">
       <div class="title">
@@ -99,7 +80,8 @@
       </div>
     </div>
   </div>
-
+  <%-include('./layout/footer')%>
+  <script src="/javascripts/dropdown.js"></script>
   <script src="/javascripts/nav_items.js"></script>
 </body>
 </html>
