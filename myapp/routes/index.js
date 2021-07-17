@@ -46,4 +46,11 @@ router.get('/register_for_user', function(req, res, next) {
   res.render('register_for_user.html');
 });
 
+router.get('/mypage_user', function(req, res, next) {
+  res.render('mypage_user.html');
+});
+
+router.get('/mypage_admin', function(req, res, next) {
+  res.render('mypage_admin.html');
+});
 module.exports = router;
