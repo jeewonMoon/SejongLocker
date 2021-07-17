@@ -15,27 +15,8 @@
     <%-include('./layout/header')%>
     <div class="Container">
         <!-- login form -->
-        <div class="login-form">
-            <form>
-                <div class="mb-3">
-                    <h3>사용자 회원가입</h3>
-                    <div>사용자는 사물함 서비스를 이용할 수 있습니다.</div>
-                    <div>단순 사용 목적이라면, 사용자로 가입해 주세요.</div>
-                </div>
-                <button type="submit" class="btn btn-color-orange user-submit" onclick="location.href='/register_for_user'"><a href="/register_for_user">가입하기</a></button>
-              </form>
-        </div>
-
-        <div class="login-form">
-            <form>
-                <div class="mb-3">
-                    <h3>관리자 회원가입</h3>
-                    <div>관리자는 사물함을 관리할 수 있습니다.</div>
-                    <div>사물함을 추가, 수정, 및 삭제하고 싶으시다면 관리자로 가입해 주세요.</div>
-                </div>
-                <button type="submit" class="btn btn-color-orange admin-submit" onclick="location.href='/register_for_admin'"><a href="/register_for_admin">가입하기</a></button>
-              </form>
-        </div>
+        <%-include('./layout/register_for_user')%>
+        <%-include('./layout/register_for_admin')%>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
