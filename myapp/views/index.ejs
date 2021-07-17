@@ -15,30 +15,7 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
-    <div class="container-fluid">
-      <a class="navbar-brand text-light" href="#">세종 LOCKER</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-items">
-        </ul>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            마이페이지
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
-          </ul>
-        </div>
-        <span class="navbar-text text-light register">
-          <a class="nav-link active text-light" aria-current="page" href="/">로그아웃</a>
-        </span>
-      </div>
-    </div>
-  </nav>
-
+  <%-include('./layout/header')%>
   <div class="Container">
     <div class="intro">
       <div class="title">
@@ -102,48 +79,7 @@
       </div>
     </div>
   </div>
-
-  <div class="footer">
-    <div class="footer-contents">
-      <div class="footer-title">About us</div>
-      <div>저희는 OpenYearRound 동아리 소속의</div>
-      <div>김재호, 문지원, 박현우입니다.</div>
-    </div>
-    <div class="footer-contents">
-      <div class="footer-title">Get in Touch</div>
-      <div>세종대학교 2층 동아리실</div>
-      <div>support@OpenYearRound.com</div>
-      <div>카카오톡 플러스친구 OpenYearRound</div>
-    </div>
-    <div class="footer-contents">
-      <div class="footer-title">Pages</div>
-      <ul>
-        <li>Home</li>
-        <li>About</li>
-        <li>Shop</li>
-        <li>News</li>
-        <li>Contact</li>
-      </ul>
-    </div>
-    <div class="footer-contents">
-      <div class="footer-title">문의하기</div>
-      <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">이메일</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="답변받을 이메일 주소를 입력하세요.">
-          <small id="emailHelp" class="form-text text-muted">문의 내용은 철저한 보안이 유지됩니다.</small>
-        </div>
-        <div class="form-group ">
-          <label for="exampleInputPassword1">문의내용</label>
-          <input type="text" class="form-control question-contents" id="exampleInputPassword1" placeholder="문의 내용을 입력해 주세요.">
-        </div>
-        <button type="submit" class="btn btn-primary">제출하기</button>
-      </form>
-
-    </div>
-  </div>
-
-  <script src="/javascripts/dropdown.js"></script>
+  <%-include('./layout/footer')%>
   <script src="/javascripts/nav_items.js"></script>
 </body>
 </html>

@@ -23,12 +23,4 @@ function blockLocker(id){
     else{
         num.className = "table-primary";
     }
-
-    /*
-    if(num.style.backgroundColor == "CF2EFF"){
-        num.style.backgroundColor = "secondary";
-    }
-    else{
-        num.style.backgroundColor = "primary";
-    }*/
 }

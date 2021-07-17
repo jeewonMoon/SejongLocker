@@ -17,7 +17,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
     <div class="container-fluid">
-      <a class="navbar-brand text-light" href="#">세종 LOCKER</a>
+      <a class="navbar-brand text-light" href="/index_admin">세종 LOCKER</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
         aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -25,12 +25,15 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-items">
         </ul>
-
-        <span class="navbar-text text-light login">
-          <a class="nav-link active text-light" aria-current="page" href="/login">로그인</a>
-        </span>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            마이페이지
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
+          </ul>
+        </div>
         <span class="navbar-text text-light register">
-          <a class="nav-link active text-light" aria-current="page" href="/register_choice">회원가입</a>
+          <a class="nav-link active text-light" aria-current="page" href="/">로그아웃</a>
         </span>
       </div>
     </div>
@@ -99,7 +102,8 @@
       </div>
     </div>
   </div>
-
+  <%-include('./layout/footer')%>
+  <script src="/javascripts/dropdown.js"></script>
   <script src="/javascripts/nav_items.js"></script>
 </body>
 </html>
