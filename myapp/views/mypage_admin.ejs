@@ -11,29 +11,7 @@
     <title>My Page</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
-      <div class="container-fluid">
-        <a class="navbar-brand text-light" href="/">세종 LOCKER</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-          aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item">
-              <a class="nav-link active text-light" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link text-light" href="#">Pricing</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
+    <%-include('./layout/header_mypage')%>
     <div class="Container">
       <div class="profile">
         <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" fill="#051922" class="bi bi-person-circle" viewBox="0 0 16 16">
@@ -45,16 +23,10 @@
       </div>
         <form>
           <div class="user_info">
-            <h5>회원 정보</h5>
+            <h5>관리자 정보</h5>
             <hr>
             <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
               <div class="card-body" id="card-body">
-                <h5 class="card-title">이름</h5>
-                <p class="card-text">OYR</p>
-                <h5 class="card-title">이메일</h5>
-                <p class="card-text">OYR@sejong.ac.kr</p>
-                <h5 class="card-title">학번</h5>
-                <p class="card-text">210714</p>
               </div>
             </div>
           </div>
@@ -75,27 +47,14 @@
         </div>
           <button type="submit" class="btn btn-color-orange">Submit</button>
         </div>
-
-        <div class="reservation">
-          <h5>예약 확인</h5>
-          <hr>
-          <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
-            <div class="card-body">
-              <h5 class="card-title">대양AI센터</h5>
-              <p class="card-text">서울 광진구 능동로 209</p>
-              <p class="card-text">N층 N-N자리</p>
-              <p class="card-text"><b>비밀번호: 1234</b></p>
-            </div>
-          </div>
-          <a href="#" class="btn btn-color-orange">예약 취소/수정</a>
-        </div>
       </form>
 
     </div>
 
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="/javascritps/login.js"></script>
+    <script src="/javascripts/login.js"></script>
     <script src="/javascripts/cardbody.js"></script>
+    <script src="/javascripts/nav_items.js"></script>
   </body>
 </html>
