@@ -74,3 +74,28 @@ hr{
 #reserveBtn{
     display: none;
 }
+
+.filebox label {
+    color: #fff;
+    font-size: inherit;
+    line-height: normal;
+    cursor: pointer;
+    border-radius: .25em;
+    -webkit-transition: background-color 0.2s;
+    transition: background-color 0.2s;
+  }
+  
+  .filebox label:hover {
+    color: black;
+  }
+
+  .filebox input[type="file"] {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
