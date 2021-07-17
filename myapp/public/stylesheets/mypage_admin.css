@@ -3,15 +3,6 @@ body{
     height : 100%;
 }
 
-a{
-    text-decoration: none;
-    color: white;
-}
-
-a:hover{
-    color: #F28123;
-}
-
 .btn-color-orange{
     background-color: #F28123;
     color: white;
@@ -26,6 +17,10 @@ a:hover{
     left: 0;
     right: 0;
     z-index: 1;
+}
+
+.logout> a:hover{
+    color: #F28123 !important;
 }
 
 #dropdownMenuButton1{
