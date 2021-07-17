@@ -50,13 +50,13 @@
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">비밀번호</label>
             <label id="passwordHelp1" class="form-text">8자 이상 입력</label>
-            <input type="password" class="form-control" id="userPassword1" onkeyup= "checkPassword('user'); checkPasswordAgain('user')">
+            <input type="password" class="form-control" id="adminPassword1" onkeyup= "checkPassword('admin'); checkPasswordAgain('admin')">
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">비밀번호 확인</label>
             <label id="passwordHelp2" class="form-text" style="color: green; display:none;">동일합니다</label>
             <label id="passwordHelp3" class="form-text" style="color: red; display:none;">동일하지 않습니다</label>
-            <input type="password" class="form-control" id="userPassword2" onkeyup= "checkPasswordAgain('user')">
+            <input type="password" class="form-control" id="adminPassword2" onkeyup= "checkPasswordAgain('admin')">
         </div>
           <button type="submit" class="btn btn-color-orange">Submit</button>
         </div>
@@ -67,6 +67,7 @@
     <!-- Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="/javascripts/login.js"></script>
+    <script src="/javascripts/register.js"></script>
     <script src="/javascripts/cardbody.js"></script>
     <script src="/javascripts/nav_items.js"></script>
   </body>
