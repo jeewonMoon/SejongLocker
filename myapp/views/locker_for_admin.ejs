@@ -2,46 +2,17 @@
 <html lang="ko">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <!-- Bootstrap CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-
+  <%-include('./layout/import_head')%>
+  
   <link rel="stylesheet" href="/stylesheets/locker_for_admin.css">
-  <title>관리자 사물함</title>
   <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=58a38050aee1b3318bc8da2f739057bd&libraries=services"></script>
+
+  
 </head>
 
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
-    <div class="container-fluid">
-      <a class="navbar-brand text-light" href="/">세종 LOCKER</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-itmes">
-        </ul>
-        <div class="dropdown">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1"
-            data-bs-toggle="dropdown" aria-expanded="false">
-            마이페이지
-          </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
-          </ul>
-        </div>
-        <span class="navbar-text text-light register">
-          <a class="nav-link active text-light" aria-current="page" href="#">로그아웃</a>
-        </span>
-      </div>
-    </div>
-  </nav>
+  <%-include('./layout/header_mypage')%>
 
   <div class="Container">
     <div class='locker-form'>
@@ -52,12 +23,6 @@
         <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace()">
         </select>
       </div>
-
-      <!--
-      <div class='mb-3'>
-        <img src="/images/kakaoMap.png" class="img-fluid" alt="카카오 지도">
-      </div>
-      -->
 
       <div id="map" class='mb-3' style="width:100%;height:350px;"></div>
       <!-- <script src="/javascripts/select_place.js"></script> -->
