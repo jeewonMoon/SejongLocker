@@ -31,7 +31,7 @@
             </div>
             <div class="form-group ">
                 <label for="exampleInputPassword1">문의내용</label>
-                <input type="text" class="form-control question-contents" id="exampleInputPassword1"
+                <input type="textarea" class="form-control question-contents" id="exampleInputPassword1"
                     placeholder="문의 내용을 입력해 주세요.">
             </div>
             <button type="submit" class="btn btn-primary">제출하기</button>
@@ -39,3 +39,11 @@
 
     </div>
 </div>
+
+<script>
+    document.addEventListener('keydown', function (event) {
+        if (event.keyCode === 13) {
+            event.preventDefault();
+        };
+    }, true);
+</script>
