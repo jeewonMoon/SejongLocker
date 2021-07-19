@@ -1,9 +1,10 @@
-<div class="login-form">
+<div class="login-form" onsubmit="return false;">
     <form>
         <div class="mb-3">
             <h3><%=admin%> 로그인</h3>
             <label for="exampleInputEmail2" class="form-label">이메일 주소</label>
             <input type="email" class="form-control" id="adminEmail">
+            <div id="emailHelp2" class="form-text"></div>
         </div>
         <div class="mb-3">
             <label for="exampleInputPassword2" class="form-label">비밀번호</label>
@@ -13,6 +14,6 @@
             <input type="checkbox" class="form-check-input" id="exampleCheck2">
             <label class="form-check-label" for="exampleCheck2">로그인 유지하기</label>
         </div>
-        <button type="submit" class="btn btn-color-orange admin-submit">로그인</button>
+        <button type="submit" class="btn btn-color-orange admin-submit" onclick="logIn()">로그인</button>
     </form>
 </div>
