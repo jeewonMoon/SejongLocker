@@ -16,14 +16,11 @@
 
   <div class="Container">
     <div class='locker-form'>
-
       <h1>관리자 사물함 생성 화면</h1>
-
       <div class='mb-3'>
-        <select class="form-select" aria-label="Default select example" id="select-place" onchange="changePlace()">
+        <select class="form-select" aria-label="Default select example" id="select-place">
         </select>
       </div>
-
       <div id="map" class='mb-3' style="width:100%;height:350px;"></div>
       <!-- <script src="/javascripts/select_place.js"></script> -->
 
@@ -31,7 +28,6 @@
         <label for="exampleInputEmail1">사물함 이름을 정해주세요.</label>
         <input type="text" class="form-control" id="locker-name" placeholder="예시 : 컴퓨터공학과 사물함1">
       </div>
-
       
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">사용자에게 전할 공지사항</label>
@@ -49,7 +45,7 @@
           <label for="exampleInputPassword1">한 줄에 존재할 사물함의 갯수를 정해주세요.</label>
           <input type="text" class="form-control" id="width" placeholder="예시 : 4">
         </div>
-        <button class="btn btn-primary" onclick="makeLocker();">만들기</button>
+        <button class="btn btn-primary" id="make-locker">만들기</button>
       </div>
 
       <table class="table" id="table"></table>

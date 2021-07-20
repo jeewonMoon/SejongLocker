@@ -1,7 +1,5 @@
-
-function selectLocker(){
+document.getElementById("select-place").addEventListener("change", function(){
     let showLocker = document.getElementById('select-place').value;
-
     let places;
     let locker_name = "";
 
@@ -21,6 +19,5 @@ function selectLocker(){
             }
         }
     }
-
     document.getElementById("locker-name").innerHTML = locker_name;
-}
+})
