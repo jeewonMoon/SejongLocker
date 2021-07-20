@@ -1,29 +1,30 @@
 <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">학번</label>
-    <input type="text" class="form-control" id="exampleInputPassword1">
+    <label for="registerId" class="form-label">학번</label>
+    <input type="text" class="form-control" id="registerId">
 </div>
 <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">이름</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="registerName" class="form-label">이름</label>
+    <input type="text" class="form-control" id="registerName" aria-describedby="emailHelp">
 </div>
 <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">이메일</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"> @sejong.ac.kr
+    <label for="registerEmail" class="form-label">이메일</label>
+    <input type="text" class="form-control" id="registerEmail" aria-describedby="emailHelp"> @sejong.ac.kr
     <div id="emailHelp" class="form-text">이 부분에 인증하기 넣읍시다.</div>
 </div>
 <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">비밀번호</label>
     <label id="passwordHelp1" class="form-text">8자 이상 입력</label>
-    <input type="password" class="form-control" id="adminPassword1"
-        onkeyup="checkPassword('admin'); checkPasswordAgain('admin')">
+    <input type="password" class="form-control" id="password1"
+        onkeyup="checkPassword(); checkPasswordAgain()">
 </div>
 <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">비밀번호 확인</label>
     <label id="passwordHelp2" class="form-text" style="color: green; display:none;">동일합니다</label>
     <label id="passwordHelp3" class="form-text" style="color: red; display:none;">동일하지 않습니다</label>
-    <input type="password" class="form-control" id="adminPassword2" onkeyup="checkPasswordAgain('admin')">
+    <input type="password" class="form-control" id="password2" onkeyup="checkPasswordAgain()">
 </div>
 <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">소속</label>
-    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    <label for="registerTeam" class="form-label">소속</label>
+    <label class="form-text">학과 또는 동아리</label>
+    <input type="text" class="form-control" id="registerTeam" aria-describedby="emailHelp">
 </div>
