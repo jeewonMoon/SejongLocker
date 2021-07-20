@@ -1,5 +1,4 @@
-
-  // 회원가입 password check (user, admin)
+// 회원가입 password check (user, admin)
   function checkPassword(who){
     let pwLen;
     if(who == 'user'){
