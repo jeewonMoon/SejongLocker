@@ -41,8 +41,7 @@ function markerPlace(x, y) {
 
 // 아래 코드는 지도 위의 마커를 제거하는 코드입니다
 // marker.setMap(null);
-
-function changePlace() {
+document.getElementById('select-place').addEventListener('change', function () {
     let target = document.getElementById('select-place');
     let address = target.options[target.selectedIndex].text;
     if (address != "사물함 건물 위치 선택") {
@@ -57,4 +56,5 @@ function changePlace() {
             arr.shift().setMap(null);
         }
     }
-}
+
+});
