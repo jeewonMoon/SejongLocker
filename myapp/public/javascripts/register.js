@@ -34,45 +34,51 @@ function checkPasswordAgain(){
 
 // 회원가입 버튼 클릭 시
 function checkForm(){
-  if(document.getElementById('registerId').value == "")
-  {
+  if(document.getElementById('registerId').value == "")  {
     alert('학번을 입력해주세요.');
     return;
   }
-  if(document.getElementById('registerName').value == "")
-  {
+  if(document.getElementById('registerName').value == "")  {
     alert('이름을 입력해주세요.');
     return;
   }
-  if(document.getElementById('registerEmail').value == "")
-  {
+  if(document.getElementById('registerEmail').value == "")  {
     alert('이메일을 입력해주세요.');
     return;
   }
-  if(document.getElementById('password1').value == "")
-  {
+  if(document.getElementById('password1').value == "")  {
     alert('비밀번호를 입력해주세요.');
     return;
   }
-  if(document.getElementById('passwordHelp1').style.color == 'red')
-  {
+  if(document.getElementById('passwordHelp1').style.color == 'red')  {
     alert('비밀번호 8자리 이상 입력해주세요.');
     return;
   }
-  if(document.getElementById('password2').value == "")
-  {
+  if(document.getElementById('password2').value == "")  {
     alert('비밀번호 확인을 입력해주세요.');
     return;
   }  
-  if(document.getElementById('passwordHelp2').style.display == 'none')
-  {
+  if(document.getElementById('passwordHelp2').style.display == 'none')  {
     alert('비밀번호 동일하게 입력해주세요.');
     return;
   }
-  if(document.getElementById('registerTeam').value == "")
-  {
+  if(document.getElementById('registerTeam').value == "")  {
     alert('소속을 입력해주세요.');
     return;
   }
+
   document.getElementById('submitForm').submit();
+}
+
+
+function cbTeam(myTeam) {
+  if(myTeam.checked == true){
+    const checkboxes = document.getElementsByName("cbTeams");
+  
+    checkboxes.forEach((cb) => {
+        cb.checked = false;
+    });
+  
+    myTeam.checked = true;
+  }
 }
