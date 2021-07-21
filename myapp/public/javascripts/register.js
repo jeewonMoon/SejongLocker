@@ -1,12 +1,6 @@
 // 회원가입 password check (user, admin)
-  function checkPassword(who){
-    let pwLen;
-    if(who == 'user'){
-      pwLen = document.getElementById('userPassword1').value.length;
-    }
-    else if(who == 'admin'){
-      pwLen = document.getElementById('adminPassword1').value.length;
-    }
+function checkPassword(){
+  let pwLen = document.getElementById('password1').value.length;;
   
   if(1 <= pwLen && pwLen < 8){
       document.getElementById('passwordHelp1').style.color = 'red';
@@ -20,16 +14,9 @@
 }
 
 // 회원가입 password check (user, admin)
-function checkPasswordAgain(who){
-  let pw1, pw2;
-  if(who == 'user'){
-      pw1 = document.getElementById('userPassword1').value;
-      pw2 = document.getElementById('userPassword2').value;
-  }
-  else if(who == 'admin'){
-      pw1 = document.getElementById('adminPassword1').value;
-      pw2 = document.getElementById('adminPassword2').value;
-  }
+function checkPasswordAgain(){
+  let pw1 = document.getElementById('password1').value;
+  let pw2 = document.getElementById('password2').value;
 
   if(pw2.length == 0){
       document.getElementById('passwordHelp2').style.display = 'none';
@@ -43,4 +30,49 @@ function checkPasswordAgain(who){
       document.getElementById('passwordHelp2').style.display = 'none';
       document.getElementById('passwordHelp3').style.display = 'inline';
   }
+}
+
+// 회원가입 버튼 클릭 시
+function checkForm(){
+  if(document.getElementById('registerId').value == "")
+  {
+    alert('학번을 입력해주세요.');
+    return;
+  }
+  if(document.getElementById('registerName').value == "")
+  {
+    alert('이름을 입력해주세요.');
+    return;
+  }
+  if(document.getElementById('registerEmail').value == "")
+  {
+    alert('이메일을 입력해주세요.');
+    return;
+  }
+  if(document.getElementById('password1').value == "")
+  {
+    alert('비밀번호를 입력해주세요.');
+    return;
+  }
+  if(document.getElementById('passwordHelp1').style.color == 'red')
+  {
+    alert('비밀번호 8자리 이상 입력해주세요.');
+    return;
+  }
+  if(document.getElementById('password2').value == "")
+  {
+    alert('비밀번호 확인을 입력해주세요.');
+    return;
+  }  
+  if(document.getElementById('passwordHelp2').style.display == 'none')
+  {
+    alert('비밀번호 동일하게 입력해주세요.');
+    return;
+  }
+  if(document.getElementById('registerTeam').value == "")
+  {
+    alert('소속을 입력해주세요.');
+    return;
+  }
+  document.getElementById('submitForm').submit();
 }

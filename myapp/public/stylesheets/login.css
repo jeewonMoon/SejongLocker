@@ -51,7 +51,7 @@ h3{
     border-color: #F28123;
 }
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 992px){
     .header{
         background-color: white;
         
@@ -61,4 +61,13 @@ h3{
         color: #051922 !important;
     }
     
+    #logo{
+        content: url('/images/logo-bright.png')
+    }
+}
+
+@media (max-width:768px) {
+    .Container {
+        display: grid;
+    }
 }
