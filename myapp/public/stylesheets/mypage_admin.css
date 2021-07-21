@@ -19,7 +19,7 @@ body{
     z-index: 1;
 }
 
-.logout> a:hover{
+a:hover{
     color: #F28123 !important;
 }
 
