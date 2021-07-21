@@ -13,6 +13,19 @@ body{
     z-index: 1;
 }
 
+ul{
+    list-style-type: square;
+}
+
+a{
+    text-decoration: none;
+    color: #fff;
+}
+
+a:hover{
+    color: #F28123 !important;
+}
+
 .Container{
     padding-top : 85px;
     width : 100%;
@@ -48,6 +61,12 @@ body{
     background-color: antiquewhite;
 }
 
+.btn-color-orange{
+    background-color: #F28123;
+    color: #fff;
+    border-color: #F28123;
+}
+
 .title{
     display: flex;
     flex-direction: column;
@@ -55,6 +74,7 @@ body{
     justify-content: center;
     font-weight: bold;
     font-size : 35px;
+    padding-bottom: 15px;
 }
 
 .footer{
@@ -66,7 +86,7 @@ body{
     color : white;
 }
 
-.footer-contetns{
+.footer-contents{
     margin : 3px;
     font-size : 17.5px;
     color : #ffffff;
@@ -79,6 +99,7 @@ body{
 
 .footer-title{
     font-size : 25px;
+    font-weight: bold;
     margin-bottom : 15px;
 }
 
