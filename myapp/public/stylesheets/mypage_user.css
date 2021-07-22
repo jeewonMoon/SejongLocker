@@ -24,7 +24,7 @@ body{
     border: none;
 }
 
-.logout> a:hover{
+a:hover{
     color: #F28123 !important;
 }
 
