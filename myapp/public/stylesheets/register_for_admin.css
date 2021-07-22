@@ -42,11 +42,18 @@ h3{
     font-weight: bold;
 }
 
-.text-color-orange{
-    color: #F28123;
+.btn-color-orange{
+    background-color: #F28123;
+    color: white;
+    border-color: #F28123;
 }
 
-.btn-color-orange{
+.btn-outline-orange{
+    color: #F28123;
+    border-color: #F28123;
+}
+
+.btn-outline-orange:hover{
     background-color: #F28123;
     color: white;
     border-color: #F28123;

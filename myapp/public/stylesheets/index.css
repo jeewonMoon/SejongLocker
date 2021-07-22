@@ -105,6 +105,7 @@ a:hover{
 
 .question-contents{
     height : 150px;
+    resize: none;   /* textarea 크기 조절 막기 */
 }
 
 @media screen and (max-width: 992px){
