@@ -36,38 +36,50 @@ function checkPasswordAgain(){
 function checkForm(){
   if(document.getElementById('registerId').value == "")  {
     alert('학번을 입력해주세요.');
-    return;
+    document.getElementById('registerId').focus();
+    return false;
   }
-  if(document.getElementById('registerName').value == "")  {
+  else if(document.getElementById('registerName').value == "")  {
     alert('이름을 입력해주세요.');
-    return;
+    document.getElementById('registerName').focus();
+    return false;
   }
-  if(document.getElementById('registerEmail').value == "")  {
+  else if(document.getElementById('registerEmail').value == "")  {
     alert('이메일을 입력해주세요.');
-    return;
+    document.getElementById('registerEmail').focus();
+    return false;
   }
-  if(document.getElementById('password1').value == "")  {
+  else if(document.getElementById('registerPhone').value == "")  {
+    alert('전화번호를 입력해주세요.');
+    document.getElementById('registerPhone').focus();
+    return false;
+  }
+  else if(document.getElementById('password1').value == "")  {
     alert('비밀번호를 입력해주세요.');
-    return;
+    document.getElementById('password1').focus();
+    return false;
   }
-  if(document.getElementById('passwordHelp1').style.color == 'red')  {
-    alert('비밀번호 8자리 이상 입력해주세요.');
-    return;
+  else if(document.getElementById('passwordHelp1').style.color == 'red')  {
+    alert('비밀번호를 8자리 이상 입력해주세요.');
+    document.getElementById('password1').focus();
+    return false;
   }
-  if(document.getElementById('password2').value == "")  {
+  else if(document.getElementById('password2').value == "")  {
     alert('비밀번호 확인을 입력해주세요.');
-    return;
+    document.getElementById('password2').focus();
+    return false;
   }  
-  if(document.getElementById('passwordHelp2').style.display == 'none')  {
-    alert('비밀번호 동일하게 입력해주세요.');
-    return;
+  else if(document.getElementById('passwordHelp2').style.display == 'none')  {
+    alert('비밀번호를 동일하게 입력해주세요.');
+    document.getElementById('password2').focus();
+    return false;
   }
-  if(document.getElementById('registerTeam').value == "")  {
+  else if(document.getElementById('registerTeam').value == "")  {
     alert('소속을 입력해주세요.');
-    return;
+    document.getElementById('password2').focus();
+    return false;
   }
-
-  document.getElementById('submitForm').submit();
+  return true;
 }
 
 
