@@ -1,5 +1,5 @@
-<div class="login-form" onsubmit="return false;">
-    <form>
+<div class="login-form">
+    <form method="POST" action="/index_user" id = "user-login" onsubmit="return checkInput(this)">
         <div class="mb-3">
             <h3><%=user%> 로그인</h3>
             <label for="exampleInputEmail1" class="form-label">이메일 주소</label>
