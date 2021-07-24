@@ -12,8 +12,8 @@
     <div class="Container">
       <!-- login form -->
         <div class="login-form">
-          <%-include('./layout/register_form')%>
-          <form id="submitForm"> <!-- method="post" action=""  -->
+          <form id="submitForm" method="POST" action="./index">
+            <%-include('./layout/register_form')%>
             <label class="form-label">소속 분류</label>
             <label class="form-text">선택 입니다.</label>
             <div id="form-check">
