@@ -33,6 +33,7 @@ document.getElementById("adminEmail").addEventListener('blur', function () {
     }
 });
 
+/*
 document.getElementById("user-login").addEventListener('click', function(){
     if (f1 == 1) {
         location.href = "/index_user";
@@ -56,3 +57,4 @@ document.getElementById("admin-login").addEventListener('click', function(){
         alert("이메일을 다시 입력해주세요.");
     }
 });
+*/
