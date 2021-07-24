@@ -33,26 +33,21 @@ document.getElementById("adminEmail").addEventListener('blur', function () {
     }
 });
 
-document.getElementById("user-login").addEventListener('click', function(){
-    if (f1 == 1) {
-        location.href = "/index_user";
+function checkInput(input){
+    if(input.id == "user-login"){
+        if(f1 == 1) 
+            return true;
+        else {
+            alert("이메일을 다시 입력해 주세요");
+            return false;
+        }
     }
-    else if (f2 == 1) {
-        location.href = "/index_admin";
+    else if(input.id == "admin-login"){
+        if(f2 == 1) 
+            return true;
+        else {
+            alert("이메일을 다시 입력해 주세요");
+            return false;
+        }
     }
-    else {
-        alert("이메일을 다시 입력해주세요.");
-    }
-});
-
-document.getElementById("admin-login").addEventListener('click', function(){
-    if (f1 == 1) {
-        location.href = "/index_user";
-    }
-    else if (f2 == 1) {
-        location.href = "/index_admin";
-    }
-    else {
-        alert("이메일을 다시 입력해주세요.");
-    }
-});
+}
