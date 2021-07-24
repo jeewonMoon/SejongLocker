@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 const port = 3000;
+/*
 const mysql = require('mysql');
 const con = mysql.createConnection({
   host:'localhost',
@@ -20,6 +21,7 @@ con.connect(function(err){
   if(err) throw err;
   console.log("Connected")
 });
+*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
