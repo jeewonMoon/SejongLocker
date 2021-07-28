@@ -14,7 +14,8 @@ const mysql = require('mysql');
 const con = mysql.createConnection({
   host:'localhost',
   user :'user1234',
-  password:'1234'
+  password:'1234',
+  database : 'userdb'
 });
 
 con.connect(function(err){
@@ -28,7 +29,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 //app.engine('html', require('ejs').renderFile);
 //app.set('view engine', 'html');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
