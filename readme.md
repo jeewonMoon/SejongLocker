@@ -6,6 +6,7 @@
 진행 정도 : <a href="https://github.com/gusdn3477/OpenYearRound_Project/projects">바로가기</a>
 <br/>
 **프로젝트 일정**  
+<h3>7월</h3>
 <table>
   <tr>
     <td>7월 1주차<td/>
@@ -25,7 +26,15 @@
   </tr>
   <tr>
     <td>7월 5주차<td/>
-    <td>사물함 DB 연결(백엔드 부분)  <td/>
+    <td>DB 개념 학습, user, admin 테이블 생성 <td/>
+  </tr>
+</table>
+
+<h3>8월</h3>
+<table>
+  <tr>
+    <td>8월 1주차<td/>
+    <td>로그인, 회원가입, 회원정보 수정, 회원 탈퇴 구현해 보기.  <td/>
   </tr>
 </table>
 
