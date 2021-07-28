@@ -8,9 +8,9 @@ router.get('/', controller.index);
 router.post('/', controller.index);
 
 router.get('/index_admin', controller.index_for_admin);
-router.get('/index_user', controller.index_for_user);
-
 router.post('/index_admin', controller.index_for_admin);
+
+router.get('/index_user', controller.index_for_user);
 router.post('/index_user', controller.index_for_user);
 
 router.get('/locker_for_admin', controller.locker_for_admin);
