@@ -1,52 +1,82 @@
-let f1 = 0;
-let f2 = 0;
+let i1 = 0;
+let i2 = 0;
+let p1 = 0;
+let p2 = 0;
 
-//user email check
-document.getElementById("userEmail").addEventListener('blur', function () {
-    let email = document.getElementById("userEmail").value;
-    let regExp = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@([s][j][u]).([a][c]).([k][r])$/;
+//user id check
+document.getElementById("userId").addEventListener('blur', function () {
+    let id= document.getElementById("userId").value;
 
-    if (!regExp.test(email)) {
-        f1 = 0;
-        document.getElementById("emailHelp1").textContent = "올바른 이메일을 입력해주세요.";
-        document.getElementById("emailHelp1").style.color = "red";
+    if (id == "") {
+        i1 = 0;
+        document.getElementById("idHelp1").textContent = "학번을 입력해주세요.";
+        document.getElementById("idHelp1").style.color = "red";
     }
     else {
-        f1 = 1;
-        document.getElementById("emailHelp1").textContent = "";
+        i1 = 1;
+        document.getElementById("idHelp1").textContent = "";
     }
 });
 
-//admin email check
-document.getElementById("adminEmail").addEventListener('blur', function () {
-    let email = document.getElementById("adminEmail").value;
-    let regExp = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@([s][j][u]).([a][c]).([k][r])$/;
+//user password check
+document.getElementById("userPassword").addEventListener('blur', function () {
+    let pwd= document.getElementById("userPassword").value;
 
-    if (!regExp.test(email)) {
-        f2 = 0;
-        document.getElementById("emailHelp2").textContent = "올바른 이메일을 입력해주세요.";
-        document.getElementById("emailHelp2").style.color = "red";
+    if(pwd == "") {
+        p1 = 0;
+        document.getElementById("pwdHelp1").textContent = "비밀번호 입력해주세요.";
+        document.getElementById("pwdHelp1").style.color = "red";
     }
     else {
-        f2 = 1;
-        document.getElementById("emailHelp2").textContent = "";
+        p1 = 1;
+        document.getElementById("pwdHelp1").textContent = "";
+    }
+});
+
+//admin id check
+document.getElementById("adminId").addEventListener('blur', function () {
+    let id= document.getElementById("adminId").value;
+
+    if (id == "") {
+        i2 = 0;
+        document.getElementById("idHelp2").textContent = "학번을 입력해주세요.";
+        document.getElementById("idHelp2").style.color = "red";
+    }
+    else {
+        i2 = 1;
+        document.getElementById("idHelp2").textContent = "";
+    }
+});
+
+//admin password check
+document.getElementById("adminPassword").addEventListener('blur', function () {
+    let pwd= document.getElementById("adminPassword").value;
+
+    if(pwd == "") {
+        p2 = 0;
+        document.getElementById("pwdHelp2").textContent = "비밀번호 입력해주세요.";
+        document.getElementById("pwdHelp2").style.color = "red";
+    }
+    else {
+        p2 = 1;
+        document.getElementById("pwdHelp2").textContent = "";
     }
 });
 
 function checkInput(input){
     if(input.id == "user-login"){
-        if(f1 == 1) 
+        if(i1 == 1 && p1 ==1) 
             return true;
         else {
-            alert("이메일을 다시 입력해 주세요");
+            alert("학번 또는 비밀번호를 다시 입력해 주세요.");
             return false;
         }
     }
     else if(input.id == "admin-login"){
-        if(f2 == 1) 
+        if(i2 == 1 && p2 == 1) 
             return true;
         else {
-            alert("이메일을 다시 입력해 주세요");
+            alert("학번 또는 비밀번호를 다시 입력해 주세요.");
             return false;
         }
     }
