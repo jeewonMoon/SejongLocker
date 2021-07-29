@@ -16,7 +16,9 @@ router.post('/index_user', controller.post.index_for_user);
 router.get('/locker_for_admin', controller.get.locker_for_admin);
 router.get('/locker_for_user', controller.get.locker_for_user);
 
-router.get('/login', controller.post.login);
+router.get('/login', controller.get.login);
+
+router.get('/logout', controller.get.logout);
 
 router.get('/register_choice', controller.get.register_choice);
 router.get('/register_for_admin', controller.get.register_for_admin);
