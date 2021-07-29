@@ -8,6 +8,7 @@ const index_for_admin = (req, res) => {
 }
 
 const index_for_user = (req, res) => {
+    console.log(req.body);
     //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
     
     res.render('index_user', {title:"사물함 프로젝트"});
@@ -26,6 +27,27 @@ const locker_for_user = (req, res) => {
 
 const login = (req, res) => {
     res.render('login', {title:"로그인", user : "사용자", admin : "관리자"});
+}
+
+const login = (req, res) => {
+    if(req.session.user){
+        console.log('로그아웃 처리');
+        req.session.destroy(
+            function (err){
+                if(err){
+                    console.log('세션 삭제시 에러');
+                    return;
+                }
+                console.log('세션 삭제 성공');
+                res.redirect('/');
+                //에러 있을겁니다. 추후 수정할게요.
+            }
+        );
+    }
+    else{
+        console.log("로그인 안 되어있음");
+        res.redirect('/');
+    }
 }
 
 const register_choice = (req, res) => {
