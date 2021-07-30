@@ -12,7 +12,7 @@ const get = {
         else
             res.render('index');
     },
-    index_for_admin : (req, res) => {
+    indexForAdmin : (req, res) => {
         console.log(req.session);
         if(req.session.admin)
             res.render('index_admin')
@@ -20,7 +20,7 @@ const get = {
             res.redirect('/');
         }
     },
-    index_for_user : (req, res) => {
+    indexForUser : (req, res) => {
         console.log(req.session);
         if(req.session.user){
             console.log("사용자로 로그인");
@@ -30,28 +30,28 @@ const get = {
             res.redirect('/');
     },
     //redirect -> url로 이동시킴, render -> 템플릿 출력
-    locker_for_admin : (req, res) => {
+    lockerForAdmin : (req, res) => {
         if(req.session.admin)
             res.render('locker_for_admin');
         else
             res.redirect('/');
     },
-    locker_for_user : (req, res) => {
+    lockerForUser : (req, res) => {
         if(req.session.user)
             res.render('locker_for_user');
         else
             res.redirect('/');
     },
-    register_choice : (req, res) => {
+    registerChoice : (req, res) => {
         res.render('register_choice');
     },
-    register_for_admin : (req, res) => {
+    registerForAdmin : (req, res) => {
         res.render('register_for_admin');
     },
-    register_for_user : (req, res) => {
+    registerForUser : (req, res) => {
         res.render('register_for_user');
     },
-    mypage_for_user : (req, res) => {
+    mypageForUser : (req, res) => {
         //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
         console.log(req.session);
         if(req.session.user)
@@ -59,7 +59,7 @@ const get = {
         else
             res.redirect('/');
     },
-    mypage_for_admin : (req, res) => {
+    mypageForAdmin : (req, res) => {
         //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
         console.log(req.session);
         if(req.session.admin)
