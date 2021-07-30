@@ -5,7 +5,6 @@ const controller = require('./controllers');
 /* GET home page. */
 
 router.get('/', controller.get.index);
-router.post('/', controller.post.index);
 
 /*
 router.get('/index_admin', controller.get.index_for_admin);
@@ -25,6 +24,9 @@ router.get('/locker_for_user', controller.get.lockerForUser);
 router.get('/login', controller.get.login);
 router.post('/loginProcessForUser', controller.process.loginProcessForUser);
 router.post('/loginProcessForAdmin', controller.process.loginProcessForAdmin);
+
+router.post('/registerProcessForUser', controller.process.registerProcessForUser);
+router.post('/registerProcessForAdmin', controller.process.registerProcessForAdmin);
 
 router.get('/logout', controller.get.logout);
 
