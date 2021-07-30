@@ -13,6 +13,7 @@ const get = {
         }
         else
             res.render('index');
+        res.redirect('/login');
     },
     indexForAdmin : (req, res) => {
         console.log(req.session);
@@ -26,7 +27,7 @@ const get = {
         console.log(req.session);
         if(req.session.user){
             console.log("사용자로 로그인");
-            res.render('index_user');
+            res.render('index_user', req.session.user);
         }
         else
             res.redirect('/');
@@ -120,7 +121,7 @@ const process = {
         let password = req.body.password;
         let team = req.body.team;
         console.log(id, name, email, phone, password, team);
-        const sql = 'INSERT INTO user (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)';
+        const sql = 'INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)';
         const params = [id, name, email, phone, password, team];
         con.query(sql, params, function(err, rows, fields){
             if(err)
@@ -139,17 +140,37 @@ const process = {
         //세션이 없는 경우 세션 발급
         let id = req.body.userId;
         let password = req.body.userPassword;
+        const sql = 'SELECT * FROM USER WHERE userid = ? AND password = ?';
+        const params = [id, password];
         console.log(id, password);
-        if(req.session.user){
-            console.log("이미 로그인 되어 있음");
-        }
-        else{
-            req.session.user = {
-                id : id,
+        con.query(sql, params, function(err, rows, fields){
+            console.log(rows.length); // row.length가 쿼리 결과물이라 보시면 됩니다. 0보다 크다는 것은 결과물이 있다는 것을 의미합니다.
+            console.log(rows[0]);
+            if(err)
+                throw err;
+            if(rows.length > 0){
+                if(req.session.user){
+                    console.log("이미 로그인 되어 있음");
+                }
+                else{
+                    req.session.user = {
+                        id : rows[0].userid,
+                        name : rows[0].name,
+                        email : rows[0].email,
+                        phonenum : rows[0].phonenum,
+                        password : rows[0].password,
+                        team : rows[0].team
+                    }
+                    console.log("로그인 처음 됨");
+                }
+                res.redirect('/index_user');
             }
-            console.log("로그인 처음 됨");
-        }
-        res.redirect('/index_user');
+            else{
+                //로그인이 안 된 경우
+                res.redirect('/login');
+            }
+            
+        })
     },
     loginProcessForAdmin : (req, res) => {
         //세션이 없는 경우 세션 발급
