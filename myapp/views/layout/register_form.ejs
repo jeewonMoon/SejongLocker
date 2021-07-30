@@ -1,27 +1,27 @@
 <div class="mb-3">
     <label for="registerId" class="form-label">학번</label>
-    <input type="text" class="form-control" id="registerId">
+    <input type="text" class="form-control" name="userid" id="registerId">
 </div>
 <div class="mb-3">
     <label for="registerName" class="form-label">이름</label>
-    <input type="text" class="form-control" id="registerName" aria-describedby="emailHelp">
+    <input type="text" class="form-control" name="name" id="registerName" aria-describedby="emailHelp">
 </div>
 <div class="mb-3">
     <label for="registerEmail" class="form-label">이메일</label>
     <div class="row mb-3" style="margin:0;">
-        <input type="text" class="form-control col" id="registerEmail" aria-describedby="emailHelp">
+        <input type="text" class="form-control col" name="email" id="registerEmail" aria-describedby="emailHelp">
         <label class="form-text col-6" style="margin:0; font-size:20px;">@sju.ac.kr</label>
     </div>
     <button type="button" class="btn btn-outline-orange">인증하기</button>
 </div>
 <div class="mb-3">
     <label for="registerPhone" class="form-label">전화번호</label>
-    <input type="text" class="form-control" id="registerPhone" placeholder="- 없이 입력해주세요.">
+    <input type="text" class="form-control" name="phonenum" id="registerPhone" placeholder="- 없이 입력해주세요.">
 </div>
 <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">비밀번호</label>
     <label id="passwordHelp1" class="form-text">8자 이상 입력</label>
-    <input type="password" class="form-control" id="password1"
+    <input type="password" class="form-control" name="password" id="password1"
         onkeyup="checkPassword(); checkPasswordAgain()">
 </div>
 <div class="mb-3">

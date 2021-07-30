@@ -1,3 +1,5 @@
+const con = require('../db/config');
+
 const get = {
     index : (req, res) => {
         console.log(req.session);
@@ -68,6 +70,7 @@ const get = {
             res.redirect('/');
     },
     login : (req, res) => {
+        //데이터베이스 확인 후, 작업
         res.render('login');
     },
     logout : (req, res) => {
@@ -108,17 +111,30 @@ const get = {
     }
 };
 
-//여기부터 post
-const post = {
-    index : (req, res) => {
-        res.render('index');
-    },
-    login : (req, res) => {
-        res.render('login');
-    }
-};
-
 const process = {
+    registerProcessForUser : (req, res) => {
+        let id = req.body.userid;
+        let name = req.body.name;
+        let email = req.body.email;
+        let phone = req.body.phonenum;
+        let password = req.body.password;
+        let team = req.body.team;
+        console.log(id, name, email, phone, password, team);
+        const sql = 'INSERT INTO user (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)';
+        const params = [id, name, email, phone, password, team];
+        con.query(sql, params, function(err, rows, fields){
+            if(err)
+                throw err;
+            else{
+                console.log(rows);
+                res.send('회원가입이 완료되었습니다.');
+            }
+        })
+        //res.redirect('/register_choice');
+    },
+    registerProcessForAdmin : (req, res) => {
+
+    },
     loginProcessForUser : (req, res) => {
         //세션이 없는 경우 세션 발급
         let id = req.body.userId;
@@ -155,6 +171,5 @@ const process = {
 
 module.exports = {
     get,
-    post,
     process
 }
