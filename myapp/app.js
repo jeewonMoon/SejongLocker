@@ -6,23 +6,10 @@ const logger = require('morgan');
 const session = require('express-session');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
+const db = require('./db/config');
 
 const app = express();
 const port = 3000;
-/*
-const mysql = require('mysql');
-const con = mysql.createConnection({
-  host:'localhost',
-  user :'user1234',
-  password:'1234',
-  database : 'userdb'
-});
-
-con.connect(function(err){
-  if(err) throw err;
-  console.log("Connected")
-});
-*/
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
