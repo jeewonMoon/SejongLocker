@@ -8,15 +8,15 @@ router.get('/', controller.get.index);
 router.post('/', controller.post.index);
 
 router.get('/index_admin', controller.get.index_for_admin);
-router.post('/index_admin', controller.post.index_for_admin);
 
 router.get('/index_user', controller.get.index_for_user);
-router.post('/index_user', controller.post.index_for_user);
 
 router.get('/locker_for_admin', controller.get.locker_for_admin);
 router.get('/locker_for_user', controller.get.locker_for_user);
 
 router.get('/login', controller.get.login);
+router.post('/loginProcessForUser', controller.process.loginProcessForUser);
+router.post('/loginProcessForAdmin', controller.process.loginProcessForAdmin);
 
 router.get('/logout', controller.get.logout);
 
