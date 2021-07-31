@@ -10,7 +10,8 @@
   <%-include('./layout/header_mypage')%>
     <div class="Container">
       <%-include('./layout/change_profile_photo')%>
-      <form>
+
+      <form id="deleteAccountForm" method="POST" action="/deleteProcessForUser">
         <%-include('./layout/change_profile')%>
         <div class="reservation">
           <h5>예약 확인</h5>
@@ -23,6 +24,7 @@
               <p class="card-text"><b>비밀번호: 1234</b></p>
             </div>
           </div>
+          
           <!-- Button trigger modal -->
           <button type="button" id="cancelBtn" class="btn btn-color-orange" data-bs-toggle="modal"
             data-bs-target="#exampleModal">
