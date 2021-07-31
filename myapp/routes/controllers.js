@@ -240,7 +240,7 @@ const process = {
             else{
                 console.log(rows);
                 // res.send('사용자 회원탈퇴가 완료되었습니다.');
-                res.render('login');
+                res.render('index');
             }
         })
         // res.render('index');
@@ -255,7 +255,7 @@ const process = {
             else{
                 console.log(rows);
                 // res.send('관리자 회원탈퇴가 완료되었습니다.');
-                res.render('login');
+                res.render('index');
             }
         })
         // res.render('index');
