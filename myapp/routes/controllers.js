@@ -114,14 +114,15 @@ const get = {
 
 const process = {
     registerProcessForUser : (req, res) => {
-        let id = req.body.userid;
+        let id = req.body.id;
         let name = req.body.name;
         let email = req.body.email;
         let phone = req.body.phonenum;
         let password = req.body.password;
         let team = req.body.team;
+        email = email + '@sju.ac.kr';
         console.log(id, name, email, phone, password, team);
-        const sql = 'INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)';
+        const sql = `INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
         const params = [id, name, email, phone, password, team];
         con.query(sql, params, function(err, rows, fields){
             if(err)
@@ -134,7 +135,24 @@ const process = {
         //res.redirect('/register_choice');
     },
     registerProcessForAdmin : (req, res) => {
-
+        let id = req.body.id;
+        let name = req.body.name;
+        let email = req.body.email;
+        let phone = req.body.phonenum;
+        let password = req.body.password;
+        let team = req.body.cbTeams;
+        email = email + '@sju.ac.kr';
+        console.log(id, name, email, phone, password, team);
+        const sql = `INSERT INTO ADMIN (adminid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
+        const params = [id, name, email, phone, password, team];
+        con.query(sql, params, function(err, rows, fields){
+            if(err)
+                throw err;
+            else{
+                console.log(rows);
+                res.send('회원가입이 완료되었습니다.');
+            }
+        })
     },
     loginProcessForUser : (req, res) => {
         //세션이 없는 경우 세션 발급
@@ -176,17 +194,37 @@ const process = {
         //세션이 없는 경우 세션 발급
         let id = req.body.adminId;
         let password = req.body.adminPassword;
+        const sql = 'SELECT * FROM ADMIN WHERE adminid = ? AND password = ?';
+        const params = [id, password];
         console.log(id, password);
-        if(req.session.admin){
-            console.log("이미 로그인 되어 있음");
-        }
-        else{
-            req.session.admin = {
-                id : id,
+        con.query(sql, params, function(err, rows, fields){
+            console.log(rows.length); // row.length가 쿼리 결과물이라 보시면 됩니다. 0보다 크다는 것은 결과물이 있다는 것을 의미합니다.
+            console.log(rows[0]);
+            if(err)
+                throw err;
+            if(rows.length > 0){
+                if(req.session.admin){
+                    console.log("이미 로그인 되어 있음");
+                }
+                else{
+                    req.session.admin = {
+                        id : rows[0].adminid,
+                        name : rows[0].name,
+                        email : rows[0].email,
+                        phonenum : rows[0].phonenum,
+                        password : rows[0].password,
+                        team : rows[0].team
+                    }
+                    console.log("로그인 처음 됨");
+                }
+                res.redirect('/index_admin');
             }
-            console.log("로그인 처음 됨");
-        }
-        res.redirect('/index_admin');
+            else{
+                //로그인이 안 된 경우
+                res.redirect('/login');
+            }
+            
+        })
     }
 }
 
