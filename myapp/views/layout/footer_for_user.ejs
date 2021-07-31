@@ -14,7 +14,7 @@
         <div class="footer-title">Pages</div>
         <ul>
             <li><a href="/index_user">Home</a></li>
-            <li><a href="/mypage_user">My Page</a></li>
+            <li><a href="/mypage_for_user">My Page</a></li>
             <li><a href="/locker_for_user">Reservation</a></li>
         </ul>
     </div>
@@ -29,8 +29,10 @@
             </div>
             <div class="form-group ">
                 <label for="exampleInputPassword1">문의내용</label>
-                <input type="textarea" class="form-control question-contents" id="exampleInputPassword1"
-                    placeholder="문의 내용을 입력해 주세요.">
+                <!-- <input type="textarea" class="form-control question-contents" id="exampleInputPassword1"
+                    placeholder="문의 내용을 입력해 주세요."> -->
+                <textarea name="question" class="form-control question-contents" id="" cols="30" rows="10" 
+                placeholder="문의 내용을 입력해 주세요."></textarea>
             </div>
             <button type="submit" class="btn btn-color-orange">제출하기</button>
         </form>
@@ -38,10 +40,11 @@
     </div>
 </div>
 
-<script>
+<!-- enter 막기 -->
+<!-- <script>
     document.addEventListener('keydown', function (event) {
         if (event.keyCode === 13) {
             event.preventDefault();
         };
     }, true);
-</script>
+</script> -->
