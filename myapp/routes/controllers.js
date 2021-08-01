@@ -72,11 +72,12 @@ const get = {
     },
     login : (req, res) => {
         //데이터베이스 확인 후, 작업
-        res.render('login');
+        res.render('login', {message:""});
     },
     logout : (req, res) => {
         if(req.session.user){
             console.log('로그아웃 처리');
+            //req.session.admin.destory 안됨.
             req.session.destroy(
                 function (err){
                     if(err){
@@ -112,6 +113,62 @@ const get = {
     }
 };
 
+const rest = {
+    userList : (req, res) => {
+        const sql = `SELECT * FROM USER`;
+        con.query(sql, function(err, rows, fields){
+            console.log(rows);
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.send(rows);
+            }
+        })
+    },
+    adminList : (req, res) => {
+        const sql = `SELECT * FROM ADMIN`;
+        con.query(sql, function(err, rows, fields){
+            console.log(typeof(rows));
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.send(rows);
+            }
+        })
+    },
+    findUserById : (req, res) => {
+        let id = req.params.id;
+        const sql = `SELECT * FROM USER WHERE userid = ?`;
+        const params = [id];
+        con.query(sql, params, function(err, rows, fields){
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.json(rows);
+            }
+        })
+    },
+    findAdminById : (req, res) => {
+        let id = req.params.id;
+        const sql = `SELECT * FROM USER WHERE userid = ?`;
+        const params = [id];
+        con.query(sql, params, function(err, rows, fields){
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.json(rows);
+            }
+        })
+    }
+}
 const process = {
     registerProcessForUser : (req, res) => {
         let id = req.body.id;
@@ -130,7 +187,7 @@ const process = {
             else{
                 console.log(rows);
                 // res.send('회원가입이 완료되었습니다.');
-                res.render('login');
+                res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
             }
         })
         //res.redirect('/register_choice');
@@ -152,7 +209,7 @@ const process = {
             else{
                 console.log(rows);
                 // res.send('회원가입이 완료되었습니다.');
-                res.render('login');
+                res.render('login', {message:"관리자 회원가입이 완료되었습니다."});
             }
         })
     },
@@ -238,9 +295,19 @@ const process = {
             if(err)
                 throw err;
             else{
-                console.log(rows);
+                console.log(rows[0]);
+                req.session.destroy(
+                    function (err){
+                        if(err){
+                            console.log('세션 삭제시 에러');
+                            return;
+                        }
+                        console.log('세션 삭제 성공');
+                        //에러 있을겁니다. 추후 수정할게요.
+                    }
+                );
                 // res.send('사용자 회원탈퇴가 완료되었습니다.');
-                res.render('index');
+                res.redirect('/');
             }
         })
         // res.render('index');
@@ -248,14 +315,24 @@ const process = {
     deleteProcessForAdmin : (req, res) => {
         console.log(req.session.admin.id);
         const sql = `delete from admin where adminid = ?`;
-        const params = [req.session.user.id];
+        const params = [req.session.admin.id];
         con.query(sql, params, function(err, rows, fields){
             if(err)
                 throw err;
             else{
-                console.log(rows);
+                console.log(rows[0]);
+                req.session.destroy(
+                    function (err){
+                        if(err){
+                            console.log('세션 삭제시 에러');
+                            return;
+                        }
+                        console.log('세션 삭제 성공');
+                        //에러 있을겁니다. 추후 수정할게요.
+                    }
+                );
                 // res.send('관리자 회원탈퇴가 완료되었습니다.');
-                res.render('index');
+                res.redirect('/');
             }
         })
         // res.render('index');
@@ -265,5 +342,6 @@ const process = {
 
 module.exports = {
     get,
-    process
+    process,
+    rest
 }
