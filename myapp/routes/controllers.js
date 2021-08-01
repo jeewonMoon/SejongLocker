@@ -57,16 +57,46 @@ const get = {
     mypageForUser : (req, res) => {
         //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
         console.log(req.session);
-        if(req.session.user)
-            res.render('mypage_for_user');
+        if(req.session.user){
+            console.log('사용자 정보 불러오기');
+            let id = req.session.user.id;
+            const sql = `SELECT name, email, userid, phonenum, team FROM user WHERE userid = ?`;
+            const params = [id];
+            con.query(sql, params, function(err, rows, fields){
+                if(err){
+                    console.log('실패');
+                    throw err;
+                }
+                else{
+                    console.log('성공');
+                    console.log(rows[0]);
+                    res.render('mypage_for_user', {userInfo : rows[0]});    //userInfo 객체에 정보 담기
+                }
+            })
+        }
         else
             res.redirect('/');
     },
     mypageForAdmin : (req, res) => {
         //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
         console.log(req.session);
-        if(req.session.admin)
-            res.render('mypage_for_admin');
+        if(req.session.admin){
+            console.log('관리자 정보 불러오기');
+            let id = req.session.admin.id;
+            const sql = `SELECT name, email, adminid, phonenum, team FROM admin WHERE adminid = ?`;
+            const params = [id];
+            con.query(sql, params, function(err, rows, fields){
+                if(err){
+                    console.log('실패');
+                    throw err;
+                }
+                else{
+                    console.log('성공');
+                    console.log(rows[0]);
+                    res.render('mypage_for_admin', {adminInfo : rows[0]});    //userInfo 객체에 정보 담기
+                }
+            })
+        }
         else
             res.redirect('/');
     },
