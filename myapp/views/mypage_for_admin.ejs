@@ -11,6 +11,24 @@
     <div class="Container">
       <%-include('./layout/change_profile_photo')%>
       <form id="deleteAccountForm" method="POST" action="/deleteProcessForAdmin">
+        <h5>
+          정보
+        </h5>
+        <hr>
+        <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
+          <div class="card-body" id="card-body">
+            <h5 class="card-title">이름</h5>
+            <p class="card-text"><%=adminInfo.name%></p>
+            <h5 class="card-title">이메일</h5>
+            <p class="card-text"><%=adminInfo.email%></p>
+            <h5 class="card-title">학번</h5>
+            <p class="card-text"><%=adminInfo.adminid%></p>
+            <h5 class="card-title">연락처</h5>
+            <p class="card-text"><%=adminInfo.phonenum%></p>
+            <h5 class="card-title">소속</h5>
+            <p class="card-text"><%=adminInfo.team%></p>
+          </div>
+        </div>
         <%-include('./layout/change_profile')%>
       </form>
 
@@ -21,7 +39,7 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"></script>
     <script src="./javascripts/register.js"></script>
-    <script src="./javascripts/cardbody.js"></script>
+    <!-- <script src="./javascripts/cardbody.js"></script> -->
     <script src="./javascripts/nav_items.js"></script>
     <script src="./javascripts/dropdown.js"></script>
 </body>
