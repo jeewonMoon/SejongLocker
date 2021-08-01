@@ -48,6 +48,9 @@ router.get('/mypage_for_user', controller.get.mypage_for_user);
 router.get('/mypage_for_admin', controller.get.mypageForAdmin);
 router.get('/mypage_for_user', controller.get.mypageForUser);
 
+router.post('/deleteProcessForUser', controller.process.deleteProcessForUser);
+router.post('/deleteProcessForAdmin', controller.process.deleteProcessForAdmin);
+
 /* HTML 사용시 이용
 router.get('/', function(req, res, next) {
   res.render('index.html');
