@@ -98,7 +98,7 @@ const get = {
     },
     login : (req, res) => {
         //데이터베이스 확인 후, 작업
-        res.render('login');
+        res.render('login', {message:""});
     },
     logout : (req, res) => {
         if(req.session.user){
@@ -157,7 +157,7 @@ const process = {
             else{
                 console.log(rows);
                 // res.send('회원가입이 완료되었습니다.');
-                res.render('login');
+                res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
             }
         })
         //res.redirect('/register_choice');
@@ -179,7 +179,7 @@ const process = {
             else{
                 console.log(rows);
                 // res.send('회원가입이 완료되었습니다.');
-                res.render('login');
+                res.render('login', {message:"관리자 회원가입이 완료되었습니다."});
             }
         })
     },
