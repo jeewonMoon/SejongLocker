@@ -129,7 +129,8 @@ const process = {
                 throw err;
             else{
                 console.log(rows);
-                res.send('회원가입이 완료되었습니다.');
+                // res.send('회원가입이 완료되었습니다.');
+                res.render('login');
             }
         })
         //res.redirect('/register_choice');
@@ -150,10 +151,12 @@ const process = {
                 throw err;
             else{
                 console.log(rows);
-                res.send('회원가입이 완료되었습니다.');
+                // res.send('회원가입이 완료되었습니다.');
+                res.render('login');
             }
         })
     },
+
     loginProcessForUser : (req, res) => {
         //세션이 없는 경우 세션 발급
         let id = req.body.userId;
@@ -225,7 +228,39 @@ const process = {
             }
             
         })
-    }
+    },
+
+    deleteProcessForUser : (req, res) => {
+        console.log(req.session.user.id);
+        const sql = `delete from user where userid = ?`;
+        const params = [req.session.user.id];
+        con.query(sql, params, function(err, rows, fields){
+            if(err)
+                throw err;
+            else{
+                console.log(rows);
+                // res.send('사용자 회원탈퇴가 완료되었습니다.');
+                res.render('index');
+            }
+        })
+        // res.render('index');
+    },
+    deleteProcessForAdmin : (req, res) => {
+        console.log(req.session.admin.id);
+        const sql = `delete from admin where adminid = ?`;
+        const params = [req.session.user.id];
+        con.query(sql, params, function(err, rows, fields){
+            if(err)
+                throw err;
+            else{
+                console.log(rows);
+                // res.send('관리자 회원탈퇴가 완료되었습니다.');
+                res.render('index');
+            }
+        })
+        // res.render('index');
+    },
+
 }
 
 module.exports = {
