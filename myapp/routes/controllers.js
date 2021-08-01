@@ -1,32 +1,6 @@
 const con = require('../db/config');
 
 const get = {
-    userList : (req, res) => {
-        const sql = `SELECT * FROM USER`;
-        con.query(sql, function(err, rows, fields){
-            console.log(rows);
-            console.log('실행됨');
-            if(err)
-                throw err;
-            else{
-                //res.redirect('/');
-                res.send(rows);
-            }
-        })
-    },
-    adminList : (req, res) => {
-        const sql = `SELECT * FROM ADMIN`;
-        con.query(sql, function(err, rows, fields){
-            console.log(typeof(rows));
-            console.log('실행됨');
-            if(err)
-                throw err;
-            else{
-                //res.redirect('/');
-                res.send(rows);
-            }
-        })
-    },
     index : (req, res) => {
         console.log(req.session);
         if(req.session.user){
@@ -139,6 +113,62 @@ const get = {
     }
 };
 
+const rest = {
+    userList : (req, res) => {
+        const sql = `SELECT * FROM USER`;
+        con.query(sql, function(err, rows, fields){
+            console.log(rows);
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.send(rows);
+            }
+        })
+    },
+    adminList : (req, res) => {
+        const sql = `SELECT * FROM ADMIN`;
+        con.query(sql, function(err, rows, fields){
+            console.log(typeof(rows));
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.send(rows);
+            }
+        })
+    },
+    findUserById : (req, res) => {
+        let id = req.params.id;
+        const sql = `SELECT * FROM USER WHERE userid = ?`;
+        const params = [id];
+        con.query(sql, params, function(err, rows, fields){
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.json(rows);
+            }
+        })
+    },
+    findAdminById : (req, res) => {
+        let id = req.params.id;
+        const sql = `SELECT * FROM USER WHERE userid = ?`;
+        const params = [id];
+        con.query(sql, params, function(err, rows, fields){
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.json(rows);
+            }
+        })
+    }
+}
 const process = {
     registerProcessForUser : (req, res) => {
         let id = req.body.id;
@@ -312,5 +342,6 @@ const process = {
 
 module.exports = {
     get,
-    process
+    process,
+    rest
 }
