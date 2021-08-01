@@ -5,6 +5,8 @@ const controller = require('./controllers');
 /* GET home page. */
 
 router.get('/', controller.get.index);
+router.get('/user_list', controller.get.userList);
+router.get('/admin_list', controller.get.adminList);
 
 /*
 router.get('/index_admin', controller.get.index_for_admin);
