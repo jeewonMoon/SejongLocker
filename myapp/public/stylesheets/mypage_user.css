@@ -75,6 +75,10 @@ hr{
     display: none;
 }
 
+#reserveBtn:hover{
+    background-color: white !important;
+}
+
 .filebox label {
     color: #fff;
     font-size: inherit;
