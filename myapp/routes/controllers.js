@@ -103,6 +103,7 @@ const get = {
     logout : (req, res) => {
         if(req.session.user){
             console.log('로그아웃 처리');
+            //req.session.admin.destory 안됨.
             req.session.destroy(
                 function (err){
                     if(err){
@@ -264,9 +265,19 @@ const process = {
             if(err)
                 throw err;
             else{
-                console.log(rows);
+                console.log(rows[0]);
+                req.session.destroy(
+                    function (err){
+                        if(err){
+                            console.log('세션 삭제시 에러');
+                            return;
+                        }
+                        console.log('세션 삭제 성공');
+                        //에러 있을겁니다. 추후 수정할게요.
+                    }
+                );
                 // res.send('사용자 회원탈퇴가 완료되었습니다.');
-                res.render('index');
+                res.redirect('/');
             }
         })
         // res.render('index');
@@ -274,14 +285,24 @@ const process = {
     deleteProcessForAdmin : (req, res) => {
         console.log(req.session.admin.id);
         const sql = `delete from admin where adminid = ?`;
-        const params = [req.session.user.id];
+        const params = [req.session.admin.id];
         con.query(sql, params, function(err, rows, fields){
             if(err)
                 throw err;
             else{
-                console.log(rows);
+                console.log(rows[0]);
+                req.session.destroy(
+                    function (err){
+                        if(err){
+                            console.log('세션 삭제시 에러');
+                            return;
+                        }
+                        console.log('세션 삭제 성공');
+                        //에러 있을겁니다. 추후 수정할게요.
+                    }
+                );
                 // res.send('관리자 회원탈퇴가 완료되었습니다.');
-                res.render('index');
+                res.redirect('/');
             }
         })
         // res.render('index');
