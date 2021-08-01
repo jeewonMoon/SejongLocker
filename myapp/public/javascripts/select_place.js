@@ -46,7 +46,7 @@ document.getElementById('select-place').addEventListener('change', function () {
     let address = target.options[target.selectedIndex].text;
     if (address != "사물함 건물 위치 선택") {
         fetch('https://dapi.kakao.com/v2/local/search/keyword.json?query=세종대학교%20' + address,
-            {
+            { // 헤더에 api키 넣으면 됩니다.
                 headers: { "Authorization": "KakaoAK 84ba6228f2f7a5f35ca89b1c459849ec" }
             }).then(res => res.json())
             .then(res => markerPlace(Number(res['documents'][0]['x']), Number(res['documents'][0]['y'])));
