@@ -266,7 +266,7 @@ const process = {
             else{
                 console.log(rows);
                 // res.send('사용자 회원탈퇴가 완료되었습니다.');
-                res.render('index');
+                res.redirect('/');
             }
         })
         // res.render('index');
@@ -274,14 +274,14 @@ const process = {
     deleteProcessForAdmin : (req, res) => {
         console.log(req.session.admin.id);
         const sql = `delete from admin where adminid = ?`;
-        const params = [req.session.user.id];
+        const params = [req.session.admin.id];
         con.query(sql, params, function(err, rows, fields){
             if(err)
                 throw err;
             else{
                 console.log(rows);
                 // res.send('관리자 회원탈퇴가 완료되었습니다.');
-                res.render('index');
+                res.redirect('/');
             }
         })
         // res.render('index');
