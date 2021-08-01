@@ -10,7 +10,7 @@
   <%-include('./layout/header_mypage')%>
     <div class="Container">
       <%-include('./layout/change_profile_photo')%>
-      <form>
+      <form id="deleteAccountForm" method="POST" action="/deleteProcessForAdmin">
         <%-include('./layout/change_profile')%>
       </form>
 
