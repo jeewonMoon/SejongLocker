@@ -1,6 +1,32 @@
 const con = require('../db/config');
 
 const get = {
+    userList : (req, res) => {
+        const sql = `SELECT * FROM USER`;
+        con.query(sql, function(err, rows, fields){
+            console.log(rows);
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.send(rows);
+            }
+        })
+    },
+    adminList : (req, res) => {
+        const sql = `SELECT * FROM ADMIN`;
+        con.query(sql, function(err, rows, fields){
+            console.log(typeof(rows));
+            console.log('실행됨');
+            if(err)
+                throw err;
+            else{
+                //res.redirect('/');
+                res.send(rows);
+            }
+        })
+    },
     index : (req, res) => {
         console.log(req.session);
         if(req.session.user){
