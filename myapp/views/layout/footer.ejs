@@ -13,9 +13,24 @@
     <div class="footer-contents">
         <div class="footer-title">Pages</div>
         <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/login">Login</a></li>
-            <li><a href="/register_choice">Register</a></li>
+            <% if (!info) { %> 
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Login</a></li>
+                <li><a href="/register_choice">Register</a></li>
+            <% } %>
+
+            <% if (info) { %>
+                <% if (user) { %>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/mypage">Mypage</a></li>
+                    <li><a href="/locker">Reservation</a></li>
+                <% } %>
+                <% if (admin) { %>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/mypage">Mypage</a></li>
+                    <li><a href="/locker">Create</a></li>
+                <% } %>
+            <% } %>
         </ul>
     </div>
     <div class="footer-contents">
