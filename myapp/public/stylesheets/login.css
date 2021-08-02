@@ -51,6 +51,10 @@ h3{
     border-color: #F28123;
 }
 
+#forgotPwd {
+    padding-top: 10px;
+}
+
 @media screen and (max-width: 992px){
     .header{
         background-color: white;
