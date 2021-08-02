@@ -3,34 +3,26 @@ const con = require('../db/config');
 const get = {
     index : (req, res) => {
         console.log(req.session);
-        if(req.session.user){
+        if(!(req.session.user) && !(req.session.admin)){
+            console.log('세션 없음');
+            res.render('index', {info : ''});
+        }
+        else if(req.session.user){
             console.log("사용자로 로그인");
-            res.redirect('/index_user');
+            res.render('index', {info : req.session.user});
         }
         else if(req.session.admin){
             console.log("관리자로 로그인");
-            res.redirect('/index_admin');
+            res.render('index', {info : req.session.admin});
         }
-        else
-            res.render('index');
-        res.redirect('/login');
     },
     indexForAdmin : (req, res) => {
         console.log(req.session);
-        if(req.session.admin)
-            res.render('index_admin')
-        else{
-            res.redirect('/');
-        }
+        res.redirect('/');
     },
     indexForUser : (req, res) => {
         console.log(req.session);
-        if(req.session.user){
-            console.log("사용자로 로그인");
-            res.render('index_user', req.session.user);
-        }
-        else
-            res.redirect('/');
+        res.redirect('/');
     },
     //redirect -> url로 이동시킴, render -> 템플릿 출력
     lockerForAdmin : (req, res) => {
