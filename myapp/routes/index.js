@@ -5,17 +5,13 @@ const controller = require('./controllers');
 /* GET home page. */
 
 router.get('/', controller.get.index);
-router.get('/index_admin', controller.get.indexForAdmin);
-router.get('/index_user', controller.get.indexForUser);
-router.get('/locker_for_admin', controller.get.lockerForAdmin);
-router.get('/locker_for_user', controller.get.lockerForUser);
+router.get('/locker', controller.get.locker);
 router.get('/login', controller.get.login);
 router.get('/logout', controller.get.logout);
 router.get('/register_choice', controller.get.registerChoice);
 router.get('/register_for_admin', controller.get.registerForAdmin);
 router.get('/register_for_user', controller.get.registerForUser);
-router.get('/mypage_for_admin', controller.get.mypageForAdmin);
-router.get('/mypage_for_user', controller.get.mypageForUser);
+router.get('/mypage', controller.get.mypage);
 
 router.get('/user_list', controller.rest.userList);
 router.get('/admin_list', controller.rest.adminList);
