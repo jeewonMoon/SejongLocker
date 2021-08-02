@@ -7,7 +7,33 @@
 </head>
 
 <body>
-  <%-include('./layout/header_mypage')%>
+  <!-- <%-include('./layout/header_mypage')%> -->
+  <nav class="navbar navbar-expand-lg navbar-light position-fixed header">
+    <div class="container-fluid">
+      <a class="navbar-brand text-light" href="/"><img src="/images/logo-dark.png" alt="logo" style="width:220px;" id="logo"></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
+        aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-items">
+        </ul>
+        <div class="dropdown" style="text-align: right;">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+              마이페이지
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
+              <li><a class="dropdown-item" href="/mypage_for_user"><b><%=adminInfo.name%>님</b></a></li>
+              <li><a class="dropdown-item" href="/mypage_for_user">회원정보 수정</a></li>
+              <li><a class="dropdown-item" href="/mypage_for_user">사물함 관리</a></li>
+            </ul>
+          </div>
+        <span class="navbar-text text-light register">
+            <a class="nav-link active text-light" aria-current="page" href="/logout" style="text-align: right;">로그아웃</a>
+        </span>
+      </div>
+    </div>
+  </nav>
     <div class="Container">
       <%-include('./layout/change_profile_photo')%>
       <form id="deleteAccountForm" method="POST" action="/deleteProcessForAdmin">
@@ -41,7 +67,7 @@
     <script src="./javascripts/register.js"></script>
     <!-- <script src="./javascripts/cardbody.js"></script> -->
     <script src="./javascripts/nav_items.js"></script>
-    <script src="./javascripts/dropdown.js"></script>
+    <!-- <script src="./javascripts/dropdown.js"></script> -->
 </body>
 
 </html>
