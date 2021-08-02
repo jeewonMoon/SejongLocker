@@ -27,13 +27,22 @@
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
                 마이페이지
               </button>
+              <% if (user) { %>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
                 <li><a class="dropdown-item" href="#"><b><%=info.name%></b></a></li>
-                <li><a class="dropdown-item" href="#">사물함 생성</a></li>
-                <li><a class="dropdown-item" href="#">사물함 관리</a></li>
-                <li><a class="dropdown-item" href="#">대기열 확인</a></li>
-                <li><a class="dropdown-item" href="#">회원정보 수정</a></li>
+                <li><a class="dropdown-item" href="/mypage_for_user">회원정보 수정</a></li>
+                <li><a class="dropdown-item" href="/locker_for_user">사물함 신청</a></li>
+                <li><a class="dropdown-item" href="/locker_for_user">사물함 관리</a></li>
               </ul>
+              <% } %>
+              <% if (admin) { %>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
+                  <li><a class="dropdown-item" href="#"><b><%=info.name%></b></a></li>
+                  <li><a class="dropdown-item" href="/mypage_for_admin">회원정보 수정</a></li>
+                  <li><a class="dropdown-item" href="/locker_for_admin">사물함 생성</a></li>
+                  <li><a class="dropdown-item" href="/locker_for_admin">사물함 관리</a></li>
+                </ul>
+                <% } %>
             </div>
           <span class="navbar-text text-light register">
               <a class="nav-link active text-light" aria-current="page" href="/logout" style="text-align: right;">로그아웃</a>

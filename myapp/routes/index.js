@@ -5,8 +5,8 @@ const controller = require('./controllers');
 /* GET home page. */
 
 router.get('/', controller.get.index);
-router.get('/index_admin', controller.get.indexForAdmin);
-router.get('/index_user', controller.get.indexForUser);
+//router.get('/index_admin', controller.get.indexForAdmin);
+//router.get('/index_user', controller.get.indexForUser);
 router.get('/locker_for_admin', controller.get.lockerForAdmin);
 router.get('/locker_for_user', controller.get.lockerForUser);
 router.get('/login', controller.get.login);

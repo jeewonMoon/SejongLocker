@@ -9,11 +9,11 @@ const get = {
         }
         else if(req.session.user){
             console.log("사용자로 로그인");
-            res.render('index', {info : req.session.user});
+            res.render('index', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
         }
         else if(req.session.admin){
             console.log("관리자로 로그인");
-            res.render('index', {info : req.session.admin});
+            res.render('index', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
         }
     },
     indexForAdmin : (req, res) => {
@@ -281,7 +281,8 @@ const process = {
                     }
                     console.log("로그인 처음 됨");
                 }
-                res.redirect('/index_user');
+                res.redirect('/');
+                //res.redirect('/index_user');
             }
             else{
                 //로그인이 안 된 경우
@@ -317,7 +318,8 @@ const process = {
                     }
                     console.log("로그인 처음 됨");
                 }
-                res.redirect('/index_admin');
+                res.redirect('/');
+                //res.redirect('/index_admin');
             }
             else{
                 //로그인이 안 된 경우
@@ -350,7 +352,6 @@ const process = {
                 res.redirect('/');
             }
         })
-        // res.render('index');
     },
     deleteProcessForAdmin : (req, res) => {
         console.log(req.session.admin.id);
@@ -375,7 +376,6 @@ const process = {
                 res.redirect('/');
             }
         })
-        // res.render('index');
     },
 
 }
