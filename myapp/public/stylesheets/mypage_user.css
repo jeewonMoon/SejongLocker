@@ -50,7 +50,6 @@ a:hover{
 
 form{
     width: 460px;
-    padding-bottom: 5em;
 }
 
 h5{
@@ -68,12 +67,11 @@ hr{
 }
 
 .change-pwd, .user_info, .reservation{
-    padding-bottom: 5em;
+    padding-bottom: 6em;
 }
 
 .reservation{
     min-width: 460px;
-    padding-bottom: 5ex;
 }
 
 #reserveBtn{
