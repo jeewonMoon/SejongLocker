@@ -1,5 +1,4 @@
 const con = require('../db/config');
-
 const get = {
     index : (req, res) => {
         console.log(req.session);
@@ -118,7 +117,6 @@ const get = {
                 }
             );
         }
-
         else{
             console.log("로그인 안 되어있음");
             res.redirect('/');
@@ -182,6 +180,7 @@ const rest = {
         })
     }
 }
+
 const process = {
     registerProcessForUser : (req, res) => {
         let id = req.body.id;
@@ -301,7 +300,6 @@ const process = {
             
         })
     },
-
     deleteProcessForUser : (req, res) => {
         console.log(req.session.user.id);
         const sql = `delete from user where userid = ?`;
@@ -347,6 +345,53 @@ const process = {
                 );
                 // res.send('관리자 회원탈퇴가 완료되었습니다.');
                 res.redirect('/');
+            }
+        })
+    },
+    updateProcessForUser : (req, res) => {
+        const sql = `update user set password = ? where userid = ?`;
+        const params = [req.body.password, req.session.user.id];
+        console.log(params);
+        con.query(sql, params, function(err, rows, fields){
+            if(err)
+                throw err;
+            else{
+                req.session.destroy(
+                    function (err){
+                        if(err){
+                            console.log('세션 삭제시 에러');
+                            return;
+                        }
+                        console.log('세션 삭제 성공');
+                        //에러 있을겁니다. 추후 수정할게요.
+                    }
+                );
+                // res.send('사용자 회원탈퇴가 완료되었습니다.');
+                res.redirect('/login');
+            }
+        })
+    },
+    updateProcessForAdmin : (req, res) => {
+        console.log(req.session.admin.id);
+        const sql = `update admin set password = ? where adminid = ?`;
+        const params = [req.body.password, req.session.admin.id];
+        console.log(params);
+        con.query(sql, params, function(err, rows, fields){
+            if(err)
+                throw err;
+            else{
+                req.session.destroy(
+                    function (err){
+                        if(err){
+                            console.log('세션 삭제시 에러');
+                            return;
+                        }
+                        console.log('세션 삭제 성공');
+                        //에러 있을겁니다. 추후 수정할게요.
+                    }
+                );
+                // res.send('관리자 회원탈퇴가 완료되었습니다.');
+                res.redirect('/login');
             }
         })
     },

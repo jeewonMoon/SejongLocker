@@ -22,6 +22,8 @@ router.post('/loginProcessForUser', controller.process.loginProcessForUser);
 router.post('/loginProcessForAdmin', controller.process.loginProcessForAdmin);
 router.post('/registerProcessForUser', controller.process.registerProcessForUser);
 router.post('/registerProcessForAdmin', controller.process.registerProcessForAdmin);
+router.post('/updateProcessForUser', controller.process.updateProcessForUser);
+router.post('/updateProcessForAdmin', controller.process.updateProcessForAdmin);
 router.post('/deleteProcessForUser', controller.process.deleteProcessForUser);
 router.post('/deleteProcessForAdmin', controller.process.deleteProcessForAdmin);
 
