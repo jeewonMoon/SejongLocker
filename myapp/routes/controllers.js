@@ -181,15 +181,6 @@ const rest = {
             }
         })
     }
-    // getUserName : (req,res) => {
-    //     if(req.session.user){
-    //     console.log('사용자 이름 불러오기');
-    //     res.render('layout/header_mypage', {userName : req.session.user.name});    //userInfo 객체에 정보 담기
-    //     }
-    // },
-    // adminName : (req,res) => {
-        
-    // }
 }
 const process = {
     registerProcessForUser : (req, res) => {
