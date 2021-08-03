@@ -67,7 +67,7 @@ const get = {
         else if(req.session.admin){
             console.log('관리자 정보 불러오기');
             let id = req.session.admin.id;
-            const sql = `SELECT name, email, adminid, phonenum, team FROM admin WHERE adminid = ?`;
+            const sql = `SELECT name, email, adminid, phonenum, teamname FROM admin, team WHERE adminid = ? and team.teamid=admin.team`;
             const params = [id];
             con.query(sql, params, function(err, rows, fields){
                 if(err){
@@ -76,8 +76,9 @@ const get = {
                 }
                 else{
                     console.log('성공');
-                    console.log(rows[0]);
-                    res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
+                    console.log(rows);
+                    // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
+                    res.render('mypage', {info : rows[0], user : "", admin : "admin"}); 
                 }
             })
         }

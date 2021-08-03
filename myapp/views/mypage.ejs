@@ -71,7 +71,7 @@
               <h5 class="card-title">연락처</h5>
               <p class="card-text"><%=info.phonenum%></p>
               <h5 class="card-title">소속</h5>
-              <p class="card-text"><%=info.team%></p>
+              <p class="card-text"><%=info.teamname%></p>
             </div>
           </div>
           <div class="user_info">
@@ -125,7 +125,7 @@
               <button type="submit" class="btn btn-color-orange">변경</button>
             </div>
           </form>
-          
+          <% if (user) { %>
           <div class="reservation">
             <h5>예약 확인</h5>
             <hr>
@@ -169,7 +169,7 @@
             <!-- 예약 내역이 없거나 예약 취소 후  예약 내역 칸에 띄울 버튼-->
             <a href="/locker" class="btn btn-color-orange" id="reserveBtn" style="width: 77.09;">예약하러 가기</a>
           </div>
-
+          <% } %>
   </div>
 
   <!-- Bootstrap Bundle with Popper -->
