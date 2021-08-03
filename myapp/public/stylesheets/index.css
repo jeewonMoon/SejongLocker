@@ -67,6 +67,12 @@ a:hover{
     border-color: #F28123;
 }
 
+.btn-color-red{
+    background-color: #A1203C;
+    color: #fff;
+    border-color: #A1203C;
+}
+
 .title{
     display: flex;
     flex-direction: column;
@@ -101,6 +107,15 @@ a:hover{
     font-size : 25px;
     font-weight: bold;
     margin-bottom : 15px;
+}
+
+hr{
+    color: #A1203C;
+    width: 20px;
+    height: 5px !important;
+    opacity: 1;
+    border: 0;
+    margin: 1.5rem 0;
 }
 
 .question-contents{
