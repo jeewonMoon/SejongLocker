@@ -1,51 +1,54 @@
-<div class="user_info">
-  <!-- <h5>
-    정보
-  </h5>
-  <hr> -->
-  <!-- <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
-    <div class="card-body" id="card-body">
-    </div>
-  </div> -->
-  <button type="button" id="deleteAccountBtn" class="btn btn-color-orange" data-bs-toggle="modal"
-  data-bs-target="#deleteAccount">회원탈퇴</button> 
-  
-  <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">회원탈퇴 확인</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        
-        <div class="modal-body" style="text-align: center;">
-          <p>회원 탈퇴하시겠습니까?</p>
-        </div>
-        
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
-          <button type="submit" class="btn btn-color-orange">회원탈퇴</button>
+<form id="deleteAccountForm" method="POST" action="/deleteProcessForUser">
+  <div class="user_info">
+    <!-- <h5>
+      정보
+    </h5>
+    <hr> -->
+    <!-- <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
+      <div class="card-body" id="card-body">
+      </div>
+    </div> -->
+    <button type="button" id="deleteAccountBtn" class="btn btn-color-orange" data-bs-toggle="modal"
+    data-bs-target="#deleteAccount">회원탈퇴</button> 
+    
+    <div class="modal fade" id="deleteAccount" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">회원탈퇴 확인</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          
+          <div class="modal-body" style="text-align: center;">
+            <p>회원 탈퇴하시겠습니까?</p>
+          </div>
+          
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <button type="submit" class="btn btn-color-orange">회원탈퇴</button>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</form>
 
-
-<div class="change-pwd">
-  <h5>비밀번호 변경하기</h5>
-  <hr>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">비밀번호</label>
-    <label id="passwordHelp1" class="form-text">8자 이상 입력</label>
-    <input type="password" class="form-control" id="password1"
-      onkeyup="checkPassword(); checkPasswordAgain()">
+<form>
+  <div class="change-pwd">
+    <h5>비밀번호 변경하기</h5>
+    <hr>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">비밀번호</label>
+      <label id="passwordHelp1" class="form-text">8자 이상 입력</label>
+      <input type="password" class="form-control" id="password1"
+        onkeyup="checkPassword(); checkPasswordAgain()">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">비밀번호 확인</label>
+      <label id="passwordHelp2" class="form-text" style="color: green; display:none;">동일합니다</label>
+      <label id="passwordHelp3" class="form-text" style="color: red; display:none;">동일하지 않습니다</label>
+      <input type="password" class="form-control" id="password2" onkeyup="checkPasswordAgain()">
+    </div>
+    <button type="button" class="btn btn-color-orange">변경</button>
   </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">비밀번호 확인</label>
-    <label id="passwordHelp2" class="form-text" style="color: green; display:none;">동일합니다</label>
-    <label id="passwordHelp3" class="form-text" style="color: red; display:none;">동일하지 않습니다</label>
-    <input type="password" class="form-control" id="password2" onkeyup="checkPasswordAgain()">
-  </div>
-  <button type="submit" class="btn btn-color-orange">변경</button>
-</div>
+</form>
