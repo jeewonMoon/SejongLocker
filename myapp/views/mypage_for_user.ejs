@@ -37,26 +37,28 @@
 
     <div class="Container">
       <%-include('./layout/change_profile_photo')%>
-      <form id="deleteAccountForm" method="POST" action="/deleteProcessForUser">
-        <h5>
-          정보
-        </h5>
-        <hr>
-        <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
-          <div class="card-body" id="card-body">
-            <h5 class="card-title">이름</h5>
-            <p class="card-text"><%=userInfo.name%></p>
-            <h5 class="card-title">이메일</h5>
-            <p class="card-text"><%=userInfo.email%></p>
-            <h5 class="card-title">학번</h5>
-            <p class="card-text"><%=userInfo.userid%></p>
-            <h5 class="card-title">연락처</h5>
-            <p class="card-text"><%=userInfo.phonenum%></p>
-            <h5 class="card-title">소속</h5>
-            <p class="card-text"><%=userInfo.team%></p>
-          </div>
+
+      <h5>
+        정보
+      </h5>
+      <hr>
+      <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
+        <div class="card-body" id="card-body">
+          <h5 class="card-title">이름</h5>
+          <p class="card-text"><%=userInfo.name%></p>
+          <h5 class="card-title">이메일</h5>
+          <p class="card-text"><%=userInfo.email%></p>
+          <h5 class="card-title">학번</h5>
+          <p class="card-text"><%=userInfo.userid%></p>
+          <h5 class="card-title">연락처</h5>
+          <p class="card-text"><%=userInfo.phonenum%></p>
+          <h5 class="card-title">소속</h5>
+          <p class="card-text"><%=userInfo.team%></p>
         </div>
-        <%-include('./layout/change_profile')%>
+      </div>
+      <%-include('./layout/change_profile')%>
+
+      <form>
         <div class="reservation">
           <h5>예약 확인</h5>
           <hr>
