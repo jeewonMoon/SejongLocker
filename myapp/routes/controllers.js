@@ -23,11 +23,11 @@ const get = {
         }
         else if(req.session.user){
             console.log("사용자로 로그인");
-            res.render('locker', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
+            res.render('locker_for_user', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
         }
         else if(req.session.admin){
             console.log("관리자로 로그인");
-            res.render('locker', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
+            res.render('locker_for_admin', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
         }
     },
     registerChoice : (req, res) => {
@@ -72,6 +72,60 @@ const get = {
             res.redirect('/');
         }
     },
+    lockerListForUser : (req, res) => {
+        //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
+        console.log(req.session);
+        if(!(req.session.user)){
+            console.log('세션 없음');
+            res.redirect('/');
+        }
+        else if(req.session.user){
+            console.log('사용자 사물함 내역 불러오기');
+            // let id = req.session.user.id;
+            // const sql = `SELECT name, email, userid, phonenum, team FROM user WHERE userid = ?`;
+            // const params = [id];
+            // con.query(sql, params, function(err, rows, fields){
+            //     if(err){
+            //         console.log('실패');
+            //         throw err;
+            //     }
+            //     else{
+            //         console.log('성공');
+            //         console.log(rows[0]);
+            //         res.render('mypage', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
+            //         //res.render('mypage', {userInfo : rows[0]});    //userInfo 객체에 정보 담기
+            //     }
+            // })
+            res.render('locker_list_for_user', {info : req.session.user, user : "user", admin : ""});
+        }
+    },
+    lockerListForAdmin : (req, res) => {
+        //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
+        console.log(req.session);
+        if(!(req.session.admin)){
+            console.log('세션 없음');
+            res.redirect('/');
+        }
+        else if(req.session.admin){
+            console.log('관리자 사물함 내역 불러오기');
+            // let id = req.session.admin.id;
+            // const sql = `SELECT name, email, adminid, phonenum, teamname FROM admin, team WHERE adminid = ? and team.teamid=admin.team`;
+            // const params = [id];
+            // con.query(sql, params, function(err, rows, fields){
+            //     if(err){
+            //         console.log('실패');
+            //         throw err;
+            //     }
+            //     else{
+            //         console.log('성공');
+            //         console.log(rows);
+            //         // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
+            //         res.render('mypage', {info : rows[0], user : "", admin : "admin"}); 
+            //     }
+            // })
+            res.render('locker_list_for_admin', {info : req.session.admin, user : "", admin : "admin"}); 
+        }
+    },
     mypage : (req, res) => {
         //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
         console.log(req.session);
@@ -111,7 +165,7 @@ const get = {
                     console.log('성공');
                     console.log(rows);
                     // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
-                    res.render('mypage', {info : rows[0], user : "", admin : "admin"}); 
+                    res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); 
                 }
             })
         }
