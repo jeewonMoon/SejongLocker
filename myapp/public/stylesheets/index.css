@@ -123,10 +123,27 @@ hr{
     resize: none;   /* textarea 크기 조절 막기 */
 }
 
+#dropdownBtn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.dropdownBox{
+    width: fit-content;
+}
+
+.dropdownItems{
+    text-align: right;
+}
+
 @media screen and (max-width: 992px){
     .header{
         background-color: white;
-        
+    }
+
+    #dropdownBtn{
+        color: black;
     }
 
     .text-light{

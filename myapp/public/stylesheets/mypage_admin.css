@@ -79,27 +79,44 @@ hr{
     border-radius: .25em;
     -webkit-transition: background-color 0.2s;
     transition: background-color 0.2s;
-  }
+}
   
-  .filebox label:hover {
-    color: black;
-  }
+.filebox label:hover {
+color: black;
+}
 
-  .filebox input[type="file"] {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-  }
+.filebox input[type="file"] {
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0, 0, 0, 0);
+border: 0;
+}
 
-  @media screen and (max-width: 992px){
+#dropdownBtn{
+    border: none;
+    outline: none;
+    background-color: transparent;
+}
+
+.dropdownBox{
+    width: fit-content;
+}
+
+.dropdownItems{
+    text-align: right;
+}
+
+@media screen and (max-width: 992px){
     .header{
         background-color: white;
-        
+    }
+
+    #dropdownBtn{
+        color: black;
     }
 
     .text-light{

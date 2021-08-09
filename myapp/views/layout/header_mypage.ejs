@@ -5,22 +5,32 @@
       aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0" id="nav-items">
-      </ul>
-      <div class="dropdown" style="text-align: right;">
-          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-            마이페이지
+    <div class="collapse navbar-collapse justify-content-end" id="navbarText">
+      <ul class="navbar-nav" id="nav-items">
+        <li class="nav-item"><a class="nav-link text-light" href="/" style="text-align: right;">Home</a></li>
+      
+        <li class="nav-item dropdown" style="text-align: right;">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+            <%=info.name%>
           </button>
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
-            <li><a class="dropdown-item" href="/mypage"><b>회원님</b></a></li>
-            <li><a class="dropdown-item" href="/mypage">회원정보 수정</a></li>
-            <li><a class="dropdown-item" href="/locker">사물함 관리</a></li>
-          </ul>
-        </div>
-      <span class="navbar-text text-light register">
-          <a class="nav-link active text-light" aria-current="page" href="/logout" style="text-align: right;">로그아웃</a>
-      </span>
+          <% if (user) { %>
+            <ul class="dropdown-menu dropdown-menu-end dropdownBox" aria-labelledby="dropdownMenuButton1" id="dropdown" style="position: absolute;">
+              <li><a class="dropdown-item dropdownItems" href="/mypage">회원정보 수정</a></li>
+              <li><a class="dropdown-item dropdownItems" href="/locker">사물함 신청</a></li>
+              <li><a class="dropdown-item dropdownItems" href="/locker_list_for_user">사물함 내역</a></li>
+            </ul>
+          <% } %>
+          <% if (admin) { %>
+            <ul class="dropdown-menu dropdown-menu-end dropdownBox" aria-labelledby="dropdownMenuButton1" id="dropdown" style="position: absolute;">
+              <li><a class="dropdown-item dropdownItems" href="/mypage">회원정보 수정</a></li>
+              <li><a class="dropdown-item dropdownItems" href="/locker">사물함 생성</a></li>
+              <li><a class="dropdown-item dropdownItems" href="/locker_list_for_admin">사물함 내역</a></li>
+            </ul>
+          <% } %>
+        </li>
+        <li class="navbar-item"><a class="nav-link text-light" href="/logout" style="text-align: right;">로그아웃</a></li>
+      </ul>
+      
     </div>
   </div>
 </nav>
