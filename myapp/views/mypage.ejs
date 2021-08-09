@@ -26,7 +26,7 @@
           </button>
           <% if (user) { %>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
-              <li><a class="dropdown-item" href="#"><b><%=info.name%></b></a></li>
+              <li><a class="dropdown-item" href=".mypage"><b><%=info.name%></b></a></li>
               <li><a class="dropdown-item" href="/mypage">회원정보 수정</a></li>
               <li><a class="dropdown-item" href="/locker">사물함 신청</a></li>
               <li><a class="dropdown-item" href="/locker">사물함 관리</a></li>
@@ -34,7 +34,7 @@
             <% } %>
               <% if (admin) { %>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" id="dropdown">
-                  <li><a class="dropdown-item" href="#"><b><%=info.name%></b></a></li>
+                  <li><a class="dropdown-item" href="/mypage"><b><%=info.name%></b></a></li>
                   <li><a class="dropdown-item" href="/mypage">회원정보 수정</a></li>
                   <li><a class="dropdown-item" href="/locker">사물함 생성</a></li>
                   <li><a class="dropdown-item" href="/locker">사물함 관리</a></li>
@@ -52,10 +52,27 @@
     <%-include('./layout/change_profile_photo')%>
       <% if (user) { %>
         <form id="deleteAccountForm" method="POST" action="/deleteProcessForUser">
+          <h5>
+            정보
+          </h5>
+          <hr>
+          <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
+            <div class="card-body" id="card-body">
+              <h5 class="card-title">이름</h5>
+              <p class="card-text"><%=info.name%></p>
+              <h5 class="card-title">이메일</h5>
+              <p class="card-text"><%=info.email%></p>
+              <h5 class="card-title">학번</h5>
+              <p class="card-text"><%=info.id%></p>
+              <h5 class="card-title">연락처</h5>
+              <p class="card-text"><%=info.phonenum%></p>
+              <h5 class="card-title">소속</h5>
+              <p class="card-text"><%=info.team%></p>
+            </div>
+          </div>
       <% } %>
       <% if (admin) { %>
         <form id="deleteAccountForm" method="POST" action="/deleteProcessForAdmin">
-      <% } %>
           <h5>
             정보
           </h5>
@@ -74,6 +91,7 @@
               <p class="card-text"><%=info.teamname%></p>
             </div>
           </div>
+      <% } %>
           <div class="user_info">
             <button type="button" id="deleteAccountBtn" class="btn btn-color-orange" data-bs-toggle="modal"
             data-bs-target="#deleteAccount">회원탈퇴</button> 
