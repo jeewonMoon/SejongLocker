@@ -31,13 +31,46 @@ const get = {
         }
     },
     registerChoice : (req, res) => {
-        res.render('register_choice');
+        if(!(req.session.user) && !(req.session.admin)){
+            console.log('세션 없음');
+            res.render('register_choice');
+        }
+        else if(req.session.user){
+            console.log("이미 사용자로 로그인");
+            res.redirect('/');
+        }
+        else if(req.session.admin){
+            console.log("이미 관리자로 로그인");
+            res.redirect('/');
+        }
     },
     registerForAdmin : (req, res) => {
-        res.render('register_for_admin');
+        if(!(req.session.user) && !(req.session.admin)){
+            console.log('세션 없음');
+            res.render('register_for_admin');
+        }
+        else if(req.session.user){
+            console.log("이미 사용자로 로그인");
+            res.redirect('/');
+        }
+        else if(req.session.admin){
+            console.log("이미 관리자로 로그인");
+            res.redirect('/');
+        }
     },
     registerForUser : (req, res) => {
-        res.render('register_for_user');
+        if(!(req.session.user) && !(req.session.admin)){
+            console.log('세션 없음');
+            res.render('register_for_user');
+        }
+        else if(req.session.user){
+            console.log("이미 사용자로 로그인");
+            res.redirect('/');
+        }
+        else if(req.session.admin){
+            console.log("이미 관리자로 로그인");
+            res.redirect('/');
+        }
     },
     mypage : (req, res) => {
         //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
@@ -85,7 +118,18 @@ const get = {
     },
     login : (req, res) => {
         //데이터베이스 확인 후, 작업
-        res.render('login', {message:""});
+        if(!(req.session.user) && !(req.session.admin)){
+            console.log('세션 없음');
+            res.render('login', {message:""});
+        }
+        else if(req.session.user){
+            console.log("이미 사용자로 로그인");
+            res.redirect('/');
+        }
+        else if(req.session.admin){
+            console.log("이미 관리자로 로그인");
+            res.redirect('/');
+        }
     },
     logout : (req, res) => {
         if(req.session.user){
