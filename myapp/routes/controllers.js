@@ -30,38 +30,10 @@ const get = {
             res.render('locker_for_admin', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
         }
     },
-    registerChoice : (req, res) => {
+    register : (req, res) => {
         if(!(req.session.user) && !(req.session.admin)){
             console.log('세션 없음');
-            res.render('register_choice');
-        }
-        else if(req.session.user){
-            console.log("이미 사용자로 로그인");
-            res.redirect('/');
-        }
-        else if(req.session.admin){
-            console.log("이미 관리자로 로그인");
-            res.redirect('/');
-        }
-    },
-    registerForAdmin : (req, res) => {
-        if(!(req.session.user) && !(req.session.admin)){
-            console.log('세션 없음');
-            res.render('register_for_admin');
-        }
-        else if(req.session.user){
-            console.log("이미 사용자로 로그인");
-            res.redirect('/');
-        }
-        else if(req.session.admin){
-            console.log("이미 관리자로 로그인");
-            res.redirect('/');
-        }
-    },
-    registerForUser : (req, res) => {
-        if(!(req.session.user) && !(req.session.admin)){
-            console.log('세션 없음');
-            res.render('register_for_user');
+            res.render('register');
         }
         else if(req.session.user){
             console.log("이미 사용자로 로그인");
@@ -154,7 +126,7 @@ const get = {
         else if(req.session.admin){
             console.log('관리자 정보 불러오기');
             let id = req.session.admin.id;
-            const sql = `SELECT name, email, adminid, phonenum, teamname FROM admin, team WHERE adminid = ? and team.teamid=admin.team`;
+            const sql = `SELECT name, email, adminid, phonenum, team FROM admin WHERE adminid = ?`;
             const params = [id];
             con.query(sql, params, function(err, rows, fields){
                 if(err){
@@ -281,29 +253,7 @@ const rest = {
 }
 
 const process = {
-    registerProcessForUser : (req, res) => {
-        let id = req.body.id;
-        let name = req.body.name;
-        let email = req.body.email;
-        let phone = req.body.phonenum;
-        let password = req.body.password;
-        let team = req.body.team;
-        email = email + '@sju.ac.kr';
-        console.log(id, name, email, phone, password, team);
-        const sql = `INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
-        const params = [id, name, email, phone, password, team];
-        con.query(sql, params, function(err, rows, fields){
-            if(err)
-                throw err;
-            else{
-                console.log(rows);
-                // res.send('회원가입이 완료되었습니다.');
-                res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
-            }
-        })
-        //res.redirect('/register_choice');
-    },
-    registerProcessForAdmin : (req, res) => {
+    registerProcess : (req, res) => {
         let id = req.body.id;
         let name = req.body.name;
         let email = req.body.email;
@@ -311,18 +261,38 @@ const process = {
         let password = req.body.password;
         let team = req.body.cbTeams;
         email = email + '@sju.ac.kr';
-        console.log(id, name, email, phone, password, team);
-        const sql = `INSERT INTO ADMIN (adminid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
-        const params = [id, name, email, phone, password, team];
-        con.query(sql, params, function(err, rows, fields){
-            if(err)
-                throw err;
-            else{
-                console.log(rows);
-                // res.send('회원가입이 완료되었습니다.');
-                res.render('login', {message:"관리자 회원가입이 완료되었습니다."});
-            }
-        })
+        // console.log(id, name, email, phone, password, team);
+        console.log(req.body.radioCheck);
+
+        if(req.body.radioCheck == "사용자"){
+            const sql = `INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
+            const params = [id, name, email, phone, password, team];
+            con.query(sql, params, function(err, rows, fields){
+                if(err)
+                    throw err;
+                else{
+                    console.log(rows);
+                    // res.send('회원가입이 완료되었습니다.');
+                    res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
+                }
+            })
+            //res.redirect('/register_choice');
+        }
+        else if(req.body.radioCheck == "관리자"){
+            const sql = `INSERT INTO ADMIN (adminid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
+            const params = [id, name, email, phone, password, team];
+            con.query(sql, params, function(err, rows, fields){
+                if(err)
+                    throw err;
+                else{
+                    console.log(rows);
+                    // res.send('회원가입이 완료되었습니다.');
+                    res.render('login', {message:"관리자 회원가입이 완료되었습니다."});
+                }
+            })
+        }
+        else
+            res.redirect('/register');
     },
 
     loginProcessForUser : (req, res) => {

@@ -4,6 +4,7 @@ function cancelReservation(){
     document.getElementById("reserveBtn").style.display = 'inline-block';
 }
 
+
 //프로필 사진 변경 테스트 중..
 function uploadImgPreview() {
     // @breif 업로드 파일 읽기

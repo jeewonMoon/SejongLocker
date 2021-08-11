@@ -81,16 +81,3 @@ function checkForm(){
   }
   return true;
 }
-
-
-function cbTeam(myTeam) {
-  if(myTeam.checked == true){
-    const checkboxes = document.getElementsByName("cbTeams");
-  
-    checkboxes.forEach((cb) => {
-        cb.checked = false;
-    });
-  
-    myTeam.checked = true;
-  }
-}
