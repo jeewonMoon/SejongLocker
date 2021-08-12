@@ -1,4 +1,20 @@
 <div class="mb-3">
+    <div class="row">
+      <div class="col">
+        <input class="form-check-input" type="radio" name="radioCheck" id="radioUser" value="사용자" checked>
+        <label class="form-check-label" for="radioUser">
+          사용자
+        </label>
+      </div>      
+      <div class="col">
+        <input class="form-check-input" type="radio" name="radioCheck" id="radioAdmin" value="관리자">
+        <label class="form-check-label" for="radioAdmin">
+          관리자
+        </label>
+      </div>
+    </div>
+</div>
+<div class="mb-3">
     <label for="registerId" class="form-label">학번</label>
     <input type="text" class="form-control" name="id" id="registerId">
 </div>
@@ -29,4 +45,9 @@
     <label id="passwordHelp2" class="form-text" style="color: green; display:none;">동일합니다</label>
     <label id="passwordHelp3" class="form-text" style="color: red; display:none;">동일하지 않습니다</label>
     <input type="password" class="form-control" id="password2" onkeyup="checkPasswordAgain()">
+</div>
+<div class="mb-3">
+    <label for="registerTeam" class="form-label">소속</label>
+    <label class="form-text">학과 또는 동아리</label>
+    <input type="text" class="form-control" name="team" id="registerTeam" aria-describedby="emailHelp">
 </div>
