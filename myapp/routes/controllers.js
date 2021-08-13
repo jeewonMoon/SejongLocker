@@ -465,6 +465,63 @@ const process = {
         })
     },
 
+    makeLocker : (req, res) => {
+        console.log(req.body);
+        let adminid = req.session.admin.id;
+        let building = req.body.building;
+        let lockername = req.body.lockername;
+        let notice = req.body.notice;
+        let lockerrow = req.body.lockerrow;
+        let lockercol = req.body.lockercol;
+        let len = lockerrow * lockercol;
+
+        const sql = `INSERT INTO locker_parent (adminid, building, lockername, notice, lockerrow, lockercol) VALUES (?, ?, ?, ?, ?, ?)`;
+        const params = [adminid, building, lockername, notice, lockerrow, lockercol];
+        console.log(params);
+        con.query(sql, params, function(err, rows, fields){
+            if(err)
+                throw err;
+            else{
+                const sql2 ="CREATE TABLE IF NOT EXISTS userdb." + lockername +" ( lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_computer_user1_idx (userid ASC) VISIBLE, INDEX fk_computer_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_computer_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_computer_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB";
+                con.query(sql2,function(err2, rows2, fields2){
+                    if(err2)
+                        throw err2;
+                    else{
+                        // console.log('table is created!');
+                        let sql3 = '';
+                        let params3 = [];
+                        for(let num = 1; num <= len; num++){
+                            sql3 = 'INSERT INTO ' + lockername + '(lockername, lockernum, canuse, exceptuse) VALUES (?, ?, ?, ?)';
+                            let lockernumber = "locker" + num;
+                            if(req.body.hasOwnProperty(lockernumber)){
+                                // console.log(req.body[lockernumber]);
+                                if(req.body[lockernumber] == "YES")
+                                    params3 = [lockername, num, 0, 1];
+                                else
+                                    params3 = [lockername, num, 1, 0];
+                            }
+                            else{
+                                console.log('lockernumber is wrong!');
+                                break;
+                            }
+                            con.query(sql3, params3, function(err3, rows3, fields3){
+                                if(err3)
+                                    throw err3;
+                                else{
+                                    console.log(lockernumber + " is inserted!");
+                                }
+                            })
+                        }
+
+                    }
+                })
+
+                // res.redirect('/locker_list_for_admin');
+            }
+        })
+        res.redirect('/locker');
+    },
+
 }
 
 module.exports = {
