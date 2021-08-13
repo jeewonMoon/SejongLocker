@@ -47,7 +47,10 @@
   </nav>
 
   <div class="Container">
-    <%-include('./layout/change_profile_photo')%>
+    <!-- <div class="profile">
+      <img src="/images/logo-bright.png" alt="logo" style="width: 45em;">
+    </div> -->
+    <h1>계정 관리</h1>
       <% if (user) { %>
         <form id="deleteAccountForm" method="POST" action="/deleteProcessForUser">
           <h5>
