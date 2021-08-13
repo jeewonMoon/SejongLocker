@@ -259,7 +259,7 @@ const process = {
         let email = req.body.email;
         let phone = req.body.phonenum;
         let password = req.body.password;
-        let team = req.body.cbTeams;
+        let team = req.body.team;
         email = email + '@sju.ac.kr';
         // console.log(id, name, email, phone, password, team);
         console.log(req.body.radioCheck);
