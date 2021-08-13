@@ -18,7 +18,8 @@ app.set('view engine', 'ejs');
 //app.set('view engine', 'html');
 app.use(logger('dev'));
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+// app.use(express.urlencoded({ extended: false }));  // 사물함 생성과정에서 hasOwnProperty 함수를 쓰기위해 변경
+app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({

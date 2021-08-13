@@ -42,10 +42,11 @@
   </nav>
 
   <div class="Container">
+    <form method="POST" action="/makeLocker">
     <div class='locker-form'>
       <h1>관리자 사물함 생성 화면</h1>
       <div class='mb-3'>
-        <select class="form-select" aria-label="Default select example" id="select-place">
+        <select class="form-select" aria-label="Default select example" name="building" id="select-place">
         </select>
       </div>
       <div id="map" class='mb-3' style="width:100%;height:350px;"></div>
@@ -53,31 +54,37 @@
 
       <div class="mb-3 form-group">
         <label for="exampleInputEmail1">사물함 이름을 정해주세요.</label>
-        <input type="text" class="form-control" id="locker-name" placeholder="예시 : 컴퓨터공학과 사물함1">
+        <input type="text" class="form-control" name="lockername" id="locker-name" placeholder="예시 : 컴퓨터공학과 사물함1">
       </div>
       
       <div class="mb-3">
         <label for="exampleFormControlTextarea1" class="form-label">사용자에게 전할 공지사항</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"
+        <textarea class="form-control" name="notice" id="exampleFormControlTextarea1" rows="3"
           placeholder='예시 : 사물함은 B1층 B105강의실 옆에 있습니다.'></textarea>
       </div>
 
-      <div class='mb-3'>
+      <div class="mb-3">
         <div class="mb-3 form-group">
           <label for="exampleInputEmail1">사물함의 높이를 정해주세요.</label>
-          <input type="text" class="form-control" id="height" aria-describedby="emailHelp" placeholder="예시 : 5">
+          <input type="number" class="form-control" name="lockerrow" id="height" aria-describedby="emailHelp" placeholder="예시 : 5" min="0">
         </div>
         <div class="mb-3 form-group">
           <label for="exampleInputPassword1">한 줄에 존재할 사물함의 갯수를 정해주세요.</label>
-          <input type="text" class="form-control" id="width" placeholder="예시 : 4">
+          <input type="number" class="form-control" name="lockercol" id="width" placeholder="예시 : 4" min="0">
         </div>
-        <button class="btn btn-primary" id="make-locker">만들기</button>
+        <div class="mb-3" style="float: right;">
+          <label class="form-text" style="margin-right: 10px;">회색은 사용금지로 생성됩니다!</label>
+          <button type="button" class="btn btn-outline-primary" id="make-locker">만들기</button>
+        </div>
       </div>
 
-      <table class="table" id="table"></table>
-      <div>회색은 제외되게 하려고 합니다. (한번 더 클릭시 색깔 돌아옴)</div>
-
+      
+      <div class="mb-3">
+        <table class="table" id="table"></table>
+        <button class="btn btn-primary" type="submit" style="float: right;">완성하기</button>
+      </div>
     </div>
+    </form>
   </div>
 
   <!-- Optional JavaScript; choose one of the two! -->

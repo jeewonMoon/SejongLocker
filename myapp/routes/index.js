@@ -26,6 +26,8 @@ router.post('/updateProcessForAdmin', controller.process.updateProcessForAdmin);
 router.post('/deleteProcessForUser', controller.process.deleteProcessForUser);
 router.post('/deleteProcessForAdmin', controller.process.deleteProcessForAdmin);
 
+router.post('/makelocker', controller.process.makeLocker);
+
 /* HTML 사용시 이용
 router.get('/', function(req, res, next) {
   res.render('index.html');

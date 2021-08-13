@@ -6,7 +6,8 @@ document.getElementById('make-locker').addEventListener('click', function () {
     for (let i = 0; i < height; i++) {
         table += '<tr>';
         for (let j = 0; j < width; j++) {
-            table += `<td class="table-primary" id="${start}" onclick="blockLocker(${start})">${start}</td>`;
+            // table += `<td class="table-primary" id="${start}" onclick="blockLocker(${start})">${start}</td>`;
+            table += `<td class="table-primary" id="${start}" onclick="blockLocker(${start})">${start}<input type="hidden" name="locker${start}" id="locker${start}" value="${start}"></td>`;
             start += 1;
         }
         table += '</tr>';
@@ -16,11 +17,14 @@ document.getElementById('make-locker').addEventListener('click', function () {
 
 function blockLocker(id) {
     let num = document.getElementById(id);
+    let exceptuse = document.getElementById("locker"+id);
     if (num.className == "table-primary") {
         num.className = "table-secondary";
+        exceptuse.value = "YES";
     }
     else {
         num.className = "table-primary";
+        exceptuse.value = id;
     }
     
    /* id를 추후에도 사용할 것이라 판단되어, this를 사용한 방법은 잠시 보류하겠습니다.
