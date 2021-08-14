@@ -22,11 +22,11 @@ const get = {
             res.redirect('/');
         }
         else if(req.session.user){
-            console.log("사용자로 로그인");
-            res.render('locker_for_user', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
+            console.log("사용자 사물함");
+            res.render('locker', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
         }
         else if(req.session.admin){
-            console.log("관리자로 로그인");
+            console.log("관리자 사물함");
             res.render('locker_for_admin', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
         }
     },
@@ -482,7 +482,7 @@ const process = {
             if(err)
                 throw err;
             else{
-                const sql2 ="CREATE TABLE IF NOT EXISTS userdb." + lockername +" ( lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_computer_user1_idx (userid ASC) VISIBLE, INDEX fk_computer_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_computer_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_computer_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB";
+                const sql2 ='CREATE TABLE IF NOT EXISTS userdb.' + lockername +'(lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_'+lockername+'_user1_idx (userid ASC) VISIBLE, INDEX fk_'+lockername+'_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_'+lockername+'_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_'+lockername+'_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB';
                 con.query(sql2,function(err2, rows2, fields2){
                     if(err2)
                         throw err2;
@@ -520,8 +520,7 @@ const process = {
             }
         })
         res.redirect('/locker');
-    },
-
+    }
 }
 
 module.exports = {
