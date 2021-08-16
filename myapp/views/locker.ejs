@@ -53,7 +53,7 @@
       <% if (user) { %>
         <h1>사용자 사물함 신청 화면</h1>
           <div class='mb-3'>
-            <select class="form-select" name="building" id="select-place" aria-label="Default select example" onchange="kakaomapMaker(this.value); showLockerName(this.value)">
+            <select class="form-select" name="building" id="building" aria-label="Default select example" onchange="kakaomapMaker(this.value); showLockerName(this.value); rechange();">
               <option value="" selected>사물함 건물 위치 선택</option>
               <option value="광개토관">광개토관</option>
               <option value="군자관">군자관</option>
@@ -75,17 +75,16 @@
         <!-- <script src="/javascripts/select_place.js"></script> -->
   
         <div class='mb-3'>
-          <select class="form-select" aria-label="Default select example" id="locker-name" name="lockername">
+          <select class="form-select" aria-label="Default select example" id="lockername" onchange="showLockerNotice(this.value)">
             <option selected>먼저 사물함 건물을 선택해주세요.</option>
             <option value=""></option>
           </select>
         </div>
   
         <div class="card mb-3">
-          <div class="card-body">
+          <div class="card-body" id="noticeName">
             <h5 class="card-title">사물함 공지사항</h5>
-            <h6 class="card-subtitle mb-2 text-muted">관리자가 전하는 말</h6>
-            <p class="card-text" name="notice"></p>
+            <p class="card-text mb-2 text-muted">사물함을 선택해주세요</p>
           </div>
         </div>
         <h1>여기서 부터는 사물함 표</h1>
@@ -95,7 +94,7 @@
         <form method="POST" action="/makeLocker">
           <h1>관리자 사물함 생성 화면</h1>
           <div class='mb-3'>
-            <select class="form-select" name="building" id="select-place" aria-label="Default select example" onchange="kakaomapMaker(this.value)">
+            <select class="form-select" name="building" id="building" aria-label="Default select example" onchange="kakaomapMaker(this.value)">
               <option value="" selected>사물함 건물 위치 선택</option>
               <option value="광개토관">광개토관</option>
               <option value="군자관">군자관</option>
