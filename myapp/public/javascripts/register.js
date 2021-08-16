@@ -117,7 +117,7 @@ async function idCheck(){
   if (radio==='사용자'){
     const userid = document.querySelector('#registerId');
     let data = await axios.get(`http://localhost:3000/register/userIdcheck?id=${userid.value}`);
-
+    
     console.log(data);
 
     let login_flag = data.data.login;

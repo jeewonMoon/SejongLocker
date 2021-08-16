@@ -289,6 +289,30 @@ const get = {
         }catch(error){
             console.log(error);
         }
+    },
+    checkLockerName : async (req, res) => {
+        let lockername = req.query.lockername;
+        let flag = false;
+        const params = [lockername];
+        const sql = `SELECT lockername FROM locker_parent WHERE lockername = ?`;
+
+        console.log('lockername check');
+        try{
+            const [rows, fields] = await con.query(sql, params);
+
+            if(rows.length > 0){    //존재
+                flag = false;
+            }else{
+                flag = true;
+            }
+            console.log(flag);
+            res.json({
+                result : flag,
+                lockername,
+            })
+        }catch(error){
+            console.log(error);
+        }
     }
 };
 

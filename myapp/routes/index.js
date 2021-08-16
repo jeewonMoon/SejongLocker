@@ -17,6 +17,7 @@ router.get('/register/userIdcheck', controller.get.checkUserId);
 router.get('/register/adminIdcheck', controller.get.checkAdminId);
 router.get('/register/userEmailcheck', controller.get.checkUserEmail);
 router.get('/register/adminEmailcheck', controller.get.checkAdminEmail);
+router.get('/locker/lockernameCheck', controller.get.checkLockerName);
 
 router.get('/user_list', controller.rest.userList);
 router.get('/admin_list', controller.rest.adminList);
@@ -37,4 +38,5 @@ router.post('/makelocker', controller.process.makeLocker);
 router.get('/', function(req, res, next) {
   res.render('index.html');
 });*/
+
 module.exports = router;
