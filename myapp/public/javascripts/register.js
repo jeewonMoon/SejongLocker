@@ -41,6 +41,11 @@ function registerIdReset(){
   document.getElementById('registerIdHelp2').style.display = 'none';
 }
 
+// email에 입력될 때 마다 초기화
+function registerEmailReset(){
+  document.getElementById('registerEmailHelp1').style.display = 'none';
+  document.getElementById('registerEmailHelp2').style.display = 'none';
+}
 
 // 회원가입 버튼 클릭 시
 function checkForm(){
@@ -62,6 +67,11 @@ function checkForm(){
   else if(document.getElementById('registerEmail').value == "")  {
     alert('이메일을 입력해주세요.');
     document.getElementById('registerEmail').focus();
+    return false;
+  }
+  else if(document.getElementById('registerEmailHelp1').style.display == 'none')  {
+    alert('이메일 중복 확인해주세요.');
+    document.getElementById('registerIdHelp1').focus();
     return false;
   }
   else if(document.getElementById('registerPhone').value == "")  {
@@ -137,6 +147,47 @@ async function idCheck(){
       alert('사용이 불가한 아이디입니다.');
       document.getElementById('registerIdHelp1').style.display = 'none';
       document.getElementById('registerIdHelp2').style.display = 'inline';
+    }
+  }else{
+    alert('사용자 또는 관리자를 선택해주세요.');
+  }
+}
+
+// email중복체크
+async function emailCheck(){
+  if (radio==='사용자'){
+    const userEmail = document.querySelector('#registerEmail');
+    let data = await axios.get(`http://localhost:3000/register/userEmailcheck?email=${userEmail.value}`);
+
+    console.log(data);
+
+    let login_flag = data.data.login;
+
+    if(login_flag){
+      alert('사용 가능한 학번입니다.');
+      document.getElementById('registerEmailHelp1').style.display = 'inline';
+      document.getElementById('registerEmailHelp2').style.display = 'none';
+    }else{
+      alert('사용이 불가한 학번입니다.');
+      document.getElementById('registerEmailHelp1').style.display = 'none';
+      document.getElementById('registerEmailHelp2').style.display = 'inline';
+    }
+
+  }else if (radio==='관리자'){
+    const adminEmail = document.querySelector('#registerEmail');
+    let data = await axios.get(`http://localhost:3000/register/adminEmailcheck?email=${adminEmail.value}`);
+
+    console.log(data);
+
+    login_flag = data.data.login;
+    if(login_flag){
+      alert('사용 가능한 아이디입니다.');
+      document.getElementById('registerEmailHelp1').style.display = 'inline';
+      document.getElementById('registerEmailHelp2').style.display = 'none';
+    }else{
+      alert('사용이 불가한 아이디입니다.');
+      document.getElementById('registerEmailHelp1').style.display = 'none';
+      document.getElementById('registerEmailHelp2').style.display = 'inline';
     }
   }else{
     alert('사용자 또는 관리자를 선택해주세요.');

@@ -1,3 +1,4 @@
+/*
 let mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {
         center: new kakao.maps.LatLng(37.55089242280108, 127.07439774497449), // 지도의 중심좌표
@@ -6,27 +7,16 @@ let mapContainer = document.getElementById('map'), // 지도를 표시할 div
 
 let map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 let arr = [];
-let places = ['사물함 건물 위치 선택', '광개토관', '군자관', '다산관', '대양홀', '대양AI센터', '영실관', '용덕관', '율곡관', '이당관', '집현관', '충무관', '세종관', '학생회관'];
-let select_place = "";
-for (let i = 0; i < places.length; i++) {
-    if (i == 0) {
-        select_place += `<option selected>${places[i]}</option>`;
-    }
-    else {
-        select_place += `<option>${places[i]}</option>`;
-    }
-}
-document.getElementById("select-place").innerHTML = select_place;
 
-/*
+
 // 마커가 표시될 위치입니다 
-let markerPosition = new kakao.maps.LatLng(37.55013918209962, 127.07316850443083);
+// let markerPosition = new kakao.maps.LatLng(37.55013918209962, 127.07316850443083);
 
 // 마커를 생성합니다
-let marker = new kakao.maps.Marker({
-    position: markerPosition
-});
-*/
+// let marker = new kakao.maps.Marker({
+//     position: markerPosition
+// });
+
 function markerPlace(x, y) {
     if (arr != '') {
         arr.shift().setMap(null);
@@ -58,3 +48,7 @@ document.getElementById('select-place').addEventListener('change', function () {
     }
 
 });
+*/
+
+// 더이상 사용 안 할 예정
+// kakaomap 파일 사용으로 변경되었습니다
