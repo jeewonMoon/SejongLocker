@@ -15,6 +15,8 @@ router.get('/mypage', controller.get.mypage);
 
 router.get('/register/userIdcheck', controller.get.checkUserId);
 router.get('/register/adminIdcheck', controller.get.checkAdminId);
+router.get('/register/userEmailcheck', controller.get.checkUserEmail);
+router.get('/register/adminEmailcheck', controller.get.checkAdminEmail);
 
 router.get('/user_list', controller.rest.userList);
 router.get('/admin_list', controller.rest.adminList);

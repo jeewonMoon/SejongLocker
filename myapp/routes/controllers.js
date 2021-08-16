@@ -211,19 +211,6 @@ const get = {
         }catch(error){
             console.log(error);
         }
-
-        // con.query(sql, params, function(err, rows, fields){
-        //     if(err)
-        //         throw err;
-        //     else{
-        //         console.log(rows.length);
-        //         if(rows.length > 0){    //존재
-        //             flag = false;
-        //         }else{
-        //             flag = true;
-        //         }
-        //     }
-        // })
     },
     checkAdminId : async (req, res) => {
         console.log('admin id check');
@@ -244,6 +231,56 @@ const get = {
             res.json({
                 login : flag,
                 id,
+            })
+        }catch(error){
+            console.log(error);
+        }
+    },
+    checkUserEmail : async (req, res) => {
+        let email = req.query.email;
+        email = email + '@sju.ac.kr';
+        let flag = false;
+        const params = [email];
+        const sql = `SELECT email FROM user WHERE email = ?`;
+
+        console.log('user email check');
+        try{
+            const [rows, fields] = await con.query(sql, params);
+    
+            if(rows.length > 0){    //존재
+                flag = false;
+            }else{
+                flag = true;
+            }
+            console.log(flag);
+            res.json({
+                login : flag,
+                email,
+            })
+        }catch(error){
+            console.log(error);
+        }
+    },
+    checkAdminEmail : async (req, res) => {
+        let email = req.query.email;
+        email = email + '@sju.ac.kr';
+        let flag = false;
+        const params = [email];
+        const sql = `SELECT email FROM admin WHERE email = ?`;
+
+        console.log('admin email check');
+        try{
+            const [rows, fields] = await con.query(sql, params);
+
+            if(rows.length > 0){    //존재
+                flag = false;
+            }else{
+                flag = true;
+            }
+            console.log(flag);
+            res.json({
+                login : flag,
+                email,
             })
         }catch(error){
             console.log(error);
