@@ -71,8 +71,10 @@ const get = {
             res.render('locker_list_for_user', {info : req.session.user, user : "user", admin : ""});
         }
     },
-    lockerListForAdmin : (req, res) => {
-        //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
+    lockerListForAdmin : async (req, res) => {
+        let id = req.session.admin.id;
+        const params = [id];
+        //세션이 없는 경우 인덱스
         console.log(req.session);
         if(!(req.session.admin)){
             console.log('세션 없음');
@@ -80,22 +82,30 @@ const get = {
         }
         else if(req.session.admin){
             console.log('관리자 사물함 내역 불러오기');
-            // let id = req.session.admin.id;
-            // const sql = `SELECT name, email, adminid, phonenum, teamname FROM admin, team WHERE adminid = ? and team.teamid=admin.team`;
-            // const params = [id];
-            // con.query(sql, params, function(err, rows, fields){
-            //     if(err){
-            //         console.log('실패');
-            //         throw err;
-            //     }
-            //     else{
-            //         console.log('성공');
-            //         console.log(rows);
-            //         // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
-            //         res.render('mypage', {info : rows[0], user : "", admin : "admin"}); 
-            //     }
-            // })
-            res.render('locker_list_for_admin', {info : req.session.admin, user : "", admin : "admin"}); 
+            try{
+                const sql = `SELECT * FROM locker_parent WHERE adminid = ?`;
+                const [rows, fileds] = await con.query(sql, params);
+                console.log('성공');
+                console.log(rows[0]);
+                
+                // try {
+                //     console.log('get data from locker_child');
+                //     let lockername = rows[0].lockername;
+                //     const sql2 = `SELECT * FROM ` + lockername;
+                    
+                //     const [rows2] = await con.query(sql2);
+                    
+                //     console.log("success");
+                //     console.log(rows2);
+                // } catch (error) {
+                //     console.log(error);
+                //     throw error;
+                // }
+                res.render('locker_list_for_admin', {info : rows[0], user : "", admin : "admin", adminSession : req.session.admin}); 
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
         }
     },
     mypage : async (req, res) => {
