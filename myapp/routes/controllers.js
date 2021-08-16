@@ -273,6 +273,7 @@ const get = {
             })
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     checkAdminEmail : async (req, res) => {
@@ -298,6 +299,7 @@ const get = {
             })
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     checkLockerName : async (req, res) => {
@@ -322,6 +324,7 @@ const get = {
             })
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     showLocker : async (req, res) => {
@@ -345,6 +348,33 @@ const get = {
             })
         }catch(error){
             console.log(error);
+            throw error;
+        }
+    },
+    showNotice : async (req, res) => {
+        let building = req.query.building;
+        let lockername = req.query.lockername;
+        let notice = "";
+        const params = [building, lockername];
+        const sql = `SELECT notice FROM locker_parent WHERE building = ? AND lockername = ?`;
+
+        console.log('show notice by lockername');
+        try{
+            const [rows, fields] = await con.query(sql, params);
+
+            // console.log(rows[0].notice);
+            if(rows.length > 0){    //존재
+                notice = rows[0].notice;
+            }
+            // console.log(lockernames);
+            res.json({
+                result : notice,
+                building,
+                lockername,
+            })
+        }catch(error){
+            console.log(error);
+            throw error;
         }
     }
 };
