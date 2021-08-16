@@ -119,6 +119,7 @@ const get = {
                 //res.render('mypage', {userInfo : rows[0]});    //userInfo 객체에 정보 담기
             }catch(error){
                 console.log(error);
+                throw error;
             }
         }
         else if(req.session.admin){
@@ -135,6 +136,7 @@ const get = {
                 res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); 
             }catch(error){
                 console.log(error);
+                throw error;
             }
         }
     },
@@ -210,6 +212,7 @@ const get = {
             })
         }catch(error){
             console.log(error);
+            throw error;
         }
 
         // con.query(sql, params, function(err, rows, fields){
@@ -247,6 +250,7 @@ const get = {
             })
         }catch(error){
             console.log(error);
+            throw error;
         }
     }
 };
@@ -330,6 +334,7 @@ const process = {
                 res.redirect('/login');
             }catch(error){
                 console.log(error);
+                throw error;
             }
         }
         else if(req.body.radioCheck == "관리자"){
@@ -342,6 +347,7 @@ const process = {
                 res.redirect('/login');
             }catch(error){
                 console.log(error);
+                throw error;
             }
         }
         else
@@ -383,6 +389,7 @@ const process = {
             }
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     loginProcessForAdmin : async (req, res) => {
@@ -420,6 +427,7 @@ const process = {
             }
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     deleteProcessForUser : async (req, res) => {
@@ -443,6 +451,7 @@ const process = {
             res.redirect('/');
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     deleteProcessForAdmin : async (req, res) => {
@@ -466,6 +475,7 @@ const process = {
             res.redirect('/');
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     updateProcessForUser : async (req, res) => {
@@ -488,6 +498,7 @@ const process = {
             res.redirect('/login');
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
     updateProcessForAdmin : async (req, res) => {
@@ -511,6 +522,7 @@ const process = {
             res.redirect('/login');
         }catch(error){
             console.log(error);
+            throw error;
         }
     },
 
@@ -563,13 +575,16 @@ const process = {
                         console.log("##### " + lockernumber + " is inserted! #####");
                     }catch(error3){
                         console.log(error3);
+                        throw error3;
                     }
                 }
             }catch(error2){
                 console.log(error2);
+                throw error2;
             }
         }catch(error){
             console.log(error);
+            throw error;
         }
         res.redirect('/locker');
     }
