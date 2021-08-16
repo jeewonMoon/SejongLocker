@@ -41,7 +41,6 @@ function blockLocker(id) {
 
 // lockername 중복체크
 async function lockerNameCheck(){
-    
     const lockername = document.querySelector('#locker-name');
     try{
         let data = await axios.get(`http://localhost:3000/locker/lockernameCheck?lockername=${lockername.value}`);
@@ -60,10 +59,7 @@ async function lockerNameCheck(){
         }
     }catch(error){
         console.log(error);
-    }
-
-
-    
+    }   
 }
 
 // email에 입력될 때 마다 초기화
