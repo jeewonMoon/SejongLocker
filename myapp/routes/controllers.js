@@ -192,6 +192,60 @@ const get = {
             console.log("로그인 안 되어있음");
             res.redirect('/');
         }
+    },
+    checkUserId : async (req, res) => {
+        console.log('user id check');
+        let id = req.query.id;
+        let flag = false;
+        const sql = `SELECT userid FROM USER WHERE userid = ?`;
+        const params = [id];
+        
+        const [rows, fields] = await con.query(sql, [
+            id
+        ]);
+        // con.query(sql, params, function(err, rows, fields){
+        //     if(err)
+        //         throw err;
+        //     else{
+        //         console.log(rows.length);
+        //         if(rows.length > 0){    //존재
+        //             flag = false;
+        //         }else{
+        //             flag = true;
+        //         }
+        //     }
+        // })
+        if(rows.length > 0){    //존재
+            flag = false;
+        }else{
+            flag = true;
+        }
+        console.log(flag);
+        res.json({
+            login : flag,
+            id,
+        })
+    },
+    checkAdminId : async (req, res) => {
+        console.log('admin id check');
+        let id = req.query.id;
+        let flag = false;
+        const sql = `SELECT adminid FROM ADMIN WHERE adminid = ?`;
+        const params = [id];
+        
+        const [rows, fields] = await con.query(sql, [
+            id
+        ]);
+        if(rows.length > 0){    //존재
+            flag = false;
+        }else{
+            flag = true;
+        }
+        console.log(flag);
+        res.json({
+            login : flag,
+            id,
+        })
     }
 };
 

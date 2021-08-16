@@ -1,3 +1,5 @@
+let radio;
+
 // 회원가입 password check (user, admin)
 function checkPassword(){
   let pwLen = document.getElementById('password1').value.length;;
@@ -80,4 +82,42 @@ function checkForm(){
     return false;
   }
   return true;
+}
+
+//radio value값 가져오기
+function getValue(event){
+  return radio = event.target.value;
+}
+ 
+// id중복체크
+async function idCheck(){
+  if (radio==='사용자'){
+    const userid = document.querySelector('#registerId');
+    let data = await axios.get(`http://localhost:3000/register/userIdcheck?id=${userid.value}`);
+
+    console.log(data);
+
+    login_flag = data.data.login;
+
+    if(login_flag){
+      alert('사용 가능한 아이디입니다.');
+    }else{
+      alert('사용이 불가한 아이디입니다.')
+    }
+
+  }else if (radio==='관리자'){
+    const adminid = document.querySelector('#registerId');
+    let data = await axios.get(`http://localhost:3000/register/adminIdcheck?id=${adminid.value}`);
+
+    console.log(data);
+
+    login_flag = data.data.login;
+    if(login_flag){
+      alert('사용 가능한 아이디입니다.');
+    }else{
+      alert('사용이 불가한 아이디입니다.')
+    }
+  }else{
+    alert('사용자 또는 관리자를 선택해주세요.');
+  }
 }

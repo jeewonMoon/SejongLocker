@@ -12,6 +12,8 @@ router.get('/register', controller.get.register);
 router.get('/locker_list_for_user', controller.get.lockerListForUser);
 router.get('/locker_list_for_admin', controller.get.lockerListForAdmin);
 router.get('/mypage', controller.get.mypage);
+router.get('/register/userIdcheck', controller.get.checkUserId);
+router.get('/register/adminIdcheck', controller.get.checkAdminId);
 
 router.get('/user_list', controller.rest.userList);
 router.get('/admin_list', controller.rest.adminList);
