@@ -98,7 +98,7 @@ const get = {
             res.render('locker_list_for_admin', {info : req.session.admin, user : "", admin : "admin"}); 
         }
     },
-    mypage : (req, res) => {
+    mypage : async (req, res) => {
         //세션이 없는 경우 인덱스 혹은 로그인 페이지로 돌려보내게 할 것입니다.
         console.log(req.session);
         if(!(req.session.user) && !(req.session.admin)){
@@ -110,36 +110,32 @@ const get = {
             let id = req.session.user.id;
             const sql = `SELECT name, email, userid, phonenum, team FROM user WHERE userid = ?`;
             const params = [id];
-            con.query(sql, params, function(err, rows, fields){
-                if(err){
-                    console.log('실패');
-                    throw err;
-                }
-                else{
-                    console.log('성공');
-                    console.log(rows[0]);
-                    res.render('mypage', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
-                    //res.render('mypage', {userInfo : rows[0]});    //userInfo 객체에 정보 담기
-                }
-            })
+
+            try{
+                const [rows, fileds] = await con.query(sql, params);
+                console.log('성공');
+                console.log(rows[0]);
+                res.render('mypage', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
+                //res.render('mypage', {userInfo : rows[0]});    //userInfo 객체에 정보 담기
+            }catch(error){
+                console.log(error);
+            }
         }
         else if(req.session.admin){
             console.log('관리자 정보 불러오기');
             let id = req.session.admin.id;
             const sql = `SELECT name, email, adminid, phonenum, team FROM admin WHERE adminid = ?`;
             const params = [id];
-            con.query(sql, params, function(err, rows, fields){
-                if(err){
-                    console.log('실패');
-                    throw err;
-                }
-                else{
-                    console.log('성공');
-                    console.log(rows);
-                    // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
-                    res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); 
-                }
-            })
+
+            try{
+                const [rows, fileds] = await con.query(sql, params);
+                console.log('성공');
+                console.log(rows);
+                // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
+                res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); 
+            }catch(error){
+                console.log(error);
+            }
         }
     },
     login : (req, res) => {
@@ -200,9 +196,22 @@ const get = {
         const sql = `SELECT userid FROM USER WHERE userid = ?`;
         const params = [id];
         
-        const [rows, fields] = await con.query(sql, [
-            id
-        ]);
+        try{
+            const [rows, fields] = await con.query(sql, params);
+            if(rows.length > 0){    //존재
+                flag = false;
+            }else{
+                flag = true;
+            }
+            console.log(flag);
+            res.json({
+                login : flag,
+                id,
+            })
+        }catch(error){
+            console.log(error);
+        }
+
         // con.query(sql, params, function(err, rows, fields){
         //     if(err)
         //         throw err;
@@ -215,16 +224,6 @@ const get = {
         //         }
         //     }
         // })
-        if(rows.length > 0){    //존재
-            flag = false;
-        }else{
-            flag = true;
-        }
-        console.log(flag);
-        res.json({
-            login : flag,
-            id,
-        })
     },
     checkAdminId : async (req, res) => {
         console.log('admin id check');
@@ -233,19 +232,22 @@ const get = {
         const sql = `SELECT adminid FROM ADMIN WHERE adminid = ?`;
         const params = [id];
         
-        const [rows, fields] = await con.query(sql, [
-            id
-        ]);
-        if(rows.length > 0){    //존재
-            flag = false;
-        }else{
-            flag = true;
+        try{
+            const [rows, fields] = await con.query(sql, params);
+
+            if(rows.length > 0){    //존재
+                flag = false;
+            }else{
+                flag = true;
+            }
+            console.log(flag);
+            res.json({
+                login : flag,
+                id,
+            })
+        }catch(error){
+            console.log(error);
         }
-        console.log(flag);
-        res.json({
-            login : flag,
-            id,
-        })
     }
 };
 
@@ -307,7 +309,7 @@ const rest = {
 }
 
 const process = {
-    registerProcess : (req, res) => {
+    registerProcess : async (req, res) => {
         let id = req.body.id;
         let name = req.body.name;
         let email = req.body.email;
@@ -321,49 +323,45 @@ const process = {
         if(req.body.radioCheck == "사용자"){
             const sql = `INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
             const params = [id, name, email, phone, password, team];
-            con.query(sql, params, function(err, rows, fields){
-                if(err)
-                    throw err;
-                else{
-                    console.log(rows);
-                    // res.send('회원가입이 완료되었습니다.');
-                    res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
-                }
-            })
-            //res.redirect('/register_choice');
+            try{
+                const [rows, fileds] = await con.query(sql, params);
+                console.log(rows);
+                // res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
+                res.redirect('/login');
+            }catch(error){
+                console.log(error);
+            }
         }
         else if(req.body.radioCheck == "관리자"){
             const sql = `INSERT INTO ADMIN (adminid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
             const params = [id, name, email, phone, password, team];
-            con.query(sql, params, function(err, rows, fields){
-                if(err)
-                    throw err;
-                else{
-                    console.log(rows);
-                    // res.send('회원가입이 완료되었습니다.');
-                    res.render('login', {message:"관리자 회원가입이 완료되었습니다."});
-                }
-            })
+            try{
+                const [rows, fileds] = await con.query(sql, params);
+                console.log(rows);
+                // res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
+                res.redirect('/login');
+            }catch(error){
+                console.log(error);
+            }
         }
         else
             res.redirect('/register');
     },
 
-    loginProcessForUser : (req, res) => {
+    loginProcessForUser : async (req, res) => {
         //세션이 없는 경우 세션 발급
         let id = req.body.userId;
         let password = req.body.userPassword;
         const sql = 'SELECT * FROM USER WHERE userid = ? AND password = ?';
         const params = [id, password];
         console.log(id, password);
-        con.query(sql, params, function(err, rows, fields){
+        try{
+            const [rows, fileds] = await con.query(sql, params);
             console.log(rows.length); // row.length가 쿼리 결과물이라 보시면 됩니다. 0보다 크다는 것은 결과물이 있다는 것을 의미합니다.
             console.log(rows[0]);
-            if(err)
-                throw err;
             if(rows.length > 0){
                 if(req.session.user){
-                    console.log("이미 로그인 되어 있음");
+                    console.log("##### already Logined #####");
                 }
                 else{
                     req.session.user = {
@@ -374,7 +372,7 @@ const process = {
                         password : rows[0].password,
                         team : rows[0].team
                     }
-                    console.log("로그인 처음 됨");
+                    console.log("##### USER Login SUCCESS #####");
                 }
                 res.redirect('/');
                 //res.redirect('/index_user');
@@ -383,24 +381,24 @@ const process = {
                 //로그인이 안 된 경우
                 res.redirect('/login');
             }
-            
-        })
+        }catch(error){
+            console.log(error);
+        }
     },
-    loginProcessForAdmin : (req, res) => {
+    loginProcessForAdmin : async (req, res) => {
         //세션이 없는 경우 세션 발급
         let id = req.body.adminId;
         let password = req.body.adminPassword;
         const sql = 'SELECT * FROM ADMIN WHERE adminid = ? AND password = ?';
         const params = [id, password];
         console.log(id, password);
-        con.query(sql, params, function(err, rows, fields){
+        try{
+            const [rows, fileds] = await con.query(sql, params);
             console.log(rows.length); // row.length가 쿼리 결과물이라 보시면 됩니다. 0보다 크다는 것은 결과물이 있다는 것을 의미합니다.
             console.log(rows[0]);
-            if(err)
-                throw err;
             if(rows.length > 0){
                 if(req.session.admin){
-                    console.log("이미 로그인 되어 있음");
+                    console.log("##### already Logined #####");
                 }
                 else{
                     req.session.admin = {
@@ -411,7 +409,7 @@ const process = {
                         password : rows[0].password,
                         team : rows[0].team
                     }
-                    console.log("로그인 처음 됨");
+                    console.log("##### ADMIN Login SUCCESS #####");
                 }
                 res.redirect('/');
                 //res.redirect('/index_admin');
@@ -420,106 +418,103 @@ const process = {
                 //로그인이 안 된 경우
                 res.redirect('/login');
             }
-            
-        })
+        }catch(error){
+            console.log(error);
+        }
     },
-    deleteProcessForUser : (req, res) => {
+    deleteProcessForUser : async (req, res) => {
         console.log(req.session.user.id);
         const sql = `delete from user where userid = ?`;
         const params = [req.session.user.id];
-        con.query(sql, params, function(err, rows, fields){
-            if(err)
-                throw err;
-            else{
-                console.log(rows[0]);
-                req.session.destroy(
-                    function (err){
-                        if(err){
-                            console.log('세션 삭제시 에러');
-                            return;
-                        }
-                        console.log('세션 삭제 성공');
-                        //에러 있을겁니다. 추후 수정할게요.
+        try{
+            const [rows, fileds] = await con.query(sql, params);
+            console.log(rows[0]);
+            req.session.destroy(
+                function (err){
+                    if(err){
+                        console.log('세션 삭제시 에러');
+                        return;
                     }
-                );
-                // res.send('사용자 회원탈퇴가 완료되었습니다.');
-                res.redirect('/');
-            }
-        })
+                    console.log('세션 삭제 성공');
+                    //에러 있을겁니다. 추후 수정할게요.
+                }
+            );
+            // res.send('사용자 회원탈퇴가 완료되었습니다.');
+            res.redirect('/');
+        }catch(error){
+            console.log(error);
+        }
     },
-    deleteProcessForAdmin : (req, res) => {
+    deleteProcessForAdmin : async (req, res) => {
         console.log(req.session.admin.id);
         const sql = `delete from admin where adminid = ?`;
         const params = [req.session.admin.id];
-        con.query(sql, params, function(err, rows, fields){
-            if(err)
-                throw err;
-            else{
-                console.log(rows[0]);
-                req.session.destroy(
-                    function (err){
-                        if(err){
-                            console.log('세션 삭제시 에러');
-                            return;
-                        }
-                        console.log('세션 삭제 성공');
-                        //에러 있을겁니다. 추후 수정할게요.
+        try{
+            const [rows, fileds] = await con.query(sql, params);
+            console.log(rows[0]);
+            req.session.destroy(
+                function (err){
+                    if(err){
+                        console.log('세션 삭제시 에러');
+                        return;
                     }
-                );
-                // res.send('관리자 회원탈퇴가 완료되었습니다.');
-                res.redirect('/');
-            }
-        })
+                    console.log('세션 삭제 성공');
+                    //에러 있을겁니다. 추후 수정할게요.
+                }
+            );
+            // res.send('관리자 회원탈퇴가 완료되었습니다.');
+            res.redirect('/');
+        }catch(error){
+            console.log(error);
+        }
     },
-    updateProcessForUser : (req, res) => {
+    updateProcessForUser : async (req, res) => {
         const sql = `update user set password = ? where userid = ?`;
         const params = [req.body.password, req.session.user.id];
         console.log(params);
-        con.query(sql, params, function(err, rows, fields){
-            if(err)
-                throw err;
-            else{
-                req.session.destroy(
-                    function (err){
-                        if(err){
-                            console.log('세션 삭제시 에러');
-                            return;
-                        }
-                        console.log('세션 삭제 성공');
-                        //에러 있을겁니다. 추후 수정할게요.
+        try{
+            const [rows, fileds] = await con.query(sql, params);
+            req.session.destroy(
+                function (err){
+                    if(err){
+                        console.log('세션 삭제시 에러');
+                        return;
                     }
-                );
-                // res.send('사용자 회원탈퇴가 완료되었습니다.');
-                res.redirect('/login');
-            }
-        })
+                    console.log('세션 삭제 성공');
+                    //에러 있을겁니다. 추후 수정할게요.
+                }
+            );
+            // res.send('사용자 회원탈퇴가 완료되었습니다.');
+            res.redirect('/login');
+        }catch(error){
+            console.log(error);
+        }
     },
-    updateProcessForAdmin : (req, res) => {
+    updateProcessForAdmin : async (req, res) => {
         console.log(req.session.admin.id);
         const sql = `update admin set password = ? where adminid = ?`;
         const params = [req.body.password, req.session.admin.id];
         console.log(params);
-        con.query(sql, params, function(err, rows, fields){
-            if(err)
-                throw err;
-            else{
-                req.session.destroy(
-                    function (err){
-                        if(err){
-                            console.log('세션 삭제시 에러');
-                            return;
-                        }
-                        console.log('세션 삭제 성공');
-                        //에러 있을겁니다. 추후 수정할게요.
+        try{
+            const [rows, fileds] = await con.query(sql, params);
+            req.session.destroy(
+                function (err){
+                    if(err){
+                        console.log('세션 삭제시 에러');
+                        return;
                     }
-                );
-                // res.send('관리자 회원탈퇴가 완료되었습니다.');
-                res.redirect('/login');
-            }
-        })
+                    console.log('세션 삭제 성공');
+                    //에러 있을겁니다. 추후 수정할게요.
+                }
+            );
+            // res.send('관리자 회원탈퇴가 완료되었습니다.');
+            res.redirect('/login');
+        }catch(error){
+            console.log(error);
+        }
     },
 
-    makeLocker : (req, res) => {
+    makeLocker : async (req, res) => {
         console.log(req.body);
         let adminid = req.session.admin.id;
         let building = req.body.building;
@@ -529,50 +524,53 @@ const process = {
         let lockercol = req.body.lockercol;
         let len = lockerrow * lockercol;
 
+        // locker_parent 에 추가 쿼리
         const sql = `INSERT INTO locker_parent (adminid, building, lockername, notice, lockerrow, lockercol) VALUES (?, ?, ?, ?, ?, ?)`;
         const params = [adminid, building, lockername, notice, lockerrow, lockercol];
         console.log(params);
-        con.query(sql, params, function(err, rows, fields){
-            if(err)
-                throw err;
-            else{
-                const sql2 ='CREATE TABLE IF NOT EXISTS userdb.' + lockername +'(lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_'+lockername+'_user1_idx (userid ASC) VISIBLE, INDEX fk_'+lockername+'_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_'+lockername+'_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_'+lockername+'_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB';
-                con.query(sql2,function(err2, rows2, fields2){
-                    if(err2)
-                        throw err2;
-                    else{
-                        // console.log('table is created!');
-                        let sql3 = '';
-                        let params3 = [];
-                        for(let num = 1; num <= len; num++){
-                            sql3 = 'INSERT INTO ' + lockername + '(lockername, lockernum, canuse, exceptuse) VALUES (?, ?, ?, ?)';
-                            let lockernumber = "locker" + num;
-                            if(req.body.hasOwnProperty(lockernumber)){
-                                // console.log(req.body[lockernumber]);
-                                if(req.body[lockernumber] == "YES")
-                                    params3 = [lockername, num, 0, 1];
-                                else
-                                    params3 = [lockername, num, 1, 0];
-                            }
-                            else{
-                                console.log('lockernumber is wrong!');
-                                break;
-                            }
-                            con.query(sql3, params3, function(err3, rows3, fields3){
-                                if(err3)
-                                    throw err3;
-                                else{
-                                    console.log(lockernumber + " is inserted!");
-                                }
-                            })
-                        }
+        try{
+            // locker_parent 에 추가 실행
+            const [rows, fileds] = await con.query(sql, params);
+            
+            // locker_child(추상) 테이블 생성 쿼리
+            const sql2 ='CREATE TABLE IF NOT EXISTS userdb.' + lockername +'(lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_'+lockername+'_user1_idx (userid ASC) VISIBLE, INDEX fk_'+lockername+'_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_'+lockername+'_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_'+lockername+'_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB';
+            try{
+                // locker_child(추상) 테이블 생성 실행
+                const [rows, fileds] = await con.query(sql2);
+                // console.log('table is created!');
 
+                // locker_child(추상) 에 추가 쿼리
+                let sql3 = '';
+                let params3 = [];
+                for(let num = 1; num <= len; num++){
+                    sql3 = 'INSERT INTO ' + lockername + '(lockername, lockernum, canuse, exceptuse) VALUES (?, ?, ?, ?)';
+                    let lockernumber = "locker" + num;
+                    if(req.body.hasOwnProperty(lockernumber)){
+                        // console.log(req.body[lockernumber]);
+                        if(req.body[lockernumber] == "YES")
+                            params3 = [lockername, num, 0, 1];
+                        else
+                            params3 = [lockername, num, 1, 0];
                     }
-                })
+                    else{
+                        console.log('##### lockernumber is wrong! #####');
+                        break;
+                    }
 
-                // res.redirect('/locker_list_for_admin');
+                    try{
+                        // locker_child(추상) 에 추가 실행
+                        const [rows, fileds] = await con.query(sql2, params3);
+                        console.log("##### " + lockernumber + " is inserted! #####");
+                    }catch(error3){
+                        console.log(error3);
+                    }
+                }
+            }catch(error2){
+                console.log(error2);
             }
-        })
+        }catch(error){
+            console.log(error);
+        }
         res.redirect('/locker');
     }
 }
