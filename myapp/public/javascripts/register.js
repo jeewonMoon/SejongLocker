@@ -34,11 +34,24 @@ function checkPasswordAgain(){
   }
 }
 
+
+// 학번에 입력될 때 마다 초기화
+function registerIdReset(){
+  document.getElementById('registerIdHelp1').style.display = 'none';
+  document.getElementById('registerIdHelp2').style.display = 'none';
+}
+
+
 // 회원가입 버튼 클릭 시
 function checkForm(){
   if(document.getElementById('registerId').value == "")  {
     alert('학번을 입력해주세요.');
     document.getElementById('registerId').focus();
+    return false;
+  }
+  else if(document.getElementById('registerIdHelp1').style.display == 'none')  {
+    alert('학번 중복 확인해주세요.');
+    document.getElementById('registerIdHelp1').focus();
     return false;
   }
   else if(document.getElementById('registerName').value == "")  {
@@ -97,12 +110,16 @@ async function idCheck(){
 
     console.log(data);
 
-    login_flag = data.data.login;
+    let login_flag = data.data.login;
 
     if(login_flag){
       alert('사용 가능한 아이디입니다.');
+      document.getElementById('registerIdHelp1').style.display = 'inline';
+      document.getElementById('registerIdHelp2').style.display = 'none';
     }else{
-      alert('사용이 불가한 아이디입니다.')
+      alert('사용이 불가한 아이디입니다.');
+      document.getElementById('registerIdHelp1').style.display = 'none';
+      document.getElementById('registerIdHelp2').style.display = 'inline';
     }
 
   }else if (radio==='관리자'){
@@ -114,8 +131,12 @@ async function idCheck(){
     login_flag = data.data.login;
     if(login_flag){
       alert('사용 가능한 아이디입니다.');
+      document.getElementById('registerIdHelp1').style.display = 'inline';
+      document.getElementById('registerIdHelp2').style.display = 'none';
     }else{
-      alert('사용이 불가한 아이디입니다.')
+      alert('사용이 불가한 아이디입니다.');
+      document.getElementById('registerIdHelp1').style.display = 'none';
+      document.getElementById('registerIdHelp2').style.display = 'inline';
     }
   }else{
     alert('사용자 또는 관리자를 선택해주세요.');
