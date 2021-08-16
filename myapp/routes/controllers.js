@@ -313,6 +313,29 @@ const get = {
         }catch(error){
             console.log(error);
         }
+    },
+    showLocker : async (req, res) => {
+        let building = req.query.building;
+        let lockernames = [];
+        const params = [building];
+        const sql = `SELECT lockername FROM locker_parent WHERE building = ?`;
+
+        console.log('show lockername by building');
+        try{
+            const [rows, fields] = await con.query(sql, params);
+
+            // console.log(rows);
+            if(rows.length > 0){    //존재
+                lockernames = rows;
+            }
+            // console.log(lockernames);
+            res.json({
+                result : lockernames,
+                building,
+            })
+        }catch(error){
+            console.log(error);
+        }
     }
 };
 
