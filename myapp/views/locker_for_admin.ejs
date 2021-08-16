@@ -67,10 +67,12 @@
       <!-- <script src="/javascripts/select_place.js"></script> -->
 
       <div class="mb-3">
-        <label for="exampleInputEmail1">사물함 이름을 정해주세요.</label>
+        <label class="form-label" for="exampleInputEmail1">사물함 이름을 정해주세요.</label>
+        <label id="lockernameHelp1" class="form-text" style="color: green; float:right; display:none;">중복 확인 완료!</label>
+        <label id="lockernameHelp2" class="form-text" style="color: red; float:right; display:none;">이미 존재하는 사물함 이름입니다.</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="lockername" id="locker-name" placeholder="예시 : 컴퓨터공학과 사물함1">
-          <button type="button" class="btn btn-outline-warning" id="lockernameCheck">중복확인</button>
+          <input type="text" class="form-control" name="lockername" id="locker-name" placeholder="예시 : 컴퓨터공학과 사물함1" onkeyup="lockernameReset()">
+          <button type="button" class="btn btn-outline-warning" id="lockernameCheck" onclick="lockerNameCheck()">중복확인</button>
         </div>
       </div>
 
@@ -112,6 +114,7 @@
     crossorigin="anonymous"></script>
   <script src="./javascripts/make_locker.js"></script>
   <!-- <script src="./javascripts/select_place.js"></script> -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
   <script type="text/javascript" src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=35bb376dd59464cd1bcb4213e01dccbf"></script>
   <script src="./javascripts/kakaomap.js"></script>
 </body>
