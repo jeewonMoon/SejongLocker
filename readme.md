@@ -16,11 +16,11 @@
   </tr>
   <tr>
     <td>3주차
-    <td>페이지 기능 구현(Front) / 사물함 페이지 퍼블리싱
+    <td>페이지 기능 구현 (Front) / 사물함 페이지 퍼블리싱
   </tr>
   <tr>
     <td>4주차
-    <td>사물함 만드는 기능 완성(Front) / 오류 수정 및 clean code화
+    <td>사물함 만드는 기능 완성 (Front) / 오류 수정 및 clean code화
   </tr>
   <tr>
     <td>5주차
