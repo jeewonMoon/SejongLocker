@@ -23,7 +23,6 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarText">
           <ul class="navbar-nav" id="nav-items">
-            <li class="nav-item"><a class="nav-link text-light" href="/" style="text-align: right;">Home</a></li>
           
             <li class="nav-item dropdown" style="text-align: right;">
               <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
@@ -92,8 +91,14 @@
         <div id="main">
           <div id="chatTextBtn">
             <div class="input-group">
+              <% if (!info) { %>
               <label class="input-group-text" style="background-color: #F28123; color: white; outline: none; border: none;">회원이름</label>
+              <input type="text" class="form-control" id="test" placeholder="로그인 후 후기 및 문의사항을 남겨보세요!" style="outline: none; border: none;">
+              <% } %>
+              <% if (info) { %>
+              <label class="input-group-text" style="background-color: #F28123; color: white; outline: none; border: none;"><%=info.name%></label>
               <input type="text" class="form-control" id="test" placeholder="후기 및 문의사항을 남겨보세요!" style="outline: none; border: none;">
+              <% } %>
               <button class="btn btn-success" type="button" id="button-addon2">전송</button>
               <!-- <button onclick="send()">전송</button> -->
             </div>

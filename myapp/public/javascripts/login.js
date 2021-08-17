@@ -24,7 +24,7 @@ document.getElementById("userPassword").addEventListener('blur', function () {
 
     if(pwd == "") {
         p1 = 0;
-        document.getElementById("pwdHelp1").textContent = "비밀번호 입력해주세요.";
+        document.getElementById("pwdHelp1").textContent = "비밀번호를 입력해주세요.";
         document.getElementById("pwdHelp1").style.color = "red";
     }
     else {
@@ -54,7 +54,7 @@ document.getElementById("adminPassword").addEventListener('blur', function () {
 
     if(pwd == "") {
         p2 = 0;
-        document.getElementById("pwdHelp2").textContent = "비밀번호 입력해주세요.";
+        document.getElementById("pwdHelp2").textContent = "비밀번호를 입력해주세요.";
         document.getElementById("pwdHelp2").style.color = "red";
     }
     else {
