@@ -84,7 +84,7 @@ a:hover{
 }
 
 .footer{
-    height : 500.5px;
+    height : 300px;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -152,5 +152,11 @@ hr{
     
     #logo{
         content: url('/images/logo-bright.png')
+    }
+}
+
+@media (max-width:768px) {
+    .footer-contents{
+        font-size : 12.5px;
     }
 }
