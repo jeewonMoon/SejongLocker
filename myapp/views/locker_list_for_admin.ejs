@@ -22,7 +22,7 @@
         
           <li class="nav-item dropdown" style="text-align: right;">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
-              <%=info.name%>
+              <%=adminSession.name%>
             </button>
             <% if (admin) { %>
               <ul class="dropdown-menu dropdown-menu-end dropdownBox" aria-labelledby="dropdownMenuButton1" id="dropdown" style="position: absolute;">
@@ -42,6 +42,7 @@
   <div class="Container">
     <h1>내 사물함 내역</h1>
     <form action="">
+      <hr>
       <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
         <div class="card-body" id="card-body">
           <h5 class="card-title">사물함 이름</h5>
