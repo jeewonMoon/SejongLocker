@@ -193,3 +193,15 @@ async function emailCheck(){
     alert('사용자 또는 관리자를 선택해주세요.');
   }
 }
+
+
+// email 인증하기
+async function authEmail(){
+  const email = document.querySelector('#registerEmail');
+  let data = await axios.get(`http://localhost:3000/register/authEmail?authEmail=${email.value}`);
+
+  let authNum = data.data.authNum;
+  let authEmail = data.data.authEmail;
+  // 브라우저 - 개발자 도구에서 확인
+  console.log("###인증 이메일 : " + authEmail + " ###인증 번호 : " + authNum);
+}

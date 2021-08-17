@@ -31,15 +31,11 @@
     <label for="registerEmail" class="form-label">이메일</label>
     <label id="registerEmailHelp1" class="form-text" style="color: green; float:right; display:none;">중복 확인 완료!</label>
     <label id="registerEmailHelp2" class="form-text" style="color: red; float:right; display:none;">이미 존재하는 이메일입니다.</label>
-    <!-- <div class="row mb-3" style="margin:0;">
-        <input type="text" class="form-control col" name="email" id="registerEmail" aria-describedby="emailHelp">
-        <label class="form-text col-6" style="margin:0; font-size:20px;">@sju.ac.kr</label>
-    </div>
-    <button type="button" class="btn btn-outline-orange">인증하기</button> -->
     <div class="input-group mb-3">
       <input type="text" class="form-control" name="email" id="registerEmail" onkeyup="registerEmailReset()">
       <span class="input-group-text" id="basic-addon2">@sju.ac.kr</span>
       <button class="btn btn-outline-warning" type="button" id="button-addon2" onclick="emailCheck()">중복확인</button>
+      <button class="btn btn-outline-warning" type="button" id="button-addon3" onclick="authEmail()">인증하기</button>
     </div>
 </div>
 <div class="mb-3">
