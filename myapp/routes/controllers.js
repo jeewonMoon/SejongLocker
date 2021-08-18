@@ -669,7 +669,7 @@ const process = {
             const [rows, fileds] = await con.query(sql, params);
             
             // locker_child(추상) 테이블 생성 쿼리
-            const sql2 ='CREATE TABLE IF NOT EXISTS userdb.' + lockername +'(lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_'+lockername+'_user1_idx (userid ASC) VISIBLE, INDEX fk_'+lockername+'_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_'+lockername+'_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_'+lockername+'_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB';
+            const sql2 ='CREATE TABLE IF NOT EXISTS userdb.' + lockername +' (lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_'+lockername+'_user1_idx (userid ASC) VISIBLE, INDEX fk_'+lockername+'_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_'+lockername+'_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_'+lockername+'_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB';
             try{
                 // locker_child(추상) 테이블 생성 실행
                 const [rows, fileds] = await con.query(sql2);
@@ -679,7 +679,7 @@ const process = {
                 let sql3 = '';
                 let params3 = [];
                 for(let num = 1; num <= len; num++){
-                    sql3 = 'INSERT INTO ' + lockername + '(lockername, lockernum, canuse, exceptuse) VALUES (?, ?, ?, ?)';
+                    sql3 = 'INSERT INTO ' + lockername + ' (lockername, lockernum, canuse, exceptuse) VALUES (?, ?, ?, ?)';
                     let lockernumber = "locker" + num;
                     if(req.body.hasOwnProperty(lockernumber)){
                         // console.log(req.body[lockernumber]);
@@ -695,7 +695,7 @@ const process = {
 
                     try{
                         // locker_child(추상) 에 추가 실행
-                        const [rows, fileds] = await con.query(sql2, params3);
+                        const [rows, fileds] = await con.query(sql3, params3);
                         console.log("##### " + lockernumber + " is inserted! #####");
                     }catch(error3){
                         console.log(error3);
