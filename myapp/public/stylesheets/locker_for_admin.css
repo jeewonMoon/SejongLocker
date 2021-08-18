@@ -8,6 +8,23 @@ a{
     color: white;
 }
 
+h1{
+    text-align: center;
+    font-weight: bold;
+    color: #051922;
+    font-size: 4em;
+    padding: 45px 0 1.5em 0;
+}
+
+hr{
+    color: #F28123;
+    width: 50px;
+    height: 3px !important;
+    opacity: 1;
+    border: 0;
+    margin: 1.5rem 0;
+}
+
 a:hover{
     color: #F28123 !important;
 }
@@ -36,8 +53,10 @@ a:hover{
 }
 
 .locker-form{
-    margin: 5em;
-    width : 600px;
+    margin: auto;
+    width: 85%;
+    max-width: 768px;
+    min-width: 444px;
     border-color: #051922;
 }
 

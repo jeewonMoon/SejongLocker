@@ -20,7 +20,7 @@
     <label id="registerIdHelp2" class="form-text" style="color: red; float:right; display:none;">이미 존재하는 학번입니다.</label>
     <div class="input-group mb-3">
       <input type="text" class="form-control" name="id" id="registerId" onkeyup="registerIdReset()">
-      <button type="button" class="btn btn-outline-warning" id="button-addon1" onclick="idCheck()">중복확인</button>
+      <button type="button" class="btn btn-outline-warning" id="idCheckBtn1" onclick="idCheck()">중복확인</button>
     </div>
   </div>
 <div class="mb-3">
@@ -34,8 +34,8 @@
     <div class="input-group mb-3">
       <input type="text" class="form-control" name="email" id="registerEmail" onkeyup="registerEmailReset()">
       <span class="input-group-text" id="basic-addon2">@sju.ac.kr</span>
-      <button class="btn btn-outline-warning" type="button" id="button-addon2" onclick="emailCheck()">중복확인</button>
-      <button class="btn btn-outline-warning" type="button" id="button-addon3" onclick="authEmail()">인증하기</button>
+      <button class="btn btn-outline-warning" type="button" id="emailCheckBtn1" onclick="emailCheck()">중복확인</button>
+      <button class="btn btn-outline-warning" type="button" id="emailCheckBtn2" onclick="authEmail()">인증하기</button>
     </div>
 </div>
 <div class="mb-3">

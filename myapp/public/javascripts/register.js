@@ -56,7 +56,7 @@ function checkForm(){
   }
   else if(document.getElementById('registerIdHelp1').style.display == 'none')  {
     alert('학번 중복 확인해주세요.');
-    document.getElementById('registerIdHelp1').focus();
+    document.getElementById('idCheckBtn1').focus();
     return false;
   }
   else if(document.getElementById('registerName').value == "")  {
@@ -71,7 +71,7 @@ function checkForm(){
   }
   else if(document.getElementById('registerEmailHelp1').style.display == 'none')  {
     alert('이메일 중복 확인해주세요.');
-    document.getElementById('registerIdHelp1').focus();
+    document.getElementById('emailCheckBtn1').focus();
     return false;
   }
   else if(document.getElementById('registerPhone').value == "")  {

@@ -152,6 +152,14 @@ hr{
     #logo{
         content: url('/images/logo-bright.png')
     }
+
+    .footer{
+        background-color: white;
+    }
+
+    .footer-contents{
+        color: #051922 !important;
+    }
 }
 
 @media (max-width:768px) {
