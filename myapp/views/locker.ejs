@@ -5,8 +5,6 @@
   <%-include('./layout/import_head')%>
   
   <link rel="stylesheet" href="./stylesheets/locker_for_admin.css">
-  <script type="text/javascript"
-        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=58a38050aee1b3318bc8da2f739057bd&libraries=services"></script>
 </head>
 
 <body>
@@ -48,37 +46,43 @@
 
   <div class="Container">
     <div class='locker-form'>
-      
+      <form>
       <% if (user) { %>
-        <h1>사용자 사물함 신청 화면</h1>
-          <div class='mb-3'>
-            <select class="form-select" name="building" id="building" aria-label="Default select example" onchange="kakaomapMaker(this.value); showLockerName(this.value); rechange();">
-              <option value="" selected>사물함 건물 위치 선택</option>
-              <option value="광개토관">광개토관</option>
-              <option value="군자관">군자관</option>
-              <option value="다산관">다산관</option>
-              <option value="대양홀">대양홀</option>
-              <option value="대양AI센터">대양AI센터</option>
-              <option value="영실관">영실관</option>
-              <option value="용덕관">용덕관</option>
-              <option value="율곡관">율곡관</option>
-              <option value="이당관">이당관</option>
-              <option value="집현관">집현관</option>
-              <option value="충무관">충무관</option>
-              <option value="세종관">세종관</option>
-              <option value="학생회관">학생회관</option>
-            </select>
-          </div>
+        <h1>사물함 신청</h1>
+        <hr>
+        <div class='mb-3'>
+          <div class="row">
+            <div class="col">
+              <select class="form-select" name="building" id="building" aria-label="Default select example" onchange="kakaomapMaker(this.value); showLockerName(this.value); rechange();">
+                <option value="" selected>사물함 건물 위치 선택</option>
+                <option value="광개토관">광개토관</option>
+                <option value="군자관">군자관</option>
+                <option value="다산관">다산관</option>
+                <option value="대양홀">대양홀</option>
+                <option value="대양AI센터">대양AI센터</option>
+                <option value="영실관">영실관</option>
+                <option value="용덕관">용덕관</option>
+                <option value="율곡관">율곡관</option>
+                <option value="이당관">이당관</option>
+                <option value="집현관">집현관</option>
+                <option value="충무관">충무관</option>
+                <option value="세종관">세종관</option>
+                <option value="학생회관">학생회관</option>
+              </select>
+            </div>
+            <div class="col">
+              <select class="form-select" aria-label="Default select example" id="lockername" onchange="showLockerNotice(this.value)">
+                <option selected>먼저 사물함 건물을 선택해주세요.</option>
+                <option value=""></option>
+              </select>
+            </div>
+          </div>            
+        </div>
         
         <div id="map" class='mb-3' style="width:100%;height:350px;"></div>
         <!-- <script src="/javascripts/select_place.js"></script> -->
   
-        <div class='mb-3'>
-          <select class="form-select" aria-label="Default select example" id="lockername" onchange="showLockerNotice(this.value)">
-            <option selected>먼저 사물함 건물을 선택해주세요.</option>
-            <option value=""></option>
-          </select>
-        </div>
+        
   
         <div class="card mb-3">
           <div class="card-body" id="noticeName">
@@ -88,17 +92,17 @@
         </div>
 
         <div class="mb-3">
-          <div class="mb-3" style="float: right;">
-            <button class="btn btn-outline-warning" type="button">사진보기</button>
-          </div>
+          <h2>사물함 표</h2>
+          <table class="table" id="userTable"></table>
         </div>
         
         <div class="mb-3">
-          <h2>사물함 표</h2>
-          <table class="table" id="userTable"></table>
-          
-          <button class="btn btn-primary" type="button" style="float: right;">신청하기</button>
+          <div class="mb-3" style="float: right;">
+            <button class="btn btn-outline-warning" type="button">사진보기</button>
+            <button class="btn btn-primary" type="button">신청하기</button>
+          </div>
         </div>
+      </form>
       <% } %>
 
       <% if (admin) { %>
