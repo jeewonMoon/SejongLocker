@@ -181,11 +181,11 @@ async function emailCheck(){
 
     login_flag = data.data.login;
     if(login_flag){
-      alert('사용 가능한 아이디입니다.');
+      alert('사용 가능한 학번입니다.');
       document.getElementById('registerEmailHelp1').style.display = 'inline';
       document.getElementById('registerEmailHelp2').style.display = 'none';
     }else{
-      alert('사용이 불가한 아이디입니다.');
+      alert('사용이 불가한 학번입니다.');
       document.getElementById('registerEmailHelp1').style.display = 'none';
       document.getElementById('registerEmailHelp2').style.display = 'inline';
     }

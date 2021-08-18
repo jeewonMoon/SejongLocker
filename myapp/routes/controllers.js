@@ -86,7 +86,7 @@ const get = {
                 const sql = `SELECT * FROM locker_parent WHERE adminid = ?`;
                 const [rows, fileds] = await con.query(sql, params);
                 console.log('성공');
-                console.log(rows[0]);
+                console.log(rows);
                 
                 // try {
                 //     console.log('get data from locker_child');
@@ -101,7 +101,7 @@ const get = {
                 //     console.log(error);
                 //     throw error;
                 // }
-                res.render('locker_list_for_admin', {info : rows[0], user : "", admin : "admin", adminSession : req.session.admin}); 
+                res.render('locker_list_for_admin', {info : rows, user : "", admin : "admin", adminSession : req.session.admin}); 
             }catch(error){
                 console.log(error);
                 throw error;
