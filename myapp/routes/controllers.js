@@ -88,19 +88,6 @@ const get = {
                 console.log('성공');
                 console.log(rows);
                 
-                // try {
-                //     console.log('get data from locker_child');
-                //     let lockername = rows[0].lockername;
-                //     const sql2 = `SELECT * FROM ` + lockername;
-                    
-                //     const [rows2] = await con.query(sql2);
-                    
-                //     console.log("success");
-                //     console.log(rows2);
-                // } catch (error) {
-                //     console.log(error);
-                //     throw error;
-                // }
                 res.render('locker_list_for_admin', {info : rows, user : "", admin : "admin", adminSession : req.session.admin}); 
             }catch(error){
                 console.log(error);
@@ -327,7 +314,7 @@ const get = {
             throw error;
         }
     },
-    showLocker : async (req, res) => {
+    showLockerName : async (req, res) => {
         let building = req.query.building;
         let lockernames = [];
         const params = [building];
@@ -373,6 +360,28 @@ const get = {
                 lockername,
             })
         }catch(error){
+            console.log(error);
+            throw error;
+        }
+    },
+    printTable : async (req, res) => {
+        console.log('get data from locker_child');
+        let lockername = req.query.name;
+        let flag = false;
+        const sql = `SELECT * FROM ` + lockername;
+        const sql2 = `SELECT lockercol, lockerrow FROM locker_parent WHERE lockername = ?`;
+        try {
+            const [rows] = await con.query(sql);
+            const[rows2, fileds] = await con.query(sql2, [lockername]);
+            
+            console.log("success");
+            console.log(rows);
+            console.log(rows2);
+            res.json({
+                table : rows,
+                colRow : rows2,
+            })
+        } catch (error) {
             console.log(error);
             throw error;
         }
