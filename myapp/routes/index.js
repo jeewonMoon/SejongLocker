@@ -42,6 +42,7 @@ router.post('/deleteProcessForUser', controller.process.deleteProcessForUser);
 router.post('/deleteProcessForAdmin', controller.process.deleteProcessForAdmin);
 
 router.post('/makelocker', controller.process.makeLocker);
+router.post('/selectlocker', controller.process.selectLocker);
 
 /* HTML 사용시 이용
 router.get('/', function(req, res, next) {

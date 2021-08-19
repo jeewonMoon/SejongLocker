@@ -46,7 +46,7 @@
 
   <div class="Container">
     <div class='locker-form'>
-      <form>
+      <form method="POST" action="/selectlocker" onsubmit="return lockerUserCheck()">
       <% if (user) { %>
         <h1>사물함 신청</h1>
         <hr>
@@ -71,7 +71,7 @@
               </select>
             </div>
             <div class="col">
-              <select class="form-select" aria-label="Default select example" id="lockername" onchange="showLockerNotice(this.value)">
+              <select class="form-select" aria-label="Default select example" name="lockername" id="lockername" onchange="showLockerNotice(this.value)">
                 <option selected>먼저 사물함 건물을 선택해주세요.</option>
                 <option value=""></option>
               </select>
@@ -91,15 +91,20 @@
           </div>
         </div>
 
-        <div class="mb-3">
-          <h2>사물함 표</h2>
+        <div class="mb-3" id="tableInfo" style="display: none;">
+          <label class="form-text">색상별 의미 :&nbsp;</label>
+          <label class="form-text" style="color: #0d6efd;">선택 가능&nbsp;</label>
+          <label class="form-text" style="color: #ffc107;">선택 됨&nbsp;</label>
+          <label class="form-text" style="color: #198754;">사용 중&nbsp;</label>
+          <label class="form-text" style="color: #adb5bd;">사용 불가능</label>
           <table class="table" id="userTable"></table>
         </div>
         
         <div class="mb-3">
           <div class="mb-3" style="float: right;">
+            <input type="hidden" name="selectedLocker" id="selectedLocker" value="0">
             <button class="btn btn-outline-warning" type="button">사진보기</button>
-            <button class="btn btn-primary" type="button">신청하기</button>
+            <button type="submit" class="btn btn-primary">신청하기</button>
           </div>
         </div>
       </form>

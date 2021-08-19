@@ -189,7 +189,7 @@ const get = {
         }
     },
     checkUserId : async (req, res) => {
-        console.log('user id check');
+        console.log('user id CHECK');
         let id = req.query.id;
         let flag = false;
         const sql = `SELECT userid FROM USER WHERE userid = ?`;
@@ -213,7 +213,7 @@ const get = {
         }
     },
     checkAdminId : async (req, res) => {
-        console.log('admin id check');
+        console.log('admin id CHECK');
         let id = req.query.id;
         let flag = false;
         const sql = `SELECT adminid FROM ADMIN WHERE adminid = ?`;
@@ -244,7 +244,7 @@ const get = {
         const params = [email];
         const sql = `SELECT email FROM user WHERE email = ?`;
 
-        console.log('user email check');
+        console.log('user email CHECK');
         try{
             const [rows, fields] = await con.query(sql, params);
     
@@ -270,7 +270,7 @@ const get = {
         const params = [email];
         const sql = `SELECT email FROM admin WHERE email = ?`;
 
-        console.log('admin email check');
+        console.log('admin email CHECK');
         try{
             const [rows, fields] = await con.query(sql, params);
 
@@ -295,7 +295,7 @@ const get = {
         const params = [lockername];
         const sql = `SELECT lockername FROM locker_parent WHERE lockername = ?`;
 
-        console.log('lockername check');
+        console.log('lockername CHECK');
         try{
             const [rows, fields] = await con.query(sql, params);
 
@@ -320,7 +320,7 @@ const get = {
         const params = [building];
         const sql = `SELECT lockername FROM locker_parent WHERE building = ?`;
 
-        console.log('show lockername by building');
+        console.log('SHOW lockername BY building');
         try{
             const [rows, fields] = await con.query(sql, params);
 
@@ -341,24 +341,42 @@ const get = {
     showNotice : async (req, res) => {
         let building = req.query.building;
         let lockername = req.query.lockername;
-        let notice = "";
-        const params = [building, lockername];
-        const sql = `SELECT notice FROM locker_parent WHERE building = ? AND lockername = ?`;
 
-        console.log('show notice by lockername');
+        // 사물함 공지사항 가져오기
+        let notice = "";
+        let rowNum;
+        let colNum;
+        const params = [building, lockername];
+        const sql = `SELECT notice, lockerrow, lockercol FROM locker_parent WHERE building = ? AND lockername = ?`;
+
+        // console.log('SHOW notice BY building, lockername');
         try{
             const [rows, fields] = await con.query(sql, params);
 
-            // console.log(rows[0].notice);
             if(rows.length > 0){    //존재
                 notice = rows[0].notice;
+                rowNum = rows[0].lockerrow;
+                colNum = rows[0].lockercol;
             }
-            // console.log(lockernames);
-            res.json({
-                result : notice,
-                building,
-                lockername,
-            })
+
+            // 사물함 표 가져오기
+            const sql2 = `SELECT lockernum, canuse, exceptuse, userid FROM ` + lockername + ` ORDER BY lockernum ASC`
+
+            try{
+                const [rows, fields] = await con.query(sql2);
+
+                res.json({
+                    lockerrow : rowNum,
+                    lockercol : colNum,
+                    notice : notice,
+                    lockers : rows,
+                    building,
+                    lockername,
+                })
+            }catch(error2){
+                console.log(error2);
+                throw error2;
+            }
         }catch(error){
             console.log(error);
             throw error;
@@ -372,7 +390,7 @@ const get = {
         const sql2 = `SELECT lockercol, lockerrow FROM locker_parent WHERE lockername = ?`;
         try {
             const [rows] = await con.query(sql);
-            const[rows2, fileds] = await con.query(sql2, [lockername]);
+            const[rows2, fields] = await con.query(sql2, [lockername]);
             
             console.log("success");
             console.log(rows);
@@ -461,7 +479,7 @@ const process = {
             const sql = `INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
             const params = [id, name, email, phone, password, team];
             try{
-                const [rows, fileds] = await con.query(sql, params);
+                const [rows, fields] = await con.query(sql, params);
                 console.log(rows);
                 // res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
                 res.redirect('/login');
@@ -474,7 +492,7 @@ const process = {
             const sql = `INSERT INTO ADMIN (adminid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
             const params = [id, name, email, phone, password, team];
             try{
-                const [rows, fileds] = await con.query(sql, params);
+                const [rows, fields] = await con.query(sql, params);
                 console.log(rows);
                 // res.render('login', {message:"사용자 회원가입이 완료되었습니다."});
                 res.redirect('/login');
@@ -495,7 +513,7 @@ const process = {
         const params = [id, password];
         console.log(id, password);
         try{
-            const [rows, fileds] = await con.query(sql, params);
+            const [rows, fields] = await con.query(sql, params);
             console.log(rows.length); // row.length가 쿼리 결과물이라 보시면 됩니다. 0보다 크다는 것은 결과물이 있다는 것을 의미합니다.
             console.log(rows[0]);
             if(rows.length > 0){
@@ -533,7 +551,7 @@ const process = {
         const params = [id, password];
         console.log(id, password);
         try{
-            const [rows, fileds] = await con.query(sql, params);
+            const [rows, fields] = await con.query(sql, params);
             console.log(rows.length); // row.length가 쿼리 결과물이라 보시면 됩니다. 0보다 크다는 것은 결과물이 있다는 것을 의미합니다.
             console.log(rows[0]);
             if(rows.length > 0){
@@ -568,7 +586,7 @@ const process = {
         const sql = `delete from user where userid = ?`;
         const params = [req.session.user.id];
         try{
-            const [rows, fileds] = await con.query(sql, params);
+            const [rows, fields] = await con.query(sql, params);
             console.log(rows[0]);
             req.session.destroy(
                 function (err){
@@ -592,7 +610,7 @@ const process = {
         const sql = `delete from admin where adminid = ?`;
         const params = [req.session.admin.id];
         try{
-            const [rows, fileds] = await con.query(sql, params);
+            const [rows, fields] = await con.query(sql, params);
             console.log(rows[0]);
             req.session.destroy(
                 function (err){
@@ -616,7 +634,7 @@ const process = {
         const params = [req.body.password, req.session.user.id];
         console.log(params);
         try{
-            const [rows, fileds] = await con.query(sql, params);
+            const [rows, fields] = await con.query(sql, params);
             req.session.destroy(
                 function (err){
                     if(err){
@@ -640,7 +658,7 @@ const process = {
         const params = [req.body.password, req.session.admin.id];
         console.log(params);
         try{
-            const [rows, fileds] = await con.query(sql, params);
+            const [rows, fields] = await con.query(sql, params);
             req.session.destroy(
                 function (err){
                     if(err){
@@ -675,13 +693,13 @@ const process = {
         console.log(params);
         try{
             // locker_parent 에 추가 실행
-            const [rows, fileds] = await con.query(sql, params);
+            const [rows, fields] = await con.query(sql, params);
             
             // locker_child(추상) 테이블 생성 쿼리
             const sql2 ='CREATE TABLE IF NOT EXISTS userdb.' + lockername +' (lockername VARCHAR(45) NOT NULL, lockernum INT NOT NULL, canuse INT NOT NULL, exceptuse INT NOT NULL, userid INT NULL, PRIMARY KEY (lockernum), INDEX fk_'+lockername+'_user1_idx (userid ASC) VISIBLE, INDEX fk_'+lockername+'_locker_parent1_idx (lockername ASC) VISIBLE, CONSTRAINT fk_'+lockername+'_user1 FOREIGN KEY (userid) REFERENCES userdb.user (userid) ON DELETE CASCADE ON UPDATE CASCADE, CONSTRAINT fk_'+lockername+'_locker_parent1 FOREIGN KEY (lockername) REFERENCES userdb.locker_parent (lockername) ON DELETE CASCADE ON UPDATE CASCADE) ENGINE = InnoDB';
             try{
                 // locker_child(추상) 테이블 생성 실행
-                const [rows, fileds] = await con.query(sql2);
+                const [rows, fields] = await con.query(sql2);
                 // console.log('table is created!');
 
                 // locker_child(추상) 에 추가 쿼리
@@ -704,7 +722,7 @@ const process = {
 
                     try{
                         // locker_child(추상) 에 추가 실행
-                        const [rows, fileds] = await con.query(sql3, params3);
+                        const [rows, fields] = await con.query(sql3, params3);
                         console.log("##### " + lockernumber + " is inserted! #####");
                     }catch(error3){
                         console.log(error3);
@@ -720,7 +738,34 @@ const process = {
             throw error;
         }
         res.redirect('/locker');
-    }
+    },
+    selectLocker : async (req, res) => {
+        console.log(req.session.user.id);
+        let userid = req.session.user.id;
+        let building = req.body.building;
+        let lockername = req.body.lockername;
+        let lockernum = req.body.selectedLocker;
+
+        const sql = `UPDATE ` + lockername + ` SET canuse = ` + 0 + `, userid = ` + userid + ` WHERE lockernum = ` + lockernum;
+        const sql2 = `INSERT INTO lockeruser (userid, lockername, cnt) VALUES (?, ?, 1);`;
+        const params2 = [userid, lockername];
+        try{
+            const [rows, fields] = await con.query(sql);
+
+            try{
+                const [rows, fields] = await con.query(sql2, params2);
+
+                console.log("select Locker is DONE!!!");
+            }catch(error2){
+                console.log(error2);
+                throw error2;
+            }
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
+        res.redirect('locker');
+    },
 }
 
 module.exports = {
