@@ -63,7 +63,7 @@ function lockerUserCheck(){
 }
 
 
-// 사물함 신청 → 사물함 표 보인 후 초록(선택됨)으로 만들기
+// 사물함 신청 → 사물함 표 보인 후 노랑(선택됨)으로 만들기
 function wantLocker(id, lockerrow, lockercol) {
     let num = document.getElementById(id);
 

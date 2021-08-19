@@ -385,9 +385,9 @@ const get = {
     printTable : async (req, res) => {
         console.log('get data from locker_child');
         let lockername = req.query.name;
-        let flag = false;
+
         const sql = `SELECT * FROM ` + lockername;
-        const sql2 = `SELECT lockercol, lockerrow FROM locker_parent WHERE lockername = ?`;
+        const sql2 = `SELECT lockercol, lockerrow, notice FROM locker_parent WHERE lockername = ?`;
         try {
             const [rows] = await con.query(sql);
             const[rows2, fields] = await con.query(sql2, [lockername]);
@@ -403,6 +403,96 @@ const get = {
             console.log(error);
             throw error;
         }
+    },
+    changeNotice : async (req, res) => {
+        let adminid = req.session.admin.id;
+        let lockername = req.query.lockername;
+        let notice = req.query.notice;
+        let flag = false;
+
+        const sql = `Update locker_parent SET notice = ? WHERE adminid = ? AND lockername = ?`;
+        const params = [notice, adminid, lockername];
+        try {
+            const [rows, fields] = await con.query(sql, params);
+            
+            if(rows.length > 0){    // 성공
+                flag = false;
+            }else{
+                flag = true;
+            }
+
+            res.json({
+                result : flag,
+            })
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    },
+    getLockerNum : async (req, res) => {
+        let adminid = req.session.admin.id;
+        let lockername = req.query.lockername;
+
+        const sql = `SELECT lockerrow, lockercol FROM locker_parent WHERE adminid = ? AND lockername = ?`;
+        const params = [adminid, lockername];
+        try {
+            const [rows, fields] = await con.query(sql, params);
+            
+            res.json({
+                row : rows[0].lockerrow,
+                col : rows[0].lockercol,
+            })
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
+    },
+    changeLockerState : async (req, res) => {
+        let lockername = req.query.lockername;
+        let lockernum = req.query.lockernum;
+        let state = req.query.state;
+        let flag = false;
+
+        if(state == "useYes"){
+            const sql = `Update ` + lockername  + ` SET canuse = 1 , exceptuse = 0 , userid = null WHERE lockername = ? AND lockernum = ` + lockernum;
+            const params = [lockername];
+            try {
+                const [rows, fields] = await con.query(sql, params);
+                
+                if(rows.length > 0){    // 성공
+                    flag = false;
+                }else{
+                    flag = true;
+                }
+    
+                res.json({
+                    result : flag,
+                })
+            } catch (error) {
+                console.log(error);
+                throw error;
+            }
+        }else if(state == "useNo"){
+            const sql = `Update ` + lockername + ` SET canuse = 0 , exceptuse = 1 , userid = null WHERE lockername = ? AND lockernum = ` + lockernum;
+            const params = [lockername];
+            try {
+                const [rows, fields] = await con.query(sql, params);
+                
+                if(rows.length > 0){    // 성공
+                    flag = false;
+                }else{
+                    flag = true;
+                }
+    
+                res.json({
+                    result : flag,
+                })
+            } catch (error) {
+                console.log(error);
+                throw error;
+            }
+        }
+
     }
 };
 
