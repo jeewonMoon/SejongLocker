@@ -1,20 +1,3 @@
-// document.getElementById('make-locker').addEventListener('click', function () {
-//     let height = document.getElementById("height").value;
-//     let width = document.getElementById("width").value;
-//     let table = '';
-//     let start = 1;
-//     for (let i = 0; i < height; i++) {
-//         table += '<tr>';
-//         for (let j = 0; j < width; j++) {
-//             // table += `<td class="table-primary" id="${start}" onclick="blockLocker(${start})">${start}</td>`;
-//             table += `<td class="table-primary" id="${start}" onclick="blockLocker(${start})">${start}<input type="hidden" name="locker${start}" id="locker${start}" value="${start}"></td>`;
-//             start += 1;
-//         }
-//         table += '</tr>';
-//     }
-//     document.getElementById('table').innerHTML = table;
-// });
-
 // 사물함 만드는 함수
 function makeLocker(){
     let height = document.getElementById("height").value;

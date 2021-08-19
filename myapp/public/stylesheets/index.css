@@ -163,6 +163,10 @@ hr{
 }
 
 @media (max-width:768px) {
+    .title{
+        font-size: 27px;
+    }
+
     .footer-contents{
         font-size : 12.5px;
     }
