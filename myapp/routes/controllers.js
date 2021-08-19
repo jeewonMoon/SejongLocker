@@ -72,15 +72,15 @@ const get = {
         }
     },
     lockerListForAdmin : async (req, res) => {
-        let id = req.session.admin.id;
-        const params = [id];
-        //세션이 없는 경우 인덱스
-        console.log(req.session);
         if(!(req.session.admin)){
             console.log('세션 없음');
             res.redirect('/');
         }
         else if(req.session.admin){
+            let id = req.session.admin.id;
+            const params = [id];
+            console.log(req.session);
+            
             console.log('관리자 사물함 내역 불러오기');
             try{
                 const sql = `SELECT * FROM locker_parent WHERE adminid = ?`;
