@@ -103,7 +103,7 @@ async function showLockerNotice(lockername){
             // 사물함 공지사항
             let data = await axios.get(`http://localhost:3000/locker/showLockerNotice?building=${buildingName}&lockername=${lockername}`);
 
-            console.log(data);
+            // console.log(data);
     
             let lockerrow = data.data.lockerrow;
             let lockercol = data.data.lockercol;
