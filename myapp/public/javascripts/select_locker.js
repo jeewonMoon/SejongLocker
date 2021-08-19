@@ -43,7 +43,6 @@ function rechange(){
 }
 
 
-// let total = 0;
 // 사물함 신청 완료 버튼 클릭 → 제대로 입력했는지 검증
 function lockerUserCheck(){
     if(document.getElementById('building').value == "")  {
@@ -57,11 +56,6 @@ function lockerUserCheck(){
         return false;
     }
     else if(document.getElementById("selectedLocker").value == 0){
-        // for(let i = 1; i <= total; i++){
-        //     if(document.getElementById(i).className == "table-warning"){
-        //         return true;
-        //     }
-        // }
         alert('원하시는 위치의 사물함을 선택해주세요')
         return false;
     }
@@ -103,11 +97,9 @@ async function showLockerNotice(lockername){
             // 사물함 공지사항
             let data = await axios.get(`http://localhost:3000/locker/showLockerNotice?building=${buildingName}&lockername=${lockername}`);
 
-            // console.log(data);
-    
             let lockerrow = data.data.lockerrow;
             let lockercol = data.data.lockercol;
-            // total = lockerrow * lockercol;
+            
             if(notice.length > 0){
                 notice += `<h5 class="card-title">${lockername} 사물함 공지사항</h5>
                     <p class="card-text mb-2 text-muted">${notice}</p>`;

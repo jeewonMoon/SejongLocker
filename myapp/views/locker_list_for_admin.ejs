@@ -39,9 +39,11 @@
   </nav>
 
   <div class="Container">
-    <h1>내 사물함 내역</h1>
+    <h1>사물함 내역</h1>
     <% for(let i = 0; i < info.length; i++) { %>
-    <form action="">
+    <form action="" class="mb-3">
+      <h2 class="" style="margin-top: 24px;">&nbsp;<%= i %>.</h2>
+      <hr style="margin-top: 0px;">
       <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
         <div class="card-body" id="card-body">
           <h5 class="card-title">사물함 이름</h5>
@@ -53,10 +55,9 @@
         </div>
       </div>
       <!-- Button trigger modal -->
-      <button type="button" class="btn btn-color-orange" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="<%=info[i].lockername%>">
+      <button type="button" class="btn btn-color-orange" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="<%=info[i].lockername%>" style="float: right; margin-right: 60px;">
         사물함 보기
       </button>
-      <hr>
     
     
     <!-- Modal -->
@@ -68,7 +69,14 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            <table id="table"></table>
+            <div class="mb-3">
+              <label class="form-text">색상별 의미 :&nbsp;</label>
+              <label class="form-text" style="color: #0d6efd;">선택 가능&nbsp;</label>
+              <label class="form-text" style="color: #198754;">사용 중&nbsp;</label>
+              <label class="form-text" style="color: #adb5bd;">사용 불가능</label>
+              <table class="table" id="userTable"></table>
+            </div>
+            <table class="table" id="adminTable"></table>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
