@@ -26,9 +26,9 @@ async function makeTable(lockername) {
     const row = data.data.colRow[0].lockerrow;
     let start = 0;
     
-    for(let i = 0; i < col; i++) {
+    for(let i = 0; i < row; i++) {
         table += `<tr>`
-          for (let j = 0; j < row; j++) {
+          for (let j = 0; j < col; j++) {
             if(data.data.table[start].exceptuse == 1){
                 table += `<td class="table-secondary" id="${data.data.table[start].lockernum}" onclick="changeColor(${data.data.table[start].lockernum})"><input type="hidden" id="locker${data.data.table[start].lockernum}" value="${data.data.table[start].lockernum}">${data.data.table[start].lockernum}</td>`;
             }
@@ -120,9 +120,9 @@ async function changeLockerYES(){
         const row = data.data.colRow[0].lockerrow;
         let start = 0;
         
-        for(let i = 0; i < col; i++) {
+        for(let i = 0; i < row; i++) {
             table += `<tr>`
-              for (let j = 0; j < row; j++) {
+              for (let j = 0; j < col; j++) {
                 if(rowsTable[start].exceptuse == 1){
                     table += `<td class="table-secondary" id="${rowsTable[start].lockernum}" onclick="changeColor(${rowsTable[start].lockernum})"><input type="hidden" id="locker${rowsTable[start].lockernum}" value="${rowsTable[start].lockernum}">${rowsTable[start].lockernum}</td>`;
                 }
@@ -171,9 +171,9 @@ async function changeLockerNO(){
         const row = data.data.colRow[0].lockerrow;
         let start = 0;
         
-        for(let i = 0; i < col; i++) {
+        for(let i = 0; i < row; i++) {
             table += `<tr>`
-              for (let j = 0; j < row; j++) {
+              for (let j = 0; j < col; j++) {
                 if(rowsTable[start].exceptuse == 1){
                     table += `<td class="table-secondary" id="${rowsTable[start].lockernum}" onclick="changeColor(${rowsTable[start].lockernum})"><input type="hidden" id="locker${rowsTable[start].lockernum}" value="${rowsTable[start].lockernum}">${rowsTable[start].lockernum}</td>`;
                 }

@@ -114,9 +114,9 @@ async function showLockerNotice(lockername){
             
             let table = '';
             let start = 0;
-            for (let i = 0; i < lockercol; i++) {
+            for (let i = 0; i < lockerrow; i++) {
                 table += '<tr>';
-                for (let j = 0; j < lockerrow; j++) {
+                for (let j = 0; j < lockercol; j++) {
                     if(data.data.lockers[start].exceptuse == 1){
                         table += `<td class="table-secondary" id="${data.data.lockers[start].lockernum}"><input type="hidden" id="locker${data.data.lockers[start].lockernum}">${data.data.lockers[start].lockernum}</td>`;
                     }

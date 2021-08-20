@@ -869,8 +869,8 @@ const process = {
         let lockernum = req.body.selectedLocker;
 
         const sql = `UPDATE ` + lockername + ` SET canuse = ` + 0 + `, userid = ` + userid + ` WHERE lockernum = ` + lockernum;
-        const sql2 = `INSERT INTO lockeruser (userid, lockername, cnt) VALUES (?, ?, 1);`;
-        const params2 = [userid, lockername];
+        const sql2 = `INSERT INTO lockeruser (userid, lockername, lockernum) VALUES (?, ?, ?);`;
+        const params2 = [userid, lockername, lockernum];
         try{
             const [rows, fields] = await con.query(sql);
 
