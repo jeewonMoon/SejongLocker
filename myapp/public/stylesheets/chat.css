@@ -1,5 +1,5 @@
 /* 메인 */
-#main {
+#chat {
     border-radius: 20px;
     background-color: antiquewhite;
     text-align: center;
@@ -10,52 +10,42 @@
     margin-bottom: 20px;
 }
 
-#chatTextBtn {
-    /* margin-top: 10px; */
-    /* margin-left: 5px; */
-    /* margin-right: 5px; */
+#chatInfo {
     margin: 15px;
 }
 
 /* 채팅 영역 */
-#chat {
-    height: 90%;
+#chatWindow {
+    height: 85%;
     width: 100%;
-    overflow-y: auto;
+    /* 일부러 지나간 후기는 안보이게 만듬. 수정가능 */
+    overflow-y: hidden;
 }
 
-/* 접속 알림 */
-.connect {
-    width: 90%;
-    margin: auto;
-    background-color: aquamarine;
-    text-align: center;
-    margin-top: 10px;
+.output__user{
+    border-radius: 10px;
+    margin: 15px;
+    background-color: floralwhite;
+    display: flex;
 }
 
-/* 접속 종료 알림 */
-.disconnect {
-    width: 90%;
-    margin: auto;
-    background-color: indianred;
-    text-align: center;
-    margin-top: 10px;
+.output__user__message{
+    margin: 10px;
+    color: gray;
 }
 
-/* 내가 보낸 메시지 */
-.me {
-    width: 90%;
-    margin: auto;
-    background-color: lemonchiffon;
-    border-radius: 5px;
-    margin-top: 10px;
+.output__user__name{
+    margin: 10px;
+    font-weight: 700;
+    color: #F28123;
 }
 
-/* 상대방이 보낸 메시지 */
-.other {
-    width: 90%;
-    margin: auto;
-    background-color: white;
-    border-radius: 5px;
-    margin-top: 10px;
+.output__server__message{
+    margin: 10px;
+    color: gray;
+}
+
+.output__server{
+    border-radius: 10px;
+    margin: 15px;
 }
