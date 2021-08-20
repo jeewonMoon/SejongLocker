@@ -78,7 +78,7 @@ function changeColor(id) {
     let num = document.getElementById(id);
     let targetLocker = document.getElementById("locker"+id);
 
-    console.log("before " + num.className);
+    // console.log("before " + num.className);
     if(num.className.slice(num.className.length-7, num.className.length) == "warning"){
         num.className = num.className.slice(0, num.className.length-14);
         targetLocker.value = id;
@@ -86,7 +86,7 @@ function changeColor(id) {
         num.className += " table-warning";
         targetLocker.value = "CHANGE"
     }
-    console.log("after " + num.className);
+    // console.log("after " + num.className);
 }
 
 
@@ -188,5 +188,22 @@ async function changeLockerNO(){
             table += `</tr>`
         }
         document.getElementById('adminTable').innerHTML = table;
+    }
+}
+
+
+// 사물함 삭제
+async function deleteLocker(){
+    let flag = confirm('정말 삭제 하실 건가요?');
+
+    if(flag){
+        let targetLockerName = document.getElementById('lockerName').textContent;
+
+        let data = await axios.get(`http://localhost:3000/locker_list_for_admin/deleteLocker?lockername=${targetLockerName}`);
+
+        if(data.data.flag){
+            console.log("deleteLocker is success");
+            window.location.href = 'http://localhost:3000/locker_list_for_admin';
+        }
     }
 }

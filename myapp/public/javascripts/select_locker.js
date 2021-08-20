@@ -97,12 +97,13 @@ async function showLockerNotice(lockername){
             // 사물함 공지사항
             let data = await axios.get(`http://localhost:3000/locker/showLockerNotice?building=${buildingName}&lockername=${lockername}`);
 
+            let lockernotice = data.data.notice;
             let lockerrow = data.data.lockerrow;
             let lockercol = data.data.lockercol;
             
-            if(notice.length > 0){
+            if(lockernotice.length > 0){
                 notice += `<h5 class="card-title">${lockername} 사물함 공지사항</h5>
-                    <p class="card-text mb-2 text-muted">${notice}</p>`;
+                    <p class="card-text mb-2 text-muted">${lockernotice}</p>`;
             }
             else{
                 notice += `<h5 class="card-title">${lockername} 사물함 공지사항</h5>
