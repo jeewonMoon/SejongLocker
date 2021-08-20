@@ -49,7 +49,7 @@
 </table>
 
 사용하는 언어 및 프레임워크 : HTML5, CSS3, JavaScript, BootStrap, Express  
-백엔드 : Node.js, Axios, Mysql, Mysql2, AWS
+백엔드 : Node.js, Axios, Socket.io, Mysql, Mysql2, AWS
 
 <br>
 
