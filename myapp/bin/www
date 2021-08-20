@@ -88,3 +88,34 @@ function onListening() {
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
 }
+
+
+
+// socket.io
+const io = require('socket.io')(server);  // socket.io
+
+io.sockets.on('connection', function(socket){
+  socket.on('newUserConnect', function(name){
+    socket.name = name;
+
+    let message = "▶ 실시간 수신중 ◀";
+
+    io.sockets.emit('updateMessage', {
+      name : 'SERVER',
+      message : message
+    });
+  });
+
+  socket.on('disconnect', function(){
+    let message = socket.name + '님이 퇴장했습니다.';
+    socket.broadcast.emit('updateMessage'), {
+      name : 'SERVER',
+      message : message
+    };
+  });
+
+  socket.on('sendMessage', function(data){
+    data.name = socket.name;
+    io.sockets.emit('updateMessage', data);
+  });
+});

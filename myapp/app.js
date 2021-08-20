@@ -7,6 +7,7 @@ const session = require('express-session');
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const db = require('./db/config');
+const { isObject } = require('util');
 
 const app = express();
 const port = 3000;
@@ -48,4 +49,5 @@ app.use(function(err, req, res, next) {
   //res.send('잘못된 접근입니다.');
   res.render('error');
 });
+
 module.exports = app;
