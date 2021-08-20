@@ -26,6 +26,7 @@ router.get('/register/adminEmailcheck', controller.get.checkAdminEmail);
 router.get('/locker/lockernameCheck', controller.get.checkLockerName);
 router.get('/locker/showLockerName', controller.get.showLockerName);
 router.get('/locker/showLockerNotice', controller.get.showNotice);
+router.get('/locker_list_for_user/deleteLockerUser', controller.get.deleteLockerUser);
 router.get('/locker_list_for_admin/printLocker', controller.get.printTable);
 router.get('/locker_list_for_admin/changeNotice', controller.get.changeNotice);
 router.get('/locker_list_for_admin/getLockerNum', controller.get.getLockerNum);

@@ -42,6 +42,7 @@
     <h1>사물함 내역</h1>
     <% for(let i = 0; i < info.length; i++) { %>
     <form class="mb-3">
+
       <h2 class="" style="margin-top: 24px;">&nbsp;<%= i %>.</h2>
       <hr style="margin-top: 0px;">
       <div class="card text-dark bg-light mb-3" style="max-width: 25rem;">
@@ -60,43 +61,43 @@
       </button>
     
     
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="lockerName"><%=info[i].lockername%></h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <div class="mb-3">
-              <label class="form-label">사용자에게 전할 공지사항</label>
-              <button type="button" class="btn btn-outline-warning btn-sm" style="float: right;" onclick="changeNotice()">공지사항 변경</button>
-              <label class="form-text" id="noticechangeHelp1" style="float: right;">수정 후 변경 버튼 꾹!&nbsp;</label>
-              <label class="form-text" id="noticechangeHelp2" style="color: green; float:right; display:none;">공지사항 변경 완료!&nbsp;</label>
-              <textarea class="form-control" id="noticeChange" name="noticeChange" rows="3" onkeydown="resetNotice()"></textarea>
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="lockerName"><%=info[i].lockername%></h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <table class="table" id="adminTable"></table>
-            <div class="mb-3">
-              <label class="form-text">사물함 색상별 의미 :&nbsp;</label>
-              <label class="form-text" style="color: #0d6efd;">사용 가능&nbsp;</label>
-              <label class="form-text" style="color: #ffc107;">선택 됨&nbsp;</label>
-              <label class="form-text" style="color: #198754;">사용 중&nbsp;</label>
-              <label class="form-text" style="color: #adb5bd;">사용 불가능</label>
-              <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeLockerNO()" style="float: right;">사용 불가능으로 변경</button>
-              <button type="button" class="btn btn-outline-primary btn-sm" onclick="changeLockerYES()" style="float: right; margin-right: 5px;">사용 가능으로 변경</button>
+            <div class="modal-body">
+              <div class="mb-3">
+                <label class="form-label">사용자에게 전할 공지사항</label>
+                <button type="button" class="btn btn-outline-warning btn-sm" style="float: right;" onclick="changeNotice()">공지사항 변경</button>
+                <label class="form-text" id="noticechangeHelp1" style="float: right;">수정 후 변경 버튼 꾹!&nbsp;</label>
+                <label class="form-text" id="noticechangeHelp2" style="color: green; float:right; display:none;">공지사항 변경 완료!&nbsp;</label>
+                <textarea class="form-control" id="noticeChange" name="noticeChange" rows="3" onkeydown="resetNotice()"></textarea>
+              </div>
+              <table class="table" id="adminTable"></table>
+              <div class="mb-3">
+                <label class="form-text">사물함 색상별 의미 :&nbsp;</label>
+                <label class="form-text" style="color: #0d6efd;">사용 가능&nbsp;</label>
+                <label class="form-text" style="color: #ffc107;">선택 됨&nbsp;</label>
+                <label class="form-text" style="color: #198754;">사용 중&nbsp;</label>
+                <label class="form-text" style="color: #adb5bd;">사용 불가능</label>
+                <button type="button" class="btn btn-outline-secondary btn-sm" onclick="changeLockerNO()" style="float: right;">사용 불가능으로 변경</button>
+                <button type="button" class="btn btn-outline-primary btn-sm" onclick="changeLockerYES()" style="float: right; margin-right: 5px;">사용 가능으로 변경</button>
+              </div>
             </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-color-orange" onclick="deleteLocker()">사물함 영구 삭제</button>
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-color-orange" onclick="deleteLocker()">사물함 영구 삭제</button>
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+            </div>
           </div>
         </div>
       </div>
-    </div>
     
-  </form>
-  <% } %>
+    </form>
+    <% } %>
   </div>
 
   <!-- Bootstrap Bundle with Popper -->
