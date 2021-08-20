@@ -392,9 +392,9 @@ const get = {
             const [rows] = await con.query(sql);
             const[rows2, fields] = await con.query(sql2, [lockername]);
             
-            console.log("success");
-            console.log(rows);
-            console.log(rows2);
+            // console.log("success");
+            // console.log(rows);
+            // console.log(rows2);
             res.json({
                 table : rows,
                 colRow : rows2,
@@ -415,9 +415,9 @@ const get = {
         try {
             const [rows, fields] = await con.query(sql, params);
             
-            if(rows.length > 0){    // 성공
+            if(rows.length > 0){ // 성공
                 flag = false;
-            }else{
+            }else{          
                 flag = true;
             }
 
@@ -492,7 +492,39 @@ const get = {
                 throw error;
             }
         }
+    },
+    deleteLocker : async (req, res) => {
+        let lockername = req.query.lockername;
+        let flag = false;
+        
+        try{
+            const sql = `DROP TABLE IF EXISTS userdb.` + lockername ;
+            const [rows, fields] = await con.query(sql);
+            console.log("DROP TABLE SUCCESS");
 
+            const sql2 = `DELETE FROM lockeruser WHERE lockername = ?`;
+            const params2 = [lockername];
+            const [rows2, fields2] = await con.query(sql2, params2);
+            console.log("DELETE lockeruser SUCCESS");
+
+            const sql3 = `DELETE FROM locker_parent WHERE lockername = ?`;
+            const params3 = [lockername];
+            const [rows3, fields3] = await con.query(sql3, params3);
+            console.log("DELETE IN locker_parent SUCCESS");
+
+            if(rows.length > 0 && rows2.length > 0 && rows3.length > 0){    // 성공
+                flag = false;
+            }else{
+                flag = true;
+            }
+
+            res.json({
+                flag : flag,
+            })
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
     }
 };
 

@@ -66,10 +66,11 @@
 
       <div class="mb-3">
         <label class="form-label">사물함 이름</label>
+        <label class="form-text">띄어쓰기 불가!</label>
         <label class="form-text" id="lockernameHelp1" style="color: green; float:right; display:none;">중복 확인 완료!</label>
         <label class="form-text" id="lockernameHelp2" style="color: red; float:right; display:none;">이미 존재하는 사물함 이름입니다.</label>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" name="lockername" id="locker-name" placeholder="예시 : 컴퓨터공학과 사물함1" onkeyup="lockernameReset()">
+          <input type="text" class="form-control" name="lockername" id="locker-name" placeholder="예시 : 컴퓨터공학과_사물함1" onkeyup="lockernameReset(); noSpace();">
           <button type="button" class="btn btn-outline-warning" id="lockernameCheck" onclick="lockerNameCheck()">중복확인</button>
         </div>
       </div>

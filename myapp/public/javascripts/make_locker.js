@@ -32,6 +32,20 @@ function blockLocker(id) {
 }
 
 
+// lockername 공백 입력시 막기
+function noSpace(){
+    let str = document.querySelector('#locker-name').value;
+    for(let i = 0; i < str.length; i++) {
+        a = str.substr(i, 1)
+        if (a==" ")
+        {
+           alert("띄어쓰기는 불가능합니다.")
+           document.querySelector('#locker-name').value = document.querySelector('#locker-name').value.replace(' ',''); // 공백제거
+        }
+     }
+}
+
+
 // lockername 중복체크
 async function lockerNameCheck(){
     const lockername = document.querySelector('#locker-name');
