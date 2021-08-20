@@ -51,27 +51,45 @@ const get = {
             res.redirect('/');
         }
         else if(req.session.user){
-            let result = [];
+            let id = req.session.user.id;
+            const params = [id];
+            console.log(req.session);
             
             console.log('사용자 사물함 내역 불러오기');
             try{
-                let id = req.session.user.id;
-                const sql = `SELECT * FROM lockeruser WHERE userid = ?`;
-                const params = [id];
-                const [rows, fields] = await con.query(sql, params);
-                for(let i = 0; i < rows.length; i++){
-                    const sql2 = `SELECT building, notice FROM locker_parent WHERE lockername = ?`;
-                    const params2 = [rows[i].lockername];
-                    const [rows2, fields] = await con.query(sql2, params2);
-                    result.push(rows2[0]);
-                }
+                const sql = `SELECT * FROM locker_parent, lockeruser WHERE userid = ? and locker_parent.lockername = lockeruser.lockername`;
+                const [rows, fileds] = await con.query(sql, params);
+                console.log('성공');
+                console.log(rows);
                 
-                res.render('locker_list_for_user', {info : rows, info2 : result, user : "user", admin : "", userSession : req.session.user}); 
+                res.render('locker_list_for_user', {info : rows, user : "user", admin : "", userSession : req.session.user}); 
             }catch(error){
                 console.log(error);
                 throw error;
             }
         }
+        // else if(req.session.user){
+        //     let result = [];
+            
+        //     console.log('사용자 사물함 내역 불러오기');
+        //     try{
+        //         let id = req.session.user.id;
+        //         const sql = `SELECT * FROM lockeruser WHERE userid = ?`;
+        //         const params = [id];
+        //         const [rows, fields] = await con.query(sql, params);
+        //         for(let i = 0; i < rows.length; i++){
+        //             const sql2 = `SELECT building, notice FROM locker_parent WHERE lockername = ?`;
+        //             const params2 = [rows[i].lockername];
+        //             const [rows2, fields] = await con.query(sql2, params2);
+        //             result.push(rows2[0]);
+        //         }
+                
+        //         res.render('locker_list_for_user', {info : rows, info2 : result, user : "user", admin : "", userSession : req.session.user}); 
+        //     }catch(error){
+        //         console.log(error);
+        //         throw error;
+        //     }
+        // }
     },
     lockerListForAdmin : async (req, res) => {
         if(!(req.session.admin)){
@@ -553,6 +571,29 @@ const get = {
             console.log(error);
             throw error;
         }
+    },
+    getModalInfo : async (req, res) => {
+        let lockername = req.query.name;
+        console.log(lockername);
+        try{
+            console.log("get info from locker_parent for lockerlistuser");
+            const sql = `SELECT building, notice FROM locker_parent WHERE lockername = ?`;
+            const [rows, fields] = await con.query(sql, [lockername]);
+            console.log(rows[0]);
+
+            console.log("get info from lockeruser for lockerlistuser");
+            const sql2 = `SELECT * FROM lockeruser WHERE lockername = ?`;
+            const [rows2, fields2] = await con.query(sql2, [lockername]);
+            console.log(rows2[0]);
+
+            res.json({
+                rows : rows[0],
+                rows2 : rows2[0],
+            })
+        }catch(error){
+            console.log(error);
+            throw error;
+        }
     }
 };
 
@@ -895,10 +936,11 @@ const process = {
         let building = req.body.building;
         let lockername = req.body.lockername;
         let lockernum = req.body.selectedLocker;
+        let lockerpwd = req.body.lockerPwd;
 
         const sql = `UPDATE ` + lockername + ` SET canuse = ` + 0 + `, userid = ` + userid + ` WHERE lockernum = ` + lockernum;
-        const sql2 = `INSERT INTO lockeruser (userid, lockername, lockernum) VALUES (?, ?, ?);`;
-        const params2 = [userid, lockername, lockernum];
+        const sql2 = `INSERT INTO lockeruser (userid, lockername, lockernum, lockerpwd) VALUES (?, ?, ?, ?);`;
+        const params2 = [userid, lockername, lockernum, lockerpwd];
         try{
             const [rows, fields] = await con.query(sql);
 
