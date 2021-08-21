@@ -45,6 +45,9 @@ function rechange(){
 
 // 사물함 신청 완료 버튼 클릭 → 제대로 입력했는지 검증
 function lockerUserCheck(){
+    let pwd = document.getElementById("lockerPwd").value;
+    let regExp = /^\d{4}$/;
+
     if(document.getElementById('building').value == "")  {
         alert('사물함 건물 위치를 선택해주세요.');
         document.getElementById('building').focus();
@@ -56,7 +59,16 @@ function lockerUserCheck(){
         return false;
     }
     else if(document.getElementById("selectedLocker").value == 0){
-        alert('원하시는 위치의 사물함을 선택해주세요')
+        alert('원하시는 위치의 사물함을 선택해주세요.')
+        return false;
+    }
+    else if(document.getElementById("lockerPwd").value == ''){
+        alert('올바른 비밀번호를 입력해주세요.')
+        return false;
+    }
+    else if (!regExp.test(pwd)) {
+        f1 = 0;
+        alert('올바른 비밀번호를 입력해주세요.')
         return false;
     }
     return true;

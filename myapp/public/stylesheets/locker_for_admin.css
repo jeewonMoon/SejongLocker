@@ -40,7 +40,7 @@ a:hover{
 }
 
 .Container{
-    padding-top : 85px;
+    padding: 85px 0;
     width : 100%;
     display: flex;
     justify-content: center;
@@ -50,6 +50,12 @@ a:hover{
 #dropdownMenuButton1{
     background-color: #051922;
     border: none;
+}
+
+#lockerPwd{
+    color: #212529;
+    border: 1px solid #ced4da;
+    border-radius: .25rem;
 }
 
 .locker-form{

@@ -32,6 +32,7 @@ router.get('/locker_list_for_admin/changeNotice', controller.get.changeNotice);
 router.get('/locker_list_for_admin/getLockerNum', controller.get.getLockerNum);
 router.get('/locker_list_for_admin/changeLockerState', controller.get.changeLockerState);
 router.get('/locker_list_for_admin/deleteLocker', controller.get.deleteLocker);
+router.get('/locker_list_for_user/getModalInfo', controller.get.getModalInfo);
 
 router.get('/user_list', controller.rest.userList);
 router.get('/admin_list', controller.rest.adminList);
