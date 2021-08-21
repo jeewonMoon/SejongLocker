@@ -101,6 +101,8 @@
         </div>
         
         <div class="mb-3">
+          <label for="lockerPwd" class="form-label" style="font-weight: bold;">비밀번호</label>
+          <input type="text" name="lockerPwd" id="lockerPwd" placeholder="숫자 4자리로 설정해주세요.">
           <div class="mb-3" style="float: right;">
             <input type="hidden" name="selectedLocker" id="selectedLocker" value="0">
             <button class="btn btn-outline-warning" type="button">사진보기</button>
@@ -112,7 +114,7 @@
 
       <% if (admin) { %>
         <form method="POST" action="/makeLocker">
-          <h1>관리자 사물함 생성 화면</h1>
+          <h1>사물함 생성</h1>
           <div class='mb-3'>
             <select class="form-select" name="building" id="building" aria-label="Default select example" onchange="kakaomapMaker(this.value)">
               <option value="" selected>사물함 건물 위치 선택</option>
