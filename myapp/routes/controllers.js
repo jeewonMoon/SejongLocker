@@ -130,7 +130,7 @@ const get = {
                 const [rows, fields] = await con.query(sql, params);
                 console.log('성공');
                 console.log(rows[0]);
-                res.render('mypage', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
+                res.render('mypage', {info : rows[0], user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
                 //res.render('mypage', {userInfo : rows[0]});    //userInfo 객체에 정보 담기
             }catch(error){
                 console.log(error);
@@ -148,7 +148,7 @@ const get = {
                 console.log('성공');
                 console.log(rows);
                 // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
-                res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); 
+                res.render('mypage', {info : rows[0], user : "", admin : "admin"}); 
             }catch(error){
                 console.log(error);
                 throw error;
@@ -594,7 +594,97 @@ const get = {
             console.log(error);
             throw error;
         }
-    }
+    },
+    changePhonenum : async (req, res) => {
+        let phonenum = req.query.phonenum;
+        let flag = true;
+        console.log('change phone number');
+        if (req.session.user){
+            let id = req.session.user.id;
+            const sql = `UPDATE user SET phonenum = ? where userid = ?`;
+            const params = [phonenum, id];
+            console.log(params);
+            try{
+                const [rows, fields] = await con.query(sql, params);
+                if(rows.length > 0){ // 성공
+                    flag = false;
+                }else{          
+                    flag = true;
+                }
+
+                res.json({
+                    result : flag,
+                })
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        }
+        else if (req.session.admin){
+            let id = req.session.admin.id;
+            const sql = `UPDATE admin SET phonenum = ? where adminid = ?`;
+            const params = [phonenum, id];
+            try{
+                const [rows, fields] = await con.query(sql, params);
+                if(rows.length > 0){ // 성공
+                    flag = false;
+                }else{          
+                    flag = true;
+                }
+
+                res.json({
+                    result : flag,
+                })
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        }
+    },
+    changeTeam : async (req, res) => {
+        let team = req.query.team;
+        console.log('change team');
+        if (req.session.user){
+            let id = req.session.user.id;
+            const sql = `UPDATE user SET team = ? where userid = ?`;
+            const params = [team, id];
+            try{
+                const [rows, fields] = await con.query(sql, params);
+                if(rows.length > 0){ // 성공
+                    flag = false;
+                }else{          
+                    flag = true;
+                }
+
+                res.json({
+                    result : flag,
+                })
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        }
+        else if (req.session.admin){
+            let id = req.session.admin.id;
+            const sql = `UPDATE admin SET team = ? where adminid = ?`;
+            const params = [team, id];
+            try{
+                const [rows, fields] = await con.query(sql, params);
+                if(rows.length > 0){ // 성공
+                    flag = false;
+                }else{          
+                    flag = true;
+                }
+
+                res.json({
+                    result : flag,
+                })
+            }catch(error){
+                console.log(error);
+                throw error;
+            }
+        }
+    },
 };
 
 const rest = {
