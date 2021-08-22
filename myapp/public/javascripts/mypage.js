@@ -4,14 +4,30 @@ function cancelReservation(){
     document.getElementById("reserveBtn").style.display = 'inline-block';
 }
 
-async function deleteLockerUser(userid, lockername, lockernum){
-    
-    let data = await axios.get(`http://localhost:3000/locker_list_for_user/deleteLockerUser?userid=${userid}&lockername=${lockername}&lockernum=${lockernum}`);
-    
-    if(!data.data.flag){
-        window.location.href = 'http://localhost:3000/locker_list_for_user';
+async function updatePhonenum(){
+    let num = document.querySelector('#phonenum').value;
+    if (num === ''){
+        alert('연락처를 입력해주세요.');
     }
-    // let flag = confirm('정말 취소 하실 건가요?');
-    // if(flag){
-    // }
+    else{
+        let data = await axios.get(`http://localhost:3000/mypage/updatePhonenum?phonenum=${num}`);
+    
+        if(!data.data.flag){
+            alert('연락처를 변경했습니다.');
+        }
+    }
+}
+
+async function updateTeam(){
+    let team = document.querySelector('#team').value;
+    if (team === ''){
+        alert('소속을 입력해주세요.');
+    }
+    else {
+        let data = await axios.get(`http://localhost:3000/mypage/updateTeam?team=${team}`);
+        
+        if(!data.data.flag){
+            alert('소속을 변경했습니다.');
+        }
+    }
 }
