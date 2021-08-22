@@ -22,10 +22,12 @@ router.get('/mypage', controller.get.mypage);
 router.get('/register/userIdcheck', controller.get.checkUserId);
 router.get('/register/adminIdcheck', controller.get.checkAdminId);
 router.get('/register/userEmailcheck', controller.get.checkUserEmail);
+
 router.get('/register/adminEmailcheck', controller.get.checkAdminEmail);
 router.get('/locker/lockernameCheck', controller.get.checkLockerName);
 router.get('/locker/showLockerName', controller.get.showLockerName);
 router.get('/locker/showLockerNotice', controller.get.showNotice);
+
 router.get('/locker_list_for_user/deleteLockerUser', controller.get.deleteLockerUser);
 router.get('/locker_list_for_admin/printLocker', controller.get.printTable);
 router.get('/locker_list_for_admin/changeNotice', controller.get.changeNotice);
@@ -33,6 +35,9 @@ router.get('/locker_list_for_admin/getLockerNum', controller.get.getLockerNum);
 router.get('/locker_list_for_admin/changeLockerState', controller.get.changeLockerState);
 router.get('/locker_list_for_admin/deleteLocker', controller.get.deleteLocker);
 router.get('/locker_list_for_user/getModalInfo', controller.get.getModalInfo);
+
+router.get('/mypage/updatePhonenum', controller.get.changePhonenum);
+router.get('/mypage/updateTeam', controller.get.changeTeam);
 
 router.get('/user_list', controller.rest.userList);
 router.get('/admin_list', controller.rest.adminList);

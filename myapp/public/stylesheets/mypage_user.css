@@ -16,6 +16,10 @@ h1{
     border-color: #F28123;
 }
 
+.btn-color-orange:hover{
+    color: black !important;
+}
+
 .header{
     position: fixed;
     background-color: #051922;
@@ -70,20 +74,14 @@ hr{
     margin: 1.5rem 0;
 }
 
-.change-pwd, .user_info, .reservation{
+.change-pwd, .user_info{
     padding-bottom: 6em;
 }
 
-.reservation{
-    min-width: 460px;
-}
-
-#reserveBtn{
-    display: none;
-}
-
-#reserveBtn:hover{
-    background-color: white !important;
+#phonenum, #team{
+    display: inline-block;
+    width: 80%;
+    margin-bottom: 1rem;
 }
 
 #dropdownBtn{
