@@ -130,7 +130,7 @@ const get = {
                 const [rows, fields] = await con.query(sql, params);
                 console.log('성공');
                 console.log(rows[0]);
-                res.render('mypage', {info : rows[0], user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
+                res.render('mypage', {info : req.session.user, user : "user", admin : ""}); // 빈 값만 안 보내면 되긴 합니다.
                 //res.render('mypage', {userInfo : rows[0]});    //userInfo 객체에 정보 담기
             }catch(error){
                 console.log(error);
@@ -148,7 +148,7 @@ const get = {
                 console.log('성공');
                 console.log(rows);
                 // res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); // 빈 값만 안 보내면 되긴 합니다.
-                res.render('mypage', {info : rows[0], user : "", admin : "admin"}); 
+                res.render('mypage', {info : req.session.admin, user : "", admin : "admin"}); 
             }catch(error){
                 console.log(error);
                 throw error;
