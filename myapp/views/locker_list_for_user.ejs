@@ -44,7 +44,7 @@
       <h1>예약 확인</h1>
         <% for(let i = 0; i < info.length; i++) { %>
           <form class="mb-3">
-            <h2 class="" style="margin-top: 24px;">&nbsp;<%= i %>.</h2>
+            <h2 class="" style="margin-top: 24px;">&nbsp;<%= i+1 %></h2>
             <hr style="margin-top: 0px;">
             <div id="reservationCard" class="card text-dark bg-light mb-3" style="max-width: 25rem;">
               <div class="card-body" id="card-body"><input type="hidden" id="<%=info[i].userid%>" value="<%=info[i].userid%>">
