@@ -18,8 +18,9 @@
 #chatWindow {
     height: 85%;
     width: 100%;
-    /* 일부러 지나간 후기는 안보이게 만듬. 수정가능 */
-    overflow-y: hidden;
+    /* 일부러 지나간 후기는 안보이게 만들려고했으나
+        메세지가 잘려나가는 현상있어서 y축 scroll만 만듬. 수정가능 */
+    overflow-y: auto;
 }
 
 .output__user{
