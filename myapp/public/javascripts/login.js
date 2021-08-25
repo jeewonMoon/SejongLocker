@@ -81,3 +81,7 @@ function checkInput(input){
         }
     }
 }
+
+function sorry(){
+    alert("죄송합니다.\n아직 개발중에 있습니다.")
+}
