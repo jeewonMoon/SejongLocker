@@ -24,9 +24,13 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({
+  key : 'OYR',
   secret : 'OpenYearRound', // 암호화 하는 값인것 같습니다. 안 되면 'secret cat' 으로 변경해 주세요.
   resave : false,
-  saveUninitialized : true
+  saveUninitialized : true,
+  // cookie : {
+  //   maxAge : 1000 * 60 * 60
+  // }
 }));
 
 app.use('/', indexRouter);

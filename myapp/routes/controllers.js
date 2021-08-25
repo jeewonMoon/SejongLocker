@@ -181,6 +181,7 @@ const get = {
                         return;
                     }
                     console.log('세션 삭제 성공');
+                    // res.clearCookie('OYR');
                     res.redirect('/');
                     //에러 있을겁니다. 추후 수정할게요.
                 }
@@ -196,6 +197,7 @@ const get = {
                         return;
                     }
                     console.log('세션 삭제 성공');
+                    // res.clearCookie('OYR');
                     res.redirect('/');
                     //에러 있을겁니다. 추후 수정할게요.
                 }
@@ -790,6 +792,7 @@ const process = {
         //세션이 없는 경우 세션 발급
         let id = req.body.userId;
         let password = req.body.userPassword;
+        
         const sql = 'SELECT * FROM USER WHERE userid = ? AND password = ?';
         const params = [id, password];
         console.log(id, password);

@@ -50,7 +50,7 @@ function noSpace(){
 async function lockerNameCheck(){
     const lockername = document.querySelector('#locker-name');
     try{
-        let data = await axios.get(`http://localhost:3000/locker/lockernameCheck?lockername=${lockername.value}`);
+        let data = await axios.get(`/locker/lockernameCheck?lockername=${lockername.value}`);
         
         console.log(data);
 

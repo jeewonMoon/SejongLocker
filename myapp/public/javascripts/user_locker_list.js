@@ -17,7 +17,7 @@ exampleModal.addEventListener('show.bs.modal', function (event) {
 
 async function getModalInfo(lockername){
     let info = '';
-    let data = await axios.get(`http://localhost:3000/locker_list_for_user/getModalInfo?name=${lockername}`);
+    let data = await axios.get(`/locker_list_for_user/getModalInfo?name=${lockername}`);
     let building = data.data.rows.building;
     let notice = data.data.rows.notice;
     let num = data.data.rows2.lockernum;
@@ -39,10 +39,10 @@ async function getModalInfo(lockername){
 
 async function deleteLockerUser(userid, lockername, lockernum){
     
-  let data = await axios.get(`http://localhost:3000/locker_list_for_user/deleteLockerUser?userid=${userid}&lockername=${lockername}&lockernum=${lockernum}`);
+  let data = await axios.get(`/locker_list_for_user/deleteLockerUser?userid=${userid}&lockername=${lockername}&lockernum=${lockernum}`);
   
   if(!data.data.flag){
-      window.location.href = 'http://localhost:3000/locker_list_for_user';
+      window.location.href = '/locker_list_for_user';
   }
   // let flag = confirm('정말 취소 하실 건가요?');
   // if(flag){

@@ -46,7 +46,7 @@
           <form class="mb-3">
             <h2 class="" style="margin-top: 24px;">&nbsp;<%= i+1 %></h2>
             <hr style="margin-top: 0px;">
-            <div id="reservationCard" class="card text-dark bg-light mb-3" style="max-width: 25rem;">
+            <div id="reservationCard" class="card text-dark bg-light mb-3">
               <div class="card-body" id="card-body"><input type="hidden" id="<%=info[i].userid%>" value="<%=info[i].userid%>">
                 <h5 class="card-title">사물함 이름</h5>
                 <p class="card-text"><input type="hidden" id="<%=info[i].lockername%>" value="<%=info[i].lockername%>"><%=info[i].lockername%></p>
@@ -63,8 +63,7 @@
             
             <!-- Button trigger modal -->
             <button type="button" id="cancelBtn" class="btn btn-color-orange" data-bs-toggle="modal"
-            data-bs-target="#exampleModal" data-bs-whatever="<%=info[i].lockername%>"
-            style="float: right; margin-right: 60px;">예약 취소</button>
+            data-bs-target="#exampleModal" data-bs-whatever="<%=info[i].lockername%>" style="float: right;">예약 취소</button>
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"

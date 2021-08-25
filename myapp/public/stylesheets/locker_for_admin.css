@@ -40,7 +40,7 @@ a:hover{
 }
 
 .Container{
-    padding: 85px 0;
+    padding-top: 85px;
     width : 100%;
     display: flex;
     justify-content: center;
@@ -60,9 +60,9 @@ a:hover{
 
 .locker-form{
     margin: auto;
-    width: 85%;
-    max-width: 768px;
-    min-width: 444px;
+    width: 92%;
+    /* max-width: 768px; */
+    /* min-width: 444px; */
     border-color: #051922;
 }
 

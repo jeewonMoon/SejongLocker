@@ -7,7 +7,7 @@ async function showLockerName(buildingName){
     }
     else{
         try{
-            let data = await axios.get(`http://localhost:3000/locker/showLockerName?building=${buildingName}`);
+            let data = await axios.get(`/locker/showLockerName?building=${buildingName}`);
             
             console.log(data);
     
@@ -107,7 +107,7 @@ async function showLockerNotice(lockername){
         document.getElementById("tableInfo").style.display = 'inline';
         try{
             // 사물함 공지사항
-            let data = await axios.get(`http://localhost:3000/locker/showLockerNotice?building=${buildingName}&lockername=${lockername}`);
+            let data = await axios.get(`/locker/showLockerNotice?building=${buildingName}&lockername=${lockername}`);
 
             let lockernotice = data.data.notice;
             let lockerrow = data.data.lockerrow;
