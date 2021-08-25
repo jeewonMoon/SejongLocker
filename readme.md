@@ -44,12 +44,12 @@
   </tr>
   <tr>
     <td>4주차
-    <td>활동 후 작성 예정
+    <td>AWS, AWS RDS 활용하여 배포
   </tr>
 </table>
 
 사용하는 언어 및 프레임워크 : HTML5, CSS3, JavaScript, BootStrap, Express  
-백엔드 : Node.js, Axios, Socket.io, Mysql, Mysql2, AWS
+백엔드 : Node.js, Axios, Socket.io, Mysql, Mysql2, AWS, 
 
 <br>
 
