@@ -20,7 +20,7 @@ modalBody.value = recipient;
 // 사물함 출력
 async function makeTable(lockername) {
     let table = '';
-    let data = await axios.get(`http://localhost:3000/locker_list_for_admin/printLocker?name=${lockername}`);
+    let data = await axios.get(`/locker_list_for_admin/printLocker?name=${lockername}`);
     const rows = data.data.table;
     const col = data.data.colRow[0].lockercol;
     const row = data.data.colRow[0].lockerrow;
@@ -60,7 +60,7 @@ function resetNotice(){
 async function changeNotice(){
     let targetNotice = document.getElementById('noticeChange').value;
     let targetLockerName = document.getElementById('lockerName').textContent;
-    let data = await axios.get(`http://localhost:3000/locker_list_for_admin/changeNotice?lockername=${targetLockerName}&notice=${targetNotice}`);
+    let data = await axios.get(`/locker_list_for_admin/changeNotice?lockername=${targetLockerName}&notice=${targetNotice}`);
     
     if(data.data.result == true){
         document.getElementById('noticechangeHelp1').style.display = 'none';
@@ -97,7 +97,7 @@ async function changeLockerYES(){
     if(flag){
         let targetLockerName = document.getElementById('lockerName').textContent;
         
-        let data3 = await axios.get(`http://localhost:3000/locker_list_for_admin/getLockerNum?lockername=${targetLockerName}`);
+        let data3 = await axios.get(`/locker_list_for_admin/getLockerNum?lockername=${targetLockerName}`);
 
         let total = data3.data.row * data3.data.col;
 
@@ -105,7 +105,7 @@ async function changeLockerYES(){
             let targetLocker = document.getElementById("locker"+i);
 
             if(targetLocker.value == "CHANGE"){
-                let data2 = await axios.get(`http://localhost:3000/locker_list_for_admin/changeLockerState?lockername=${targetLockerName}&lockernum=${i}&state=useYes`);
+                let data2 = await axios.get(`/locker_list_for_admin/changeLockerState?lockername=${targetLockerName}&lockernum=${i}&state=useYes`);
 
                 if(data2.data.result)
                     console.log(i + " LockerState Change Success");
@@ -114,7 +114,7 @@ async function changeLockerYES(){
 
         // 테이블 다시 그리기
         let table = '';
-        let data = await axios.get(`http://localhost:3000/locker_list_for_admin/printLocker?name=${targetLockerName}`);
+        let data = await axios.get(`/locker_list_for_admin/printLocker?name=${targetLockerName}`);
         const rowsTable = data.data.table;
         const col = data.data.colRow[0].lockercol;
         const row = data.data.colRow[0].lockerrow;
@@ -149,14 +149,14 @@ async function changeLockerNO(){
     if(flag){
         let targetLockerName = document.getElementById('lockerName').textContent;
         
-        let data3 = await axios.get(`http://localhost:3000/locker_list_for_admin/getLockerNum?lockername=${targetLockerName}`);
+        let data3 = await axios.get(`/locker_list_for_admin/getLockerNum?lockername=${targetLockerName}`);
 
         let total = data3.data.row * data3.data.col;
 
         for(let i = 1; i <= total; i++){
             let targetLocker = document.getElementById("locker"+i);
             if(targetLocker.value == "CHANGE"){
-                let data2 = await axios.get(`http://localhost:3000/locker_list_for_admin/changeLockerState?lockername=${targetLockerName}&lockernum=${i}&state=useNo`);
+                let data2 = await axios.get(`/locker_list_for_admin/changeLockerState?lockername=${targetLockerName}&lockernum=${i}&state=useNo`);
 
                 if(data2.data.result)
                     console.log(i + " LockerState Change Success");
@@ -165,7 +165,7 @@ async function changeLockerNO(){
 
         // 테이블 다시 그리기
         let table = '';
-        let data = await axios.get(`http://localhost:3000/locker_list_for_admin/printLocker?name=${targetLockerName}`);
+        let data = await axios.get(`/locker_list_for_admin/printLocker?name=${targetLockerName}`);
         const rowsTable = data.data.table;
         const col = data.data.colRow[0].lockercol;
         const row = data.data.colRow[0].lockerrow;
@@ -199,11 +199,11 @@ async function deleteLocker(){
     if(flag){
         let targetLockerName = document.getElementById('lockerName').textContent;
 
-        let data = await axios.get(`http://localhost:3000/locker_list_for_admin/deleteLocker?lockername=${targetLockerName}`);
+        let data = await axios.get(`/locker_list_for_admin/deleteLocker?lockername=${targetLockerName}`);
 
         if(data.data.flag){
             console.log("deleteLocker is success");
-            window.location.href = 'http://localhost:3000/locker_list_for_admin';
+            window.location.href = '/locker_list_for_admin';
         }
     }
 }

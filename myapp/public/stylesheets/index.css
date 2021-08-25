@@ -40,23 +40,11 @@ a:hover{
     border: none;
 }
 
-.card{
-    margin : 15px;
-    width : 350px;
-    height : 543px;
-}
-.card-outer{
-    display: flex;
-    flex-direction: row;
-}
-
 .intro{
     display: flex;
     margin-bottom : 30px;
     width : 100%;
     height : 525px;
-    /* max-width: 1120px;
-    max-height: 525px; */
     position: relative;
     justify-content: center;
     align-items: center;
@@ -99,7 +87,7 @@ a:hover{
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size : 44px;
+    font-size : 3em;
     padding-bottom: 15px;
     color: black;
     z-index: 1;
@@ -130,11 +118,6 @@ a:hover{
     margin : 3px;
     font-size : 17.5px;
     color : #ffffff;
-}
-
-.form-group{
-    width : 450px;
-    margin-bottom : 8px;
 }
 
 .footer-title{
@@ -199,11 +182,13 @@ hr{
 
 @media (max-width:768px) {
     .title{
-        font-size: 27px;
+        /* font-size: 27px; */
+        font-size: 1.4em;
     }
 
     .title2{
-        font-size: 27px;
+        /* font-size: 27px; */
+        font-size: 1.4em;
     }
 
     .footer-contents{

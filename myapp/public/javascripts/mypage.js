@@ -10,7 +10,7 @@ async function updatePhonenum(){
         alert('연락처를 입력해주세요.');
     }
     else{
-        let data = await axios.get(`http://localhost:3000/mypage/updatePhonenum?phonenum=${num}`);
+        let data = await axios.get(`/mypage/updatePhonenum?phonenum=${num}`);
     
         if(!data.data.flag){
             alert('연락처를 변경했습니다.');
@@ -24,7 +24,7 @@ async function updateTeam(){
         alert('소속을 입력해주세요.');
     }
     else {
-        let data = await axios.get(`http://localhost:3000/mypage/updateTeam?team=${team}`);
+        let data = await axios.get(`/mypage/updateTeam?team=${team}`);
         
         if(!data.data.flag){
             alert('소속을 변경했습니다.');

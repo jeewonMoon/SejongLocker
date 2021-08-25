@@ -116,7 +116,7 @@ function getValue(event){
 async function idCheck(){
   if (radio==='사용자'){
     const userid = document.querySelector('#registerId');
-    let data = await axios.get(`http://localhost:3000/register/userIdcheck?id=${userid.value}`);
+    let data = await axios.get(`/register/userIdcheck?id=${userid.value}`);
     
     console.log(data);
 
@@ -134,7 +134,7 @@ async function idCheck(){
 
   }else if (radio==='관리자'){
     const adminid = document.querySelector('#registerId');
-    let data = await axios.get(`http://localhost:3000/register/adminIdcheck?id=${adminid.value}`);
+    let data = await axios.get(`/register/adminIdcheck?id=${adminid.value}`);
 
     console.log(data);
 
@@ -157,7 +157,7 @@ async function idCheck(){
 async function emailCheck(){
   if (radio==='사용자'){
     const userEmail = document.querySelector('#registerEmail');
-    let data = await axios.get(`http://localhost:3000/register/userEmailcheck?email=${userEmail.value}`);
+    let data = await axios.get(`/register/userEmailcheck?email=${userEmail.value}`);
 
     console.log(data);
 
@@ -175,7 +175,7 @@ async function emailCheck(){
 
   }else if (radio==='관리자'){
     const adminEmail = document.querySelector('#registerEmail');
-    let data = await axios.get(`http://localhost:3000/register/adminEmailcheck?email=${adminEmail.value}`);
+    let data = await axios.get(`/register/adminEmailcheck?email=${adminEmail.value}`);
 
     console.log(data);
 
@@ -198,7 +198,7 @@ async function emailCheck(){
 // email 인증하기
 async function authEmail(){
   const email = document.querySelector('#registerEmail');
-  let data = await axios.get(`http://localhost:3000/register/authEmail?authEmail=${email.value}`);
+  let data = await axios.get(`/register/authEmail?authEmail=${email.value}`);
 
   let authNum = data.data.authNum;
   let authEmail = data.data.authEmail;
