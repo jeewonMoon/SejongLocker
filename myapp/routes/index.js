@@ -39,8 +39,8 @@ router.get('/locker_list_for_user/getModalInfo', controller.get.getModalInfo);
 router.get('/mypage/updatePhonenum', controller.get.changePhonenum);
 router.get('/mypage/updateTeam', controller.get.changeTeam);
 
-router.get('/user_list', controller.rest.userList);
-router.get('/admin_list', controller.rest.adminList);
+// router.get('/user_list', controller.rest.userList);
+// router.get('/admin_list', controller.rest.adminList);
 router.get('/find_user/:id', controller.rest.findUserById);
 router.get('/find_admin/:id', controller.rest.findAdminById);
 

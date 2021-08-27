@@ -212,7 +212,7 @@ const get = {
         console.log('user id CHECK');
         let id = req.query.id;
         let flag = false;
-        const sql = `SELECT userid FROM USER WHERE userid = ?`;
+        const sql = `SELECT userid FROM user WHERE userid = ?`;
         const params = [id];
         
         try{
@@ -236,12 +236,11 @@ const get = {
         console.log('admin id CHECK');
         let id = req.query.id;
         let flag = false;
-        const sql = `SELECT adminid FROM ADMIN WHERE adminid = ?`;
+        const sql = `SELECT adminid FROM admin WHERE adminid = ?`;
         const params = [id];
-        
         try{
             const [rows, fields] = await con.query(sql, params);
-
+            console.log(rows);
             if(rows.length > 0){    //존재
                 flag = false;
             }else{
@@ -691,7 +690,7 @@ const get = {
 
 const rest = {
     userList : (req, res) => {
-        const sql = `SELECT * FROM USER`;
+        const sql = `SELECT * FROM user`;
         con.query(sql, function(err, rows, fields){
             console.log(rows);
             console.log('실행됨');
@@ -704,7 +703,7 @@ const rest = {
         })
     },
     adminList : (req, res) => {
-        const sql = `SELECT * FROM ADMIN`;
+        const sql = `SELECT * FROM admin`;
         con.query(sql, function(err, rows, fields){
             console.log(typeof(rows));
             console.log('실행됨');
@@ -718,7 +717,7 @@ const rest = {
     },
     findUserById : (req, res) => {
         let id = req.params.id;
-        const sql = `SELECT * FROM USER WHERE userid = ?`;
+        const sql = `SELECT * FROM user WHERE userid = ?`;
         const params = [id];
         con.query(sql, params, function(err, rows, fields){
             console.log('실행됨');
@@ -732,7 +731,7 @@ const rest = {
     },
     findAdminById : (req, res) => {
         let id = req.params.id;
-        const sql = `SELECT * FROM USER WHERE adminid = ?`;
+        const sql = `SELECT * FROM admin WHERE adminid = ?`;
         const params = [id];
         con.query(sql, params, function(err, rows, fields){
             console.log('실행됨');
@@ -759,7 +758,7 @@ const process = {
         console.log(req.body.radioCheck);
 
         if(req.body.radioCheck == "사용자"){
-            const sql = `INSERT INTO USER (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
+            const sql = `INSERT INTO user (userid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
             const params = [id, name, email, phone, password, team];
             try{
                 const [rows, fields] = await con.query(sql, params);
@@ -772,7 +771,7 @@ const process = {
             }
         }
         else if(req.body.radioCheck == "관리자"){
-            const sql = `INSERT INTO ADMIN (adminid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
+            const sql = `INSERT INTO admin (adminid, name, email, phonenum, password, team) values (?, ?, ?, ?, ?, ?)`;
             const params = [id, name, email, phone, password, team];
             try{
                 const [rows, fields] = await con.query(sql, params);
@@ -793,7 +792,7 @@ const process = {
         let id = req.body.userId;
         let password = req.body.userPassword;
         
-        const sql = 'SELECT * FROM USER WHERE userid = ? AND password = ?';
+        const sql = 'SELECT * FROM user WHERE userid = ? AND password = ?';
         const params = [id, password];
         console.log(id, password);
         try{
@@ -831,7 +830,7 @@ const process = {
         //세션이 없는 경우 세션 발급
         let id = req.body.adminId;
         let password = req.body.adminPassword;
-        const sql = 'SELECT * FROM ADMIN WHERE adminid = ? AND password = ?';
+        const sql = 'SELECT * FROM admin WHERE adminid = ? AND password = ?';
         const params = [id, password];
         console.log(id, password);
         try{
