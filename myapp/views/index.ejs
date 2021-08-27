@@ -56,6 +56,26 @@
       <div class="title">
         🔒 사물함 예약을 쉽게 해 보세요 🔓
       </div>
+      <% if (!info) { %>
+        <div>
+          <a href="/register"><button type="button" class="btn btn-warning">회원가입</button></a>
+          <a href="/login"><button type="button" class="btn btn-success">로그인</button></a>
+        </div>
+      <% } %>
+      <% if (info) { %>
+        <% if (user) { %>
+          <div>
+            <a href="/locker"><button type="button" class="btn btn-warning">신청하기</button></a>
+            <a href="/locker_list_for_user"><button type="button" class="btn btn-success">내역보기</button></a>
+          </div>
+        <% } %>
+        <% if (admin) { %>
+          <div>
+            <a href="/locker"><button type="button" class="btn btn-warning">생성하기</button></a>
+            <a href="/locker_list_for_admin"><button type="button" class="btn btn-success">내역보기</button></a>
+          </div>
+        <% } %>
+      <% } %>
     </div>
 
     <div class="title2">👍 후기 및 문의 💬</div>

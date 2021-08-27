@@ -14,7 +14,9 @@ async function updatePhonenum(){
     
         if(!data.data.flag){
             alert('연락처를 변경했습니다.');
+            window.location.href = '/mypage';
         }
+        
     }
 }
 
@@ -28,6 +30,7 @@ async function updateTeam(){
         
         if(!data.data.flag){
             alert('소속을 변경했습니다.');
+            window.location.href = '/mypage';
         }
     }
 }
