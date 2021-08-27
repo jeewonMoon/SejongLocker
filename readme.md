@@ -44,7 +44,7 @@
   </tr>
   <tr>
     <td>4주차
-    <td>AWS, AWS RDS 활용하여 배포
+    <td>AWS, AWS RDS 활용하여 Deploy
   </tr>
 </table>
 
