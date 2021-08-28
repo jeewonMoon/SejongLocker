@@ -83,3 +83,15 @@
 - #해당 브랜치명+숫자 [해당 프로젝트 이름]으로 pull request 해 주세요.
 - **절대로** 현재 repository의 main으로 pull request 하시면 안 됩니다.
 - 여러 사항을 pull request 하고 싶다면 fork한 branch에서 다른 branch를 만든 다음, 그 branch에서 코드 작업 후 원래 repository의 branch로 pull request 하시면 됩니다.
+
+<br>  
+
+***
+
+프로젝트 이전 관련 내용
+- 사유 : 팀원의 중도하차 (21.08.07)
+- 팀 구성 : 기존 (김재호, 문지원, 박현우) → 변동 (김재호, 문지원)
+- 추가사항
+    - 하차한 팀원의 Repository에서 시작하여 프로젝트 이전 PR에 관한 사항은 아래 링크를 통해 확인 가능합니다.
+    - 하차한 팀원의 코드, 활동내역 등은 아래 링크를 통해 확인 가능합니다.
+    - [기존 프로젝트](https://github.com/gusdn3477/OpenYearRound_Project)
